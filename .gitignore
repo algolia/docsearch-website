@@ -23,6 +23,7 @@ yarn-error.log*
 coverage/
 dist/
 .idea/
+.vscode/
 dist-es5-module/
 tmp
 docs/.textlintcache
