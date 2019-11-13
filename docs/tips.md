@@ -8,9 +8,9 @@ we'll share some tips on how you can make the most out of DocSearch.
 
 ## Use a `sitemap.xml`
 
-If you provide a sitemap in your configuration, DocSearch will use it to directly
-browse the pages to index. Pages are still crawled which means we extract every
-compliant link.
+If you provide a sitemap in your configuration, DocSearch will use it to
+directly browse the pages to index. Pages are still crawled which means we
+extract every compliant link.
 
 We highly recommend you add a `sitemap.xml` to your website if you don't have
 one already. This will make the indexing faster, but will also give you more
@@ -38,7 +38,8 @@ has better relevance in its search results.
 
 Finding the right depth of your documentation tree and how to split-up your
 content are two of the most complex tasks. For large documents, we recommend
-having 4 levels (from lvl0 until lvl3). We recommend at least three different levels.
+having 4 levels (from lvl0 until lvl3). We recommend at least three different
+levels.
 
 \_Note that you don't have to use `<hX>` tags and can use
 `<span class="title-X">` for example instead. Your will need to update your set

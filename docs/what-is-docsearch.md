@@ -4,10 +4,10 @@ title: What is DocSearch?
 
 ## Why?
 
-We have created DocSearch because we are scratching our own itch. As
-developers, we spent a lot of time reading documentation, and it can be hard to
-find relevant information in large documentations. We're not blaming anyone
-here; building a good search is a challenge.
+We have created DocSearch because we are scratching our own itch. As developers,
+we spent a lot of time reading documentation, and it can be hard to find
+relevant information in large documentations. We're not blaming anyone here;
+building a good search is a challenge.
 
 It happens that we are a search company and we actually have a lot of experience
 building search interfaces. We wanted to use those skills to help others. That's
@@ -18,7 +18,8 @@ and make it available to everyone from the first keystroke.
 
 We split DocSearch into a crawler and a frontend library. We run the crawler on
 our end every 24h to extract content from your website and push it to an Algolia
-index. You can then add the frontend library to your website to search in that index.
+index. You can then add the frontend library to your website to search in that
+index.
 
 ## How to feature DocSearch?
 

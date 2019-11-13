@@ -33,8 +33,8 @@ and `indexName` credentials as soon as we've created your config.
 </script>
 ```
 
-You need to integrate this snippet into every page that integrates the
-dropdown UI
+You need to integrate this snippet into every page that integrates the dropdown
+UI
 
 ## Testing
 
