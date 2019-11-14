@@ -14,7 +14,10 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'Algolia',
   projectName: 'DocSearch',
-  themes: ['@docusaurus/theme-search-algolia'],
+  themes: [
+    '@docusaurus/theme-search-algolia',
+    '@docusaurus/theme-live-codeblock',
+  ],
   plugins: ['my-loaders'], // loader required for .svg
   themeConfig: {
     algolia: {
