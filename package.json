@@ -16,6 +16,7 @@
     "@docusaurus/preset-classic": "2.0.0-alpha.34",
     "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.33",
     "classnames": "^2.2.6",
+    "docsearch.js": "^2.6.3",
     "file-loader": "^4.2.0",
     "image-webpack-loader": "^5.0.0",
     "imagemin": "^7.0.0",
