@@ -1,5 +1,5 @@
 {
-  "name": "docsearch",
+  "name": "docsearch-website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -17,8 +17,9 @@
     "@francoischalifour/autocomplete.js": "^1.0.0-alpha.9",
     "algoliasearch": "^4.0.2",
     "classnames": "^2.2.6",
-    "file-loader": "^4.2.0",
-    "image-webpack-loader": "^5.0.0",
+    "docsearch.js": "^2.6.3",
+    "file-loader": "^4.3.0",
+    "image-webpack-loader": "^6.0.0",
     "imagemin": "^7.0.0",
     "my-loaders": "file:plugins/my-loaders",
     "query-string": "^6.9.0",
