@@ -16,6 +16,7 @@ module.exports = {
       "config",
       "index",
       "run-your-own"
-    ]
+    ],
+    "Guides": ["migration-guide-ui-v2-v3"],
   }
 };

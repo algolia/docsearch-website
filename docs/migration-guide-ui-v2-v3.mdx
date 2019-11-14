@@ -1,0 +1,16 @@
+---
+title: Migration guide from v2 to v3
+sidebar_label: Migrate Now!
+---
+
+import Playground from '@theme/Playground';
+import DocSearch from '../src/components/DocSearch';
+
+export const transformCode = code => `${code}`;
+const code = `<DocSearch apiKey='25626fae796133dc1e734c6bcaaeac3c' indexName='docsearch'/>`;
+
+<Playground
+  scope={{ DocSearch }}
+  code={code}
+  transformCode={transformCode || (code => `${code}`)}
+/>
