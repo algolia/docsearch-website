@@ -78,16 +78,23 @@ const Search = props => {
 
       autocomplete({
         container: autocompleteRef.current,
-        dropdownContainer: ".navbar__items--right",
-        dropdownPosition: "right",
+        dropdownContainer: ".navbar",
+        dropdownAlignment: "right",
+        getDropdownPosition({ dropdownPosition }) {
+          // Desktop: we want to return the dropdown position as is.
+          if (window.matchMedia("(min-width: 540px)").matches) {
+            return dropdownPosition;
+          }
+
+          // Mobile: we want to return the dropdown position without left or
+          // right margins.
+          return { top: dropdownPosition.top, left: 0 };
+        },
         autofocus: true,
         minLength: 0,
         getSources({ query }) {
           return [
             {
-              getInputValue({ state }) {
-                return state.query;
-              },
               getSuggestionUrl({ suggestion }) {
                 return suggestion.url;
               },
