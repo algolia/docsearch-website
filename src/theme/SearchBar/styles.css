@@ -134,16 +134,21 @@
 
 .algolia-autocomplete-dropdown {
   background-color: #fff;
-  border-radius: 6px;
   box-shadow: 0 2px 4px 0 rgba(93, 100, 148, 0.2),
     0 5px 15px 0 rgba(37, 44, 97, 0.15);
-  margin-top: 0.5rem;
-  max-width: 500px;
+  margin-top: 0.55rem;
   overflow: scroll;
   -ms-overflow-style: none;
   position: absolute;
   width: 100%;
   z-index: 1;
+}
+
+@media (min-width: 540px) {
+  .algolia-autocomplete-dropdown {
+    max-width: 500px;
+    border-radius: 6px;
+  }
 }
 
 .algolia-autocomplete-dropdown::-webkit-scrollbar {
