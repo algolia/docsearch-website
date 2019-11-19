@@ -163,7 +163,7 @@
 
 .algolia-autocomplete-dropdown-container {
   position: relative;
-  padding: .4rem 1.4rem 0;
+  padding: 0.4rem 1.4rem 0;
 }
 
 .algolia-autocomplete-suggestions-item {
@@ -175,7 +175,7 @@
   display: block;
 }
 
-.algolia-autocomplete-suggestions-item[aria-selected="true"] {
+.algolia-autocomplete-suggestions-item[aria-selected='true'] {
   background-color: rgba(218, 219, 234, 0.4);
   background-color: var(--algolia-autocomplete-background-highlight-color);
   border-radius: 0.1875rem;
@@ -192,7 +192,7 @@
 
 .DSV3-cat-separator {
   width: 100%;
-  font-size: .75em;
+  font-size: 0.75em;
   font-weight: 600;
   text-transform: uppercase;
   margin-top: 1.8em;
@@ -203,9 +203,9 @@
 .DSV3-cat-separator::after {
   display: block;
   width: 100%;
-  height: .8em;
-  margin-top: .4em;
-  content: "";
+  height: 0.8em;
+  margin-top: 0.4em;
+  content: '';
   border-top: solid 2px var(--asteroid);
   border-left: solid 2px var(--asteroid);
 }
@@ -274,8 +274,7 @@
   height: 1em;
   margin-right: 0.1em;
   vertical-align: top;
-  content: "";
-
+  content: '';
 }
 
 .DSV3-lastLvl0.DSV3-lastLvl .DSV3-title {
@@ -284,11 +283,11 @@
 
 .DSV3-lvl1 .DSV3-title:before {
   display: inline-block;
-  width: .6em;
+  width: 0.6em;
   height: 1em;
   margin-right: 0.4em;
   vertical-align: top;
-  content: "";
+  content: '';
   border-bottom: solid 2px var(--asteroid);
 }
 
@@ -309,26 +308,26 @@
 .DSV3-lvl2 .DSV3-title:before,
 .DSV3-lvl3 .DSV3-title:before,
 .DSV3-content .DSV3-title:before {
-  width: .6em;
+  width: 0.6em;
   height: 1em;
   margin-right: 0.1em;
   vertical-align: top;
   border-bottom: solid 2px var(--asteroid);
-  content: "";
+  content: '';
   display: inline-block;
 }
 
-.DSV3-lastLvl .DSV3-title{
+.DSV3-lastLvl .DSV3-title {
   border: none;
 }
 
 .DSV3-lastLvl .DSV3-title::before {
   display: inline-block;
-  width: .6em;
+  width: 0.6em;
   height: 1em;
   margin-right: 0.1em;
   vertical-align: top;
-  content: "";
+  content: '';
   border-bottom: solid 2px var(--asteroid);
   border-left: solid 2px var(--asteroid);
 }
