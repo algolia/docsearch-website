@@ -10,6 +10,19 @@ import {
   LabelText,
 } from '@algolia/ui-library';
 
+const useInput = (placeholder, defaultValue = '') => {
+  const [value, setValue] = useState(defaultValue);
+  const input = (
+    <Input
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      placeholder={placeholder}
+      required
+    />
+  );
+  return [value, input];
+};
+
 function Playground() {
   const [count, setCount] = useState(0);
   const prevCountRef = useRef();
@@ -17,7 +30,12 @@ function Playground() {
     prevCountRef.current = count;
   });
   const prevCount = prevCountRef.current;
-  console.log(prevCount);
+  const [indexName, indexNameInput] = useInput('indexName', 'docsearch');
+  const [apiKey, apiKeyInput] = useInput(
+    'apiKey',
+    '25626fae796133dc1e734c6bcaaeac3c'
+  );
+
   return (
     <Layout
       title="DocSearch Playground"
@@ -38,11 +56,11 @@ function Playground() {
         >
           <div className="ta-left w-40p m-auto">
             <LabelText>Your indexName</LabelText>
-            <Input placeholder="indexName" required />
+            {indexNameInput}
           </div>
           <div className="ta-left w-40p m-auto">
             <LabelText>Your apiKey</LabelText>
-            <Input placeholder="apiKey" required />
+            {apiKeyInput}
           </div>
           <div className="ta-center w-10p">
             <Button
@@ -66,7 +84,7 @@ function Playground() {
       <Section>
         <SectionHeader>
           <Text style={{ maxWidth: '800px' }}>
-            You clicked {prevCount >= 0 ? 'Yes' : 'No'}
+            You clicked {prevCount >= 0 ? 'Yes' : 'No'} {apiKey} {indexName}
           </Text>
         </SectionHeader>
       </Section>
