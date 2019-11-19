@@ -21,6 +21,9 @@ module.exports = {
       indexName: 'docsearch',
       algoliaOptions: {}, // Optional, if provided by Algolia
     },
+    gtag: {
+      trackingID: 'UA-32446386-9',
+    },
     navbar: {
       logo: {
         alt: 'DocSearch',
