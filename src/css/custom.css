@@ -12,8 +12,10 @@
  */
 
 /* You can override the default Infima variables here. */
-/* Please make sure to comply with the design system defined by 
+/* Please make sure to comply with the design system defined by
 fragments.css (underling style lib used from @algolia/ui-library*/
+
+@import "fragments.css";
 
 :root {
   --ifm-color-primary: rgb(84, 104, 255);
@@ -23,18 +25,8 @@ fragments.css (underling style lib used from @algolia/ui-library*/
   --ifm-color-primary-light: rgb(70, 203, 174);
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
-}
-
-@media screen and (max-width: 996px) {
-  :root {
-    --ifm-font-size-base: 15px;
-  }
-}
-
-@media screen and (min-width: 997px) {
-  :root {
-    --ifm-font-size-base: 17px;
-  }
+  --ifm-font-size-base: 17px;
+  --ifm-code-font-size: 90%;
 }
 
 .header {
@@ -50,4 +42,9 @@ fragments.css (underling style lib used from @algolia/ui-library*/
   background-image: url(../../static/img/assets/bg-analytics.svg);
   background-size: cover;
   background-position: center -300px;
+}
+
+/* Hello my old friend */
+html[data-theme='dark'] {
+
 }

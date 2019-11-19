@@ -28,10 +28,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'DocSearch',
-        src: {
-          light: 'img/docsearch-logo.svg',
-          dark: 'img/docsearch-logo-white.svg',
-        },
+        src: 'img/docsearch-logo.svg',
       },
       links: [
         {
@@ -123,9 +120,9 @@ module.exports = {
       ],
       logo: {
         alt: 'Algolia',
-        src: 'img/algolia-logo.svg',
+        src: 'img/algolia-logo.svg'
       },
-      copyright: `DocSearch 2015-now • Designed and Built by Algolia`,
+      copyright: `DocSearch 2015-now • Powered by Algolia`,
     },
   },
   presets: [
@@ -137,7 +134,7 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-          customCss: require.resolve('./src/css/fragments.css'),
+          fragmentCss: require.resolve('./src/css/fragments.css'),
         },
       },
     ],

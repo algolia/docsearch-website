@@ -108,6 +108,7 @@
   border-radius: 50%;
   cursor: pointer;
   right: 0;
+  position: absolute;
 }
 
 .algolia-autocomplete-reset[hidden] {
