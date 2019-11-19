@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useCallback, useState, useEffect} from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 
 import Link from '@docusaurus/Link';
@@ -34,7 +34,8 @@ function NavLink(props) {
         : {
             activeClassName: 'navbar__link--active',
             to: toUrl,
-          })}>
+          })}
+    >
       {props.label}
     </Link>
   );
@@ -52,17 +53,23 @@ function Navbar() {
       ? document.querySelector('html').getAttribute('data-theme')
       : '';
   const [theme, setTheme] = useState(currentTheme);
-  const {siteConfig = {}} = context;
-  const {baseUrl, themeConfig = {}} = siteConfig;
-  const {algolia, navbar = {}} = themeConfig;
-  const {title, logo = {}, links = []} = navbar;
+  const { siteConfig = {} } = context;
+  const { baseUrl, themeConfig = {} } = siteConfig;
+  const { algolia, navbar = {} } = themeConfig;
+  const { title, logo = {}, links = [] } = navbar;
 
-  const showSidebar = useCallback(() => {
-    setSidebarShown(true);
-  }, [setSidebarShown]);
-  const hideSidebar = useCallback(() => {
-    setSidebarShown(false);
-  }, [setSidebarShown]);
+  const showSidebar = useCallback(
+    () => {
+      setSidebarShown(true);
+    },
+    [setSidebarShown]
+  );
+  const hideSidebar = useCallback(
+    () => {
+      setSidebarShown(false);
+    },
+    [setSidebarShown]
+  );
 
   useEffect(() => {
     try {
@@ -83,7 +90,7 @@ function Navbar() {
     }
   };
 
-  const logoUrl = useBaseUrl(theme === "dark" ? logo.src.dark : logo.src.light);
+  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src.dark : logo.src.light);
   return (
     <React.Fragment>
       <Head>
@@ -93,7 +100,8 @@ function Navbar() {
       <nav
         className={classnames('navbar', 'navbar--light', 'navbar--fixed-top', {
           'navbar-sidebar--show': sidebarShown,
-        })}>
+        })}
+      >
         <div className="navbar__inner">
           <div className="navbar__items">
             <div
@@ -102,14 +110,16 @@ function Navbar() {
               role="button"
               tabIndex={0}
               onClick={showSidebar}
-              onKeyDown={showSidebar}>
+              onKeyDown={showSidebar}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
                 viewBox="0 0 30 30"
                 role="img"
-                focusable="false">
+                focusable="false"
+              >
                 <title>Menu</title>
                 <path
                   stroke="currentColor"
@@ -126,7 +136,8 @@ function Navbar() {
               )}
               {title != null && (
                 <strong
-                  className={isSearchBarExpanded ? styles.hideLogoText : ''}>
+                  className={isSearchBarExpanded ? styles.hideLogoText : ''}
+                >
                   {title}
                 </strong>
               )}
