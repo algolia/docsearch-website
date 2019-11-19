@@ -102,10 +102,10 @@ const Search = props => {
                 getSuggestions() {
                   return getAlgoliaHits({
                     searchClient,
-                    query,
-                    searchParameters: [
+                    queries: [
                       {
                         indexName: algolia.indexName,
+                        query,
                         params: {
                           attributesToRetrieve: '*',
                           attributesToSnippet: '*',
@@ -241,6 +241,11 @@ const Search = props => {
                   });
                 },
                 templates: {
+                  empty: () => {
+                    return (
+                      <p>No results</p>
+                    )
+                  },
                   footer: () => {
                     return (
                       <div>
