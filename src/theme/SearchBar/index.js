@@ -25,15 +25,15 @@ const Search = props => {
   const context = useContext(DocusaurusContext);
 
   useEffect(() => {
-    const {siteConfig = {}} = context;
+    const { siteConfig = {} } = context;
     const {
-      themeConfig: {algolia},
+      themeConfig: { algolia },
     } = siteConfig;
 
     // https://github.com/algolia/docsearch/issues/352
     const isClient = typeof window !== 'undefined';
     if (isClient) {
-      import('docsearch.js').then(({default: docsearch}) => {
+      import('docsearch.js').then(({ default: docsearch }) => {
         docsearch({
           appId: algolia.appId,
           apiKey: algolia.apiKey,
@@ -56,7 +56,7 @@ const Search = props => {
 
       props.handleSearchBarToggle(!props.isSearchBarExpanded);
     },
-    [props.isSearchBarExpanded],
+    [props.isSearchBarExpanded]
   );
 
   return isEnabled ? (
@@ -77,8 +77,8 @@ const Search = props => {
         aria-label="Search"
         className={classnames(
           'navbar__search-input',
-          {'search-bar-expanded': props.isSearchBarExpanded},
-          {'search-bar': !props.isSearchBarExpanded},
+          { 'search-bar-expanded': props.isSearchBarExpanded },
+          { 'search-bar': !props.isSearchBarExpanded }
         )}
         onFocus={toggleSearchIconClick}
         onBlur={toggleSearchIconClick}

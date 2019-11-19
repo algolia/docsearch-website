@@ -1,6 +1,6 @@
 module.exports = function(context, options) {
   return {
-    name: "loaders",
+    name: 'loaders',
     configureWebpack(config, isServer) {
       return {
         module: {
@@ -8,11 +8,11 @@ module.exports = function(context, options) {
             {
               test: /\.(gif|png|jpe?g|svg)$/i,
               exclude: /\.(mdx?)$/i,
-              use: ["file-loader", { loader: "image-webpack-loader" }]
-            }
-          ]
-        }
+              use: ['file-loader', { loader: 'image-webpack-loader' }],
+            },
+          ],
+        },
       };
-    }
+    },
   };
 };

@@ -1,8 +1,8 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import { Section, Hero } from "@algolia/ui-library";
-import ApplyForm from "../components/ApplyForm.js";
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import React from 'react';
+import Layout from '@theme/Layout';
+import { Section, Hero } from '@algolia/ui-library';
+import ApplyForm from '../components/ApplyForm.js';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Apply() {
   return (
@@ -11,10 +11,10 @@ function Apply() {
       description="The easiest way to add search to your documentation - Powered by Algolia"
     >
       <Hero
-        style={{ backgroundImage: "linear-gradient(#fff, #f5f5fa)" }}
+        style={{ backgroundImage: 'linear-gradient(#fff, #f5f5fa)' }}
         background="curves"
         title={
-          <img src={useBaseUrl("img/docsearch-logo.svg")} alt="DocSearch" />
+          <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
         }
       />
       <Section background="white">
