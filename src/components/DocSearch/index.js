@@ -8,7 +8,6 @@ export default function DocSearch({ indexName, apiKey }) {
     if (!docsearchRef.current) {
       return;
     }
-    console.log(docsearchRef);
 
     import('docsearch.js').then(({ default: docsearch }) => {
       docsearch({
@@ -18,6 +17,6 @@ export default function DocSearch({ indexName, apiKey }) {
         debug: false, // Set debug to true if you want to inspect the dropdown
       });
     });
-  }, [docsearchRef]);
+  }, [docsearchRef, indexName, apiKey]);
   return <input id="q" ref={docsearchRef} />;
 }
