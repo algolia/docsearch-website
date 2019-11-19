@@ -82,7 +82,7 @@ function Playground() {
         </div>
       </Section>
       <Section>
-        <SectionHeader>
+        <SectionHeader title="Play with it">
           <Text style={{ maxWidth: '800px' }}>
             You clicked {prevCount >= 0 ? 'Yes' : 'No'} {apiKey} {indexName}
           </Text>
