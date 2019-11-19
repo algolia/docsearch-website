@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@theme/Layout';
+import { useLocation } from 'react-router';
+import queryString from 'query-string';
 import {
   Button,
   Section,
@@ -23,18 +25,19 @@ const useInput = (placeholder, defaultValue = '') => {
   return [value, input];
 };
 
-function Playground() {
+function Playground(props) {
+  const {
+    indexName: indexNameInit = 'docsearch',
+    apiKey: apiKeyInit = '25626fae796133dc1e734c6bcaaeac3c',
+  } = queryString.parse(useLocation().search);
   const [count, setCount] = useState(0);
   const prevCountRef = useRef();
   useEffect(() => {
     prevCountRef.current = count;
   });
   const prevCount = prevCountRef.current;
-  const [indexName, indexNameInput] = useInput('indexName', 'docsearch');
-  const [apiKey, apiKeyInput] = useInput(
-    'apiKey',
-    '25626fae796133dc1e734c6bcaaeac3c'
-  );
+  const [indexName, indexNameInput] = useInput('indexName', indexNameInit);
+  const [apiKey, apiKeyInput] = useInput('apiKey', apiKeyInit);
 
   return (
     <Layout
