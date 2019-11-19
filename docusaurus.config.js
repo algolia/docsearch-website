@@ -81,6 +81,10 @@ module.exports = {
               label: 'Configurations',
               to: 'https://github.com/algolia/docsearch-configs',
             },
+            {
+              label: 'Playground',
+              to: 'playground',
+            },
           ],
         },
         {
