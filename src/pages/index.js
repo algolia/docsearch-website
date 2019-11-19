@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from "react";
+import React from 'react';
 import {
   LightCta,
   Section,
@@ -18,14 +18,14 @@ import {
   SmallText,
   NumberedList,
   Card,
-  CardsRow
-} from "@algolia/ui-library";
-import Layout from "@theme/Layout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import showcaseProjects from "./showcase-projects.json";
-import demoProjects from "./demo-projects.json";
-import ApplyForm from "../components/ApplyForm.js";
+  CardsRow,
+} from '@algolia/ui-library';
+import Layout from '@theme/Layout';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import showcaseProjects from './showcase-projects.json';
+import demoProjects from './demo-projects.json';
+import ApplyForm from '../components/ApplyForm.js';
 
 function Home() {
   const context = useDocusaurusContext();
@@ -36,31 +36,31 @@ function Home() {
       description="The easiest way to add search to your documentation - Powered by Algolia"
     >
       <Hero
-        style={{ backgroundImage: "linear-gradient(#fff, #f5f5fa)" }}
+        style={{ backgroundImage: 'linear-gradient(#fff, #f5f5fa)' }}
         background="curves"
         title={
-          <img src={useBaseUrl("img/docsearch-logo.svg")} alt="DocSearch" />
+          <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
         }
         subtitle={siteConfig.tagline}
         cta={[
           <Button
             primary
-            style={{ textDecoration: "none" }}
-            href={useBaseUrl("docs/what-is-docsearch")}
+            style={{ textDecoration: 'none' }}
+            href={useBaseUrl('docs/what-is-docsearch')}
           >
             Join the Program
-          </Button>
+          </Button>,
         ]}
       />
 
       <Section>
         <SectionHeader title="State-of-the-art search for technical documentation">
-          <Text style={{ maxWidth: "800px" }}>
+          <Text style={{ maxWidth: '800px' }}>
             We're kind of scratching our own itch here. As developers, we spend
             a lot of time reading documentation, and it isn’t always easy to
             find the information we need.
           </Text>
-          <Text style={{ maxWidth: "800px" }}>
+          <Text style={{ maxWidth: '800px' }}>
             No one's to blame, building a good search is a complex challenge. We
             just happen to have a lot of experience doing that, and we want to
             share it with the developer community.
@@ -69,10 +69,10 @@ function Home() {
       </Section>
 
       <Section background="white">
-        <SectionHeader title="Providing search to your favorite projects"></SectionHeader>
+        <SectionHeader title="Providing search to your favorite projects" />
         <div
           className="jc-between d-flex m-auto fx-wrap"
-          style={{ maxWidth: "800px" }}
+          style={{ maxWidth: '800px' }}
         >
           {showcaseProjects.map(({ name, href, image }) => (
             <div key={href} className="ta-center w-20p">
@@ -93,10 +93,10 @@ function Home() {
           ))}
 
           <div className="ta-center w-20p">
-            <a href={useBaseUrl("/apply")} rel="noreferrer" target="_blank">
+            <a href={useBaseUrl('/apply')} rel="noreferrer" target="_blank">
               <img
                 className="h-50"
-                src={useBaseUrl("img/logos/three-dots.svg")}
+                src={useBaseUrl('img/logos/three-dots.svg')}
                 alt="Your project logo? Apply for DocSearch"
               />
               <SmallText tag="p">You?</SmallText>
@@ -107,20 +107,20 @@ function Home() {
 
       <Section>
         <SectionHeader title="Learn-as-you-type experience">
-          <Text style={{ maxWidth: "800px" }}>
+          <Text style={{ maxWidth: '800px' }}>
             Documentation speaks to your users. Ideally, this conversation will
             be pleasant and efficient. Everyone visiting your documentation page
             has a different need: Some are exploring your product, some are
             trying to get started, and some are stuck and need help.
           </Text>
-          <Text style={{ maxWidth: "800px" }}>
+          <Text style={{ maxWidth: '800px' }}>
             DocSearch is designed to provide relevant search results at every
             level. Its structured layout give the users more context to
             understand the product.
           </Text>
         </SectionHeader>
         <img
-          src={useBaseUrl("img/assets/docsearch-ui-anatomy.png")}
+          src={useBaseUrl('img/assets/docsearch-ui-anatomy.png')}
           alt="Anatomy of DocSearch UI"
         />
       </Section>
@@ -129,7 +129,7 @@ function Home() {
         <div className="row">
           <div className="col col--4 col--offset-1">
             <img
-              src={useBaseUrl("img/assets/illus-analytics.svg")}
+              src={useBaseUrl('img/assets/illus-analytics.svg')}
               alt="DocSearch Analytics"
               width="400"
             />
@@ -150,7 +150,7 @@ function Home() {
       </Section>
 
       <Section>
-        <SectionHeader title="How it works"></SectionHeader>
+        <SectionHeader title="How it works" />
         <NumberedList columns={3}>
           <TextBlock title="We scrap your documentation" label="Scraping">
             <Text>
@@ -201,10 +201,10 @@ function Home() {
               <LightCta withArrow href={href} rel="noreferrer" target="_blank">
                 <img
                   style={{
-                    marginTop: "-2px",
-                    marginRight: "12px"
+                    marginTop: '-2px',
+                    marginRight: '12px',
                   }}
-                  className={"h-30 va-middle"}
+                  className={'h-30 va-middle'}
                   src={useBaseUrl(logo)}
                   alt={name}
                 />
