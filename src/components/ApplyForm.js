@@ -7,6 +7,7 @@ import {
   Button,
   InlineLink,
 } from '@algolia/ui-library';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const MAX_WIDTH = '600px';
 
@@ -57,7 +58,7 @@ function ApplyForm() {
 
         <Text aria-label="recommendations">
           Please be patient, in the meantime, you can implement{' '}
-          <InlineLink href="/docs/tips">
+          <InlineLink href={useBaseUrl('/docs/tips')}>
             our recommendations for building a great DocSearch experience.
           </InlineLink>
         </Text>
@@ -121,7 +122,7 @@ function ApplyForm() {
               required
             />
             I'm the owner of the website and I have{' '}
-            <InlineLink href="/docs/who-can-apply">
+            <InlineLink href={useBaseUrl('/docs/who-can-apply')}>
               read the checklist
             </InlineLink>
           </LabelText>
