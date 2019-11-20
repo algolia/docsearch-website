@@ -513,7 +513,7 @@ const Search = props => {
     });
   }, [autocompleteRef]);
 
-  return <div ref={autocompleteRef} />;
+  return null;
 };
 
 export default Search;
