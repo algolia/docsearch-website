@@ -133,8 +133,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-          fragmentCss: require.resolve('./src/css/fragments.css'),
+          customCss: require.resolve('./src/css/custom.css')
         },
       },
     ],

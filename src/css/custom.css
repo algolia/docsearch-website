@@ -26,7 +26,7 @@ fragments.css (underling style lib used from @algolia/ui-library*/
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-font-size-base: 17px;
-  --ifm-code-font-size: 90%;
+  --ifm-code-font-size: 85%;
 }
 
 .header {
@@ -46,5 +46,8 @@ fragments.css (underling style lib used from @algolia/ui-library*/
 
 /* Hello my old friend */
 html[data-theme='dark'] {
+
+  --ifm-color-primary: red;
+
 
 }
