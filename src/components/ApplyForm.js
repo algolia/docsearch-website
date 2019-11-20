@@ -41,7 +41,7 @@ function ApplyForm() {
 
   if (hasSent) {
     return (
-      <Card style={{ maxWidth: MAX_WIDTH, margin: 'auto' }}>
+      <Card className="uil-m-auto" style={{ maxWidth: MAX_WIDTH }}>
         <LabelText style={{ fontSize: '1.2em' }}>Thank you!</LabelText>
         <br />
 
