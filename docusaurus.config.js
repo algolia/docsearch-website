@@ -124,7 +124,7 @@ module.exports = {
       ],
       logo: {
         alt: 'Algolia',
-        src: 'img/algolia-logo.svg'
+        src: 'img/algolia-logo.svg',
       },
       copyright: `DocSearch 2015-now • Powered by Algolia`,
     },
@@ -137,7 +137,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css')
+          customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
