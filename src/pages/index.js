@@ -29,7 +29,7 @@ function Home() {
       description="The easiest way to add search to your documentation - Powered by Algolia"
     >
       <Hero
-        style={{ backgroundImage: 'linear-gradient(#fff, #f5f5fa)' }}
+        id="hero"
         background="curves"
         title={
           <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />

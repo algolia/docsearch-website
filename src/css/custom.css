@@ -18,15 +18,10 @@ fragments.css (underling style lib used from @algolia/ui-library*/
 @import "fragments.css";
 
 :root {
-  --ifm-color-primary: rgb(84, 104, 255);
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: var(--nebula-blue);
   --ifm-font-size-base: 17px;
   --ifm-code-font-size: 85%;
+  --ifm-footer-background-color: var(--white);
 }
 
 .header {
@@ -38,16 +33,83 @@ fragments.css (underling style lib used from @algolia/ui-library*/
 }
 
 .bg-analytics {
+  position: relative;
+}
+.bg-analytics::after {
   background-repeat: no-repeat;
   background-image: url(../../static/img/assets/bg-analytics.svg);
   background-size: cover;
   background-position: center -300px;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
 }
 
 /* Hello my old friend */
 html[data-theme='dark'] {
 
-  --ifm-color-primary: red;
+  --white: #0d0f2a;
+  --black: #fff;
+  --nebula-blue: #5468ff;
+  --solstice-blue: #c5c9e0;
+  --telluric-blue: #848ab8;
+  --moon-grey: #21253c ;
+  --proton-grey: #3a416f;
+  --nova-grey: #5d6494;
+  --cosmos-black: #f5f5fa;
+  --ifm-navbar-background-color: #21243d;
+  --ifm-footer-background-color: #0d0f2a;
+}
+
+#hero {
+  background-image: linear-gradient(var(--white),var(--moon-grey));
+}
 
 
+html .css-1yrmdor-item::before {
+  color: var(--proton-grey);
+}
+
+html[data-theme='dark'] #hero h1 img,
+html[data-theme='dark'] img.navbar__logo {
+  filter: invert(1) hue-rotate(-180deg);
+}
+
+html .uil-bgc-white{
+ background-color: var(--white);
+}
+
+html .uil-bgc-moon{
+ background-color: var(--moon-grey);
+}
+
+html .uil-color-solstice {
+ color: var(--solstice-blue);
+}
+
+html .uil-color-telluric {
+  color: var(--telluric-blue);
+}
+
+html .css-180eg6g-background-curves-Hero {
+  opacity: .2;
+}
+
+html[data-theme='dark'] .bg-analytics::after {
+  opacity: 0.1;
+}
+
+.footer .footer__logo{
+  max-width: 6rem;
+}
+
+.moon_node_modules-\@docusaurus-theme-classic-src-theme-Navbar-::before {
+  content: '\1F31C';
+}
+
+.moon_node_modules-\@docusaurus-theme-classic-src-theme-Navbar-::before {
+  content: '\1F31C';
 }
