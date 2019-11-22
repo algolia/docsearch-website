@@ -2,42 +2,52 @@ import React, { useState, useRef, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import {
-  Button,
-  Section,
-  Hero,
-  SectionHeader,
-  Text,
-  Input,
-  LabelText,
-} from '@algolia/ui-library';
+import { Section, Hero, SectionHeader, Text } from '@algolia/ui-library';
+import DocSearch from '../components/DocSearch';
+import ErrorBoundary from '../components/ErrorBoundary';
+import algoliasearch from 'algoliasearch';
 
-const useInput = (placeholder, defaultValue = '') => {
-  const [value, setValue] = useState(defaultValue);
-  const input = (
-    <Input
-      value={value}
-      onChange={e => setValue(e.target.value)}
-      placeholder={placeholder}
-      required
-    />
-  );
-  return [value, input];
-};
-
-function Playground(props) {
+function Playground() {
   const {
-    indexName: indexNameInit = 'docsearch',
-    apiKey: apiKeyInit = '25626fae796133dc1e734c6bcaaeac3c',
+    appId: appIdQS = 'BH4D9OD16A',
+    indexName: indexNameQS = '',
+    apiKey: apiKeyQS = '',
   } = queryString.parse(useLocation().search);
-  const [count, setCount] = useState(0);
-  const prevCountRef = useRef();
+
+  const [isValidDSCred, setisValidDSCred] = useState(false);
+  const [wrongCredentials, setWrongCredentials] = useState(false);
+  const [appId, setAppId] = useState(appIdQS);
+  const [indexName, setIndexName] = useState(indexNameQS);
+  const [apiKey, setApiKey] = useState(apiKeyQS);
+
+  const fallbackToDocSearchDocCred = () => {
+    setisValidDSCred(false);
+    setAppId('BH4D9OD16A');
+    setIndexName('docsearch');
+    setApiKey('25626fae796133dc1e734c6bcaaeac3c');
+  };
+
   useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-  const [indexName, indexNameInput] = useInput('indexName', indexNameInit);
-  const [apiKey, apiKeyInput] = useInput('apiKey', apiKeyInit);
+    // Credential not provided
+    if (!indexName && !apiKey) {
+      fallbackToDocSearchDocCred();
+      return;
+    }
+    if ((!indexName && !apiKey) || apiKey.length !== 32) {
+      setWrongCredentials(true);
+      fallbackToDocSearchDocCred();
+      return;
+    }
+    const searchClient = algoliasearch(appId, apiKey);
+    const index = searchClient.initIndex(indexName);
+    index
+      .search('')
+      .then(_ => setisValidDSCred(true))
+      .catch(_ => {
+        setWrongCredentials(true);
+        fallbackToDocSearchDocCred();
+      });
+  }, [appId, indexName, apiKey]);
 
   return (
     <Layout
@@ -50,46 +60,22 @@ function Playground(props) {
         title="Playground"
       />
       <Section>
-        <SectionHeader title="Try it out live">
-          <Text>Try the new UI of DocSearch with your own project</Text>
+        <SectionHeader title={`Play with it on the index ${indexName}`}>
+          <Text>{`Play with it on the index ${indexName}`}</Text>
         </SectionHeader>
-        <div
-          className="jc-between d-flex m-auto fx-wrap"
-          style={{ maxWidth: '800px' }}
-        >
-          <div className="ta-left w-40p m-auto">
-            <LabelText>Your indexName</LabelText>
-            {indexNameInput}
-          </div>
-          <div className="ta-left w-40p m-auto">
-            <LabelText>Your apiKey</LabelText>
-            {apiKeyInput}
-          </div>
-          <div className="ta-center w-10p">
-            <Button
-              className="uil-mt-16 uil-mb-16"
-              tag={({ className, children }) => (
-                <button
-                  className={className}
-                  onClick={() => setCount(count + 1)}
-                >
-                  {children}
-                </button>
-              )}
-              id="run"
-              primary
-            >
-              Run
-            </Button>
-          </div>
+        <div className="m-auto" style={{ maxWidth: '800px' }}>
+          <ErrorBoundary>
+            {wrongCredentials && (
+              <Text>
+                The credentials provided from the URL were wrong, we will demo
+                the search with the search of our documentation instead.
+              </Text>
+            )}
+            {isValidDSCred && (
+              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
+            )}
+          </ErrorBoundary>
         </div>
-      </Section>
-      <Section>
-        <SectionHeader title="Play with it">
-          <Text style={{ maxWidth: '800px' }}>
-            You clicked {prevCount >= 0 ? 'Yes' : 'No'} {apiKey} {indexName}
-          </Text>
-        </SectionHeader>
       </Section>
     </Layout>
   );
