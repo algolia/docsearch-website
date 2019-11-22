@@ -30,7 +30,7 @@ function Home() {
     >
       <Hero
         id="hero"
-        background="curves"
+        background="docsearch"
         title={
           <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
         }
@@ -190,7 +190,7 @@ function Home() {
         </SectionHeader>
         <CardsRow>
           {demoProjects.map(({ name, href, logo, preview }) => (
-            <Card image={preview} imageAlt={`${name} demo`}>
+            <Card key={name} image={preview} imageAlt={`${name} demo`}>
               <LightCta withArrow href={href} rel="noreferrer" target="_blank">
                 <img
                   style={{

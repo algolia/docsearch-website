@@ -68,7 +68,6 @@ html[data-theme='dark'] {
   background-image: linear-gradient(var(--white),var(--moon-grey));
 }
 
-
 html .css-1yrmdor-item::before {
   color: var(--proton-grey);
 }
@@ -94,7 +93,7 @@ html .uil-color-telluric {
   color: var(--telluric-blue);
 }
 
-html .css-180eg6g-background-curves-Hero {
+html[data-theme='dark'] .css-180eg6g-background-curves-Hero {
   opacity: .2;
 }
 

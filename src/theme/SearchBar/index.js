@@ -21,7 +21,7 @@ import autocomplete, {
   snippetAlgoliaHit,
 } from '@francoischalifour/autocomplete.js';
 
-import './styles.css';
+import './styles.scss';
 
 function groupBy(values, predicate) {
   return values.reduce(function(obj, item) {
