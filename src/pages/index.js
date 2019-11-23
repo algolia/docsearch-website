@@ -30,7 +30,7 @@ function Home() {
     >
       <Hero
         id="hero"
-        background="docsearch"
+        background="curves"
         title={
           <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
         }

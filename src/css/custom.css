@@ -21,6 +21,7 @@ fragments.css (underling style lib used from @algolia/ui-library*/
   --ifm-color-primary: var(--nebula-blue);
   --ifm-font-size-base: 17px;
   --ifm-code-font-size: 85%;
+  --ifm-background-color: var(--white);
   --ifm-footer-background-color: var(--white);
 }
 
@@ -51,25 +52,26 @@ fragments.css (underling style lib used from @algolia/ui-library*/
 /* Hello my old friend */
 html[data-theme='dark'] {
 
-  --white: #0d0f2a;
-  --black: #fff;
+  /* --white: #0d0f2a;
+  --black: #dee0f2;
   --nebula-blue: #5468ff;
   --solstice-blue: #c5c9e0;
   --telluric-blue: #848ab8;
   --moon-grey: #21253c ;
   --proton-grey: #3a416f;
   --nova-grey: #5d6494;
-  --cosmos-black: #f5f5fa;
+  --cosmos-black: #f5f5fa; */
+
+  --ifm-link-color: #8b9dff;
+  --ifm-menu-color-active: #8b9dff;
+  --ifm-font-base-color: #dee0f2;
+  --ifm-background-color: #0a141c;
   --ifm-navbar-background-color: #21243d;
-  --ifm-footer-background-color: #0d0f2a;
+  --ifm-footer-background-color: #0a141c;
 }
 
 #hero {
-  background-image: linear-gradient(var(--white),var(--moon-grey));
-}
-
-html .css-1yrmdor-item::before {
-  color: var(--proton-grey);
+  background-image: linear-gradient(var(--ifm-background-color),var(--ifm-navbar-background-color));
 }
 
 html[data-theme='dark'] #hero h1 img,
@@ -93,8 +95,8 @@ html .uil-color-telluric {
   color: var(--telluric-blue);
 }
 
-html[data-theme='dark'] .css-180eg6g-background-curves-Hero {
-  opacity: .2;
+html[data-theme='dark'] div[class*='background-curves-Hero'] {
+  opacity: .4;
 }
 
 html[data-theme='dark'] .bg-analytics::after {
@@ -103,10 +105,6 @@ html[data-theme='dark'] .bg-analytics::after {
 
 .footer .footer__logo{
   max-width: 6rem;
-}
-
-.moon_node_modules-\@docusaurus-theme-classic-src-theme-Navbar-::before {
-  content: '\1F31C';
 }
 
 .moon_node_modules-\@docusaurus-theme-classic-src-theme-Navbar-::before {
