@@ -2,9 +2,8 @@
 :root {
   --algolia-autocomplete-input-color: var(--ifm-link-color);
   --algolia-autocomplete-highlight-color: var(--ifm-link-color);
-  --algolia-autocomplete-background-light-color: #f5f5fa;
   --algolia-autocomplete-background-highlight-color: var(
-    --ifm-menu-color-background-active
+    --ifm-color-emphasis-200
   );
   --algolia-autocomplete-border-color: rgba(197, 201, 224, 0.4);
   --algolia-docsearch-lvl0-color: var(--ifm-link-color);
@@ -15,7 +14,7 @@
   --algolia-autocomplete-shadow-color: rgba(197, 201, 224, 0.8);
   --algolia-autocomplete-shadow-color-alpha: rgba(197, 201, 224, 0.4);
   --algolia-autocomplete-searchbox-background-color: var(
-    --ifm-background-color
+    --ifm-color-emphasis-200
   );
 }
 
@@ -24,10 +23,14 @@ html[data-theme='dark'] {
   --algolia-autocomplete-background-highlight-color: var(
     --ifm-navbar-background-color
   );
+  --algolia-autocomplete-searchbox-background-color: var(
+    --ifm-background-color
+  );
   --algolia-docsearch-tree-color: var(--solstice-blue);
   --algolia-autocomplete-border-color: var(--solstice-blue);
   --algolia-autocomplete-shadow-color: rgba(0, 0, 0, 0.8);
   --algolia-autocomplete-shadow-color-alpha: rgba(0, 0, 0, 0.4);
+  --algolia-docsearch-logo-color-outer: var(--ifm-link-color);
 }
 
 .algolia {
@@ -53,6 +56,7 @@ html[data-theme='dark'] {
       border: none;
       outline: none;
       font: inherit;
+      color:var(--ifm-color-emphasis-800);
       background: inherit;
     }
     &-completion {
@@ -121,7 +125,7 @@ html[data-theme='dark'] {
       background-color: var(--ifm-background-color);
       box-shadow: 0 1px 4px 0 var(--algolia-autocomplete-shadow-color),
         0 3px 15px 0 var(--algolia-autocomplete-shadow-color-alpha);
-      margin-top: 2px;
+      margin-top: 8px;
       overflow: scroll;
       position: absolute;
       width: 100%;

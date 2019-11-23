@@ -11,6 +11,8 @@
   --ifm-font-size-base: 16px;
   --ifm-code-font-size: 90%;
   --ifm-color-primary: var(--nebula-blue);
+  --ifm-footer-background-color: var(--moon-grey);
+  --ifm-menu-color-background-active: var(--ifm-color-emphasis-200);
 }
 
 /* Hello my old friend */
@@ -21,14 +23,8 @@ html[data-theme='dark'] {
   --ifm-font-base-color: #dee0f2;
   --ifm-background-color: #0a141c;
   --ifm-navbar-background-color: #21243d;
-}
-
-.header {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url(../../static/img/assets/bg-docsearch.svg),
-    linear-gradient(#fff, #f5f5fa);
-  background-position: center calc(100% - 18px);
+  --ifm-footer-background-color: #0a141c;
+  --ifm-menu-color-background-active: var(--ifm-navbar-background-color);
 }
 
 .bg-analytics {
@@ -49,11 +45,14 @@ html[data-theme='dark'] {
 }
 
 #hero {
-  background-image: linear-gradient(var(--ifm-background-color),var(--ifm-navbar-background-color));
+  background-image: linear-gradient(var(--ifm-navbar-background-color),var(--ifm-footer-background-color));
 }
 
 html[data-theme='dark']{
-  #hero h1 img,
+  #hero {
+    background-image: linear-gradient(var(--ifm-background-color),var(--ifm-navbar-background-color));
+  }
+  h1 img,
   img.navbar__logo {
     filter: invert(1) hue-rotate(-180deg);
   }
@@ -75,8 +74,10 @@ html[data-theme='dark']{
   .uil-color-telluric {
     color: var(--ifm-font-base-color);
   }
+  .react-toggle-track {
+    background-color: var(--ifm-footer-background-color);
+  }
 }
-
 
 .footer .footer__logo{
   max-width: 6rem;
