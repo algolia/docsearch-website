@@ -243,7 +243,7 @@ const Search = props => {
                 templates: {
                   empty: () => {
                     return (
-                      <p>No results</p>
+                      <div className="DSV3-noResults">No results</div>
                     )
                   },
                   footer: () => {
@@ -481,12 +481,11 @@ const Search = props => {
                           {!suggestion.hierarchy[suggestion.type] &&
                             suggestion.type == 'content' && (
                               <span>
+
                                 <span class="DSV3-title">
                                   {suggestion.hierarchy.lvl3 ||
-                                    suggestion.hierarchy.lvl2 ||
-                                    suggestion.hierarchy.lvl1}
+                                    suggestion.hierarchy.lvl2 || "#"}
                                 </span>
-
                                 <div
                                   class="DSV3-text"
                                   dangerouslySetInnerHTML={{
