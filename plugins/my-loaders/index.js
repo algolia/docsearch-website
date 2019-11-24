@@ -9,7 +9,7 @@ module.exports = function(context, options) {
               test: /\.s[ac]ss$/,
               use: [
                 'style-loader',
-                'css-loader',
+                // 'css-loader',
                 {
                   loader: 'sass-loader',
                   options: {
