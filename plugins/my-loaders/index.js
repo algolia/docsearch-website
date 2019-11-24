@@ -16,7 +16,7 @@ module.exports = function(context, options) {
                     implementation: require('sass'),
                   },
                 },
-                'postcss-loader'
+                // 'postcss-loader'
               ],
             },
             {
