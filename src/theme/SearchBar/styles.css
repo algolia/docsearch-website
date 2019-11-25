@@ -20,7 +20,8 @@ html[data-theme='dark'] {
   --algolia-autocomplete-border-color: var(--solstice-blue);
   --algolia-autocomplete-shadow-color: rgba(0, 0, 0, 0.8);
   --algolia-autocomplete-shadow-color-alpha: rgba(0, 0, 0, 0.4);
-  --algolia-docsearch-logo-color-outer: var(--ifm-link-color); }
+  --algolia-docsearch-logo-color-outer: var(--white);
+  --algolia-docsearch-logo-color-inner: var(--ifm-background-color); }
 
 .algolia-autocomplete-form {
   display: flex;
@@ -155,7 +156,7 @@ html[data-theme='dark'] {
   display: flex;
   color: var(--algolia-docsearch-text-color); }
   .algolia-autocomplete-commands-border {
-    color: var(--algolia-docsearch-text-color); }
+    color: var(--algolia-autocomplete-border-color); }
   .algolia-autocomplete-commands-description {
     font-size: 0.75rem;
     letter-spacing: 0;
@@ -184,7 +185,7 @@ html[data-theme='dark'] {
 
 .DSV3-cat-separator {
   width: 100%;
-  font-size: 0.9em;
+  font-size: 0.85em;
   font-weight: 500;
   margin-top: 1.8em;
   background: var(--ifm-background-color);
@@ -197,26 +198,27 @@ html[data-theme='dark'] {
     border-left: solid 1px var(--algolia-docsearch-tree-color); }
 
 .DSV3-title {
-  font-size: 0.9em;
+  font-size: 0.95em;
   display: block;
   overflow: hidden;
   width: 100%;
   white-space: nowrap;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+  color: var(--ifm-color-emphasis-900); }
   .DSV3-title::before {
     display: inline-block;
     width: 0.6em;
-    height: 0.8em;
+    height: 0.9em;
     margin-right: 0.2em;
     vertical-align: top;
     content: ''; }
 
 .DSV3-text {
-  padding-left: 1em;
+  margin-left: 1.2em;
   padding-bottom: 0.4em;
   line-height: 1.2em;
-  font-size: 0.8em;
-  color: var(--algolia-docsearch-text-color); }
+  font-size: 0.75em;
+  color: var(--ifm-color-emphasis-600); }
 
 .DSV3-lvl1 {
   line-height: 1.6em;
@@ -231,7 +233,7 @@ html[data-theme='dark'] {
 .DSV3-lvl2,
 .DSV3-lvl3,
 .DSV3-content {
-  line-height: 1.6em;
+  line-height: 1.8em;
   padding-left: 1em;
   border-left: solid 1px var(--algolia-docsearch-tree-color); }
   .DSV3-lvl2 .DSV3-title,
