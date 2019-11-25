@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from 'react';
 import {
   LightCta,
@@ -36,7 +29,7 @@ function Home() {
       description="The easiest way to add search to your documentation - Powered by Algolia"
     >
       <Hero
-        style={{ backgroundImage: 'linear-gradient(#fff, #f5f5fa)' }}
+        id="hero"
         background="curves"
         title={
           <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
@@ -197,7 +190,7 @@ function Home() {
         </SectionHeader>
         <CardsRow>
           {demoProjects.map(({ name, href, logo, preview }) => (
-            <Card image={preview} imageAlt={`${name} demo`}>
+            <Card key={name} image={preview} imageAlt={`${name} demo`}>
               <LightCta withArrow href={href} rel="noreferrer" target="_blank">
                 <img
                   style={{

@@ -1,5 +1,5 @@
 ---
-title: Supported Integrations
+title: Integrations
 ---
 
 We worked with **documentation website generators** to have DocSearch directly

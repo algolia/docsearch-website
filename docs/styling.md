@@ -6,7 +6,7 @@ DocSearch default colorscheme comes in a grey theme with blue highlight.
 
 ## Colorscheme
 
-<img src="https://docsearch.algolia.com/img/assets/default-colorscheme.png" alt="Default colorscheme"/>
+<img src="https://docsearch.algolia.com/img/assets/default-colorscheme.png" width="550px" alt="Default colorscheme"/>
 
 This theme works well with most websites, but we encourage you to style it to
 your own theme. You can achieved it by overriding the CSS classes used by the
