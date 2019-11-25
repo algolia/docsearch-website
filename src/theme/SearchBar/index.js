@@ -21,7 +21,7 @@ import autocomplete, {
   snippetAlgoliaHit,
 } from '@francoischalifour/autocomplete.js';
 
-import './styles.scss';
+import './styles.css';
 
 function groupBy(values, predicate) {
   return values.reduce(function(obj, item) {
@@ -98,7 +98,12 @@ const Search = props => {
                 getSuggestionUrl({ suggestion }) {
                   return suggestion.url;
                 },
-                getSuggestions() {
+                getSuggestions({ query }) {
+
+                  // if (!query){
+                  //   return [{'t'}]
+                  //   // return emptyquerytemplate
+                  // }
                   return getAlgoliaHits({
                     searchClient,
                     queries: [

@@ -1,0 +1,68 @@
+@import 'fragments.css'
+
+@at-root :root
+  --ifm-background-color: #fff
+  --ifm-font-size-base: 16px
+  --ifm-code-font-size: 90%
+  --ifm-color-primary: var(--nebula-blue)
+  --ifm-footer-background-color: var(--moon-grey)
+  --ifm-menu-color-background-active: var(--ifm-color-emphasis-200)
+
+html[data-theme='dark']
+  --ifm-navbar-link-hover-color: #8b9dff
+  --ifm-link-color: #8b9dff
+  --ifm-menu-color-active: #8b9dff
+  --ifm-font-base-color: #dee0f2
+  --ifm-background-color: #0a141c
+  --ifm-navbar-background-color: #21243d
+  --ifm-footer-background-color: #0a141c
+  --ifm-menu-color-background-active: var(--ifm-navbar-background-color)
+
+.bg-analytics
+  position: relative
+
+.bg-analytics::after
+  background-repeat: no-repeat
+  background-image: url('../../static/img/assets/bg-analytics.svg')
+  background-size: cover
+  background-position: center -300px
+  content: ""
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  position: absolute
+
+#hero
+  background-image: linear-gradient(var(--ifm-navbar-background-color), var(--ifm-footer-background-color))
+
+html[data-theme='dark']
+  #hero
+    background-image: linear-gradient(var(--ifm-background-color), var(--ifm-navbar-background-color))
+  h1 img, img.navbar__logo
+    filter: invert(1) hue-rotate(-180deg)
+  div[class*='background-curves-Hero']
+    opacity: .4
+  .bg-analytics::after
+    opacity: 0.1
+  .uil-bgc-white
+    background-color: var(--ifm-background-color)
+  .uil-bgc-moon
+    background-color: var(--ifm-navbar-background-color)
+  .uil-color-solstice
+    color: var(--ifm-font-base-color)
+  .uil-color-telluric
+    color: var(--ifm-font-base-color)
+  .react-toggle-track
+    background-color: var(--ifm-footer-background-color)
+
+.footer .footer__logo
+  max-width: 6rem
+
+.moon_node_modules-\@docusaurus-theme-classic-src-theme-Navbar-::before
+  content: '\1F31C'
+
+.docSidebarContainer_node_modules-\@docusaurus-theme-classic-src-theme-DocPage-
+  background-color: var(--ifm-background-color)
+  background-image: linear-gradient(90deg,var(--ifm-background-color) 95%,var(--ifm-footer-background-color))
+  border: none
