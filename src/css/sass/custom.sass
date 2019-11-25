@@ -20,18 +20,17 @@ html[data-theme='dark']
 
 .bg-analytics
   position: relative
-
-.bg-analytics::after
-  background-repeat: no-repeat
-  background-image: url('../../static/img/assets/bg-analytics.svg')
-  background-size: cover
-  background-position: center -300px
-  content: ""
-  top: 0
-  left: 0
-  bottom: 0
-  right: 0
-  position: absolute
+  &::after
+    position: absolute
+    content: ""
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background-repeat: no-repeat
+    background-image: url('../../static/img/assets/bg-analytics.svg')
+    background-size: cover
+    background-position: center -300px
 
 #hero
   background-image: linear-gradient(var(--ifm-navbar-background-color), var(--ifm-footer-background-color))
