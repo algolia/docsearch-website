@@ -74,7 +74,7 @@ const Search = props => {
     () => {
       if (!autocompleteRef.current) return;
 
-      import('algoliasearch').then(({ default: algoliasearch }) => {
+      import('algoliasearch/lite').then(({ default: algoliasearch }) => {
         const searchClient = algoliasearch('BH4D9OD16A', algolia.apiKey);
 
         autocomplete({
