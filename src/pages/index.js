@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import {
   LightCta,
   Section,
@@ -23,6 +24,17 @@ import ApplyForm from '../components/ApplyForm.js';
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
+  const currentTheme =
+    typeof document !== 'undefined'
+      ? document.querySelector('html').getAttribute('data-theme')
+      : '';
+  const { themeConfig = {} } = siteConfig;
+  const [theme, _] = useState(currentTheme);
+  const { navbar = {} } = themeConfig;
+  const { logo = {} } = navbar;
+
+  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src.dark : logo.src.light);
+
   return (
     <Layout
       title="DocSearch: Search made for documentation"
@@ -32,15 +44,11 @@ function Home() {
         id="hero"
         background="curves"
         title={
-          <img src={useBaseUrl('img/docsearch-logo.svg')} alt="DocSearch" />
+          <img src={logoUrl} alt="DocSearch" />
         }
         subtitle={siteConfig.tagline}
         cta={[
-          <Button
-            primary
-            style={{ textDecoration: 'none' }}
-            href={useBaseUrl('docs/what-is-docsearch')}
-          >
+          <Button primary style={{ textDecoration: 'none' }} href={useBaseUrl("/apply")}>
             Join the Program
           </Button>,
         ]}
