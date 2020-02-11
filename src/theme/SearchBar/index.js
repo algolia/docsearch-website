@@ -90,7 +90,7 @@ const Search = props => {
           // right margins.
           return { top: dropdownPosition.top, left: 0 };
         },
-        autofocus: true,
+        // autofocus: true,
         minLength: 0,
         getSources({ query }) {
           return [

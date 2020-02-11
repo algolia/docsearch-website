@@ -137,10 +137,16 @@ that some pages are missing from the search. The possible reasons for that are:
 ## Can I know when the next crawl will happen?
 
 No you can't. You should be aware that we made every crawls in a day. The
-position of your crawl in the queue is the inverse of the lexicographic order of
-your `index_name` amongs the whole list of featured website.
+position of your crawl in the queue is the lexicographic order of your
+`index_name` amongs the whole list of featured website.
 
-If none of the previous points help, you can contact our support.
+If none of the previous points help, you [can contact our support][1].
+
+## How did we build this website?
+
+We build this website [thanks to docusaurus v2][12]. We were helped by a great
+man who inspire a lot, Endi. We want [to pay a tribute to this exceptional
+human being that will be always part of the DocSearch project][13]. Rest in peace mate!
 
 [1]: mailto:docsearch@algolia.com
 [2]: https://www.algolia.com/
@@ -154,3 +160,5 @@ If none of the previous points help, you can contact our support.
   https://www.algolia.com/doc/guides/sending-and-managing-data/send-and-update-your-data/in-depth/asynchronicity-and-when-to-wait-for-tasks/#atomic-reindexing
 [10]: https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
 [11]: tips.md
+[12]: https://v2.docusaurus.io/
+[13]: https://docusaurus.io/blog/2020/01/07/tribute-to-endi
