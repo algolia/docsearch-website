@@ -24,10 +24,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'DocSearch',
-        src: {
-          light: 'img/docsearch-logo.svg',
-          dark: 'img/docsearch-logo-white.svg',
-        }
+        src: 'img/docsearch-logo.svg',
       },
       links: [
         {
