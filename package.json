@@ -15,6 +15,7 @@
     "@docusaurus/core": "^2.0.0-alpha.40",
     "@docusaurus/preset-classic": "^2.0.0-alpha.40",
     "@francoischalifour/autocomplete.js": "^1.0.0-alpha.1",
+    "algoliasearch": "^4.0.2",
     "classnames": "^2.2.6",
     "file-loader": "^4.2.0",
     "image-webpack-loader": "^5.0.0",
