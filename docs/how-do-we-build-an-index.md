@@ -1,6 +1,6 @@
 ---
 id: index
-title: How do we build an index?
+title: How do we build a DocSearch index?
 ---
 
 In this section you will learn how we build a DocSearch index from your page.
