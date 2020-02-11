@@ -5,21 +5,18 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "yarn lint && docusaurus build",
+    "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "deploy": "yarn lint & docusaurus deploy",
     "lint": "yarn run textlint docs"
   },
   "dependencies": {
-    "@algolia/ui-library": "^1.0.0-beta.111",
-    "@docusaurus/core": "2.0.0-alpha.36",
-    "@docusaurus/preset-classic": "2.0.0-alpha.36",
-    "@francoischalifour/autocomplete.js": "^1.0.0-alpha.9",
-    "algoliasearch": "4.0.0-beta.10",
-    "autoprefixer": "^9.7.2",
+    "@algolia/ui-library": "^1.0.0-beta.109",
+    "@docusaurus/core": "^2.0.0-alpha.40",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.40",
     "classnames": "^2.2.6",
-    "file-loader": "^4.3.0",
-    "image-webpack-loader": "^6.0.0",
+    "file-loader": "^4.2.0",
+    "image-webpack-loader": "^5.0.0",
     "imagemin": "^7.0.0",
     "my-loaders": "file:plugins/my-loaders",
     "textlint": "^11.3.1",
@@ -27,7 +24,7 @@
     "textlint-rule-common-misspellings": "^1.0.1",
     "textlint-rule-en-capitalization": "^2.0.2",
     "textlint-rule-stop-words": "^1.0.17",
-    "textlint-rule-terminology": "^2.0.1",
+    "textlint-rule-terminology": "^1.1.30",
     "textlint-rule-write-good": "^1.6.2"
   },
   "browserslist": {
