@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useCallback, useState, useEffect} from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import Toggle from 'react-toggle';
 
 import Link from '@docusaurus/Link';
@@ -34,7 +34,8 @@ function NavLink(props) {
         : {
             activeClassName: 'navbar__link--active',
             to: toUrl,
-          })}>
+          })}
+    >
       {props.label}
     </Link>
   );
@@ -47,12 +48,19 @@ function Navbar(props) {
   const context = useDocusaurusContext();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
-  const setTheme = props.setTheme
-  const theme = props.theme
-  const {siteConfig = {}} = context;
-  const {baseUrl, themeConfig = {}} = siteConfig;
-  const {algolia, navbar = {}} = themeConfig;
-  const {title, logo = {}, links = []} = navbar;
+  let setTheme = props.setTheme;
+  let theme = props.theme;
+  if (!setTheme) {
+    const currentTheme =
+      typeof document !== 'undefined'
+        ? document.querySelector('html').getAttribute('data-theme')
+        : '';
+    [theme, setTheme] = useState(currentTheme);
+  }
+  const { siteConfig = {} } = context;
+  const { baseUrl, themeConfig = {} } = siteConfig;
+  const { algolia, navbar = {} } = themeConfig;
+  const { title, logo = {}, links = [] } = navbar;
 
   const showSidebar = useCallback(() => {
     setSidebarShown(true);
@@ -80,7 +88,7 @@ function Navbar(props) {
     }
   };
 
-  const logoUrl = useBaseUrl(theme === "dark" ? logo.src.dark : logo.src.light);
+  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src.dark : logo.src.light);
   return (
     <React.Fragment>
       <Head>
@@ -90,7 +98,8 @@ function Navbar(props) {
       <nav
         className={classnames('navbar', 'navbar--light', 'navbar--fixed-top', {
           'navbar-sidebar--show': sidebarShown,
-        })}>
+        })}
+      >
         <div className="navbar__inner">
           <div className="navbar__items">
             <div
@@ -99,14 +108,16 @@ function Navbar(props) {
               role="button"
               tabIndex={0}
               onClick={showSidebar}
-              onKeyDown={showSidebar}>
+              onKeyDown={showSidebar}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
                 viewBox="0 0 30 30"
                 role="img"
-                focusable="false">
+                focusable="false"
+              >
                 <title>Menu</title>
                 <path
                   stroke="currentColor"
@@ -123,7 +134,8 @@ function Navbar(props) {
               )}
               {title != null && (
                 <strong
-                  className={isSearchBarExpanded ? styles.hideLogoText : ''}>
+                  className={isSearchBarExpanded ? styles.hideLogoText : ''}
+                >
                   {title}
                 </strong>
               )}
