@@ -1,5 +1,4 @@
 ---
-id: config
 title: Config Files
 ---
 
