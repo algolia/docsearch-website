@@ -66,7 +66,7 @@ function Navbar() {
 
   useEffect(() => {
     try {
-      const localStorageTheme = localStorage.getItem('theme');
+      const localStorageTheme = window.localStorage.getItem('theme');
       setTheme(localStorageTheme);
     } catch (err) {
       console.error(err);
@@ -77,7 +77,7 @@ function Navbar() {
     const nextTheme = e.target.checked ? 'dark' : '';
     setTheme(nextTheme);
     try {
-      localStorage.setItem('theme', nextTheme);
+      window.localStorage.setItem('theme', nextTheme);
     } catch (err) {
       console.error(err);
     }
