@@ -3,11 +3,11 @@ title: Who can apply?
 ---
 
 We built DocSearch from the ground up with the idea of improving search on large
-technical documentation. For that reason, we are offering a free hosting version
-to all online technical documentation.
+technical documentations. For this reason, we are offering a free hosting
+version to all online technical documentations.
 
 We're always sad to have to turn down applications, but with the number of
-requests we receive everyday, we've had to focus on fair criteria. We hope you
+requests we receive every day, we've had to focus on fair criteria. We hope you
 understand.
 
 ## The checklist
@@ -15,11 +15,12 @@ understand.
 To have your request validated, we'll ask that you check all the following
 points.
 
-- You must be the **owner** of the website, or at least have the power to update
-  its content. You'll have to include a JavaScript snippet to enable DocSearch.
+- You must be the **owner** of the website, or at least have the permissions to
+  update its content. You'll have to [include a JavaScript snippet](dropdown) to
+  enable DocSearch.
 
-- Your website must be **publicly available**. We do not host index for websites
-  that are available behind an authentication or a private network.
+- Your website must be **publicly available**. We do not host search indices for
+  websites that are available behind an authentication or a private network.
 
 - Your website must be a **documentation website**. We do not index blogs or
   commercial content.
@@ -55,5 +56,5 @@ criteria:
 
 [1]: apply.mdx
 [2]: run-your-own.md
-[3]: https://www.algolia.com/doc/api-reference/
+[3]: https://www.algolia.com/doc/api-client/getting-started/install/javascript/
 [4]: integrations.md

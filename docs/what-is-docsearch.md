@@ -17,7 +17,7 @@ and make it available to everyone from the first keystroke.
 ## Quick description
 
 We split DocSearch into a crawler and a frontend library. We run the crawler on
-our end every 24h to extract content from your website and push it to an Algolia
+our end every 24 hours to extract content from your website and push it to an Algolia
 index. You can then add the frontend library to your website to search in that index.
 
 ## How to feature DocSearch?
@@ -25,7 +25,7 @@ index. You can then add the frontend library to your website to search in that i
 DocSearch is entirely free and automated. The one thing we'll need from you is
 to read [our checklist][2] and apply! After that, we'll share with you the
 JavaScript snippet needed to add DocSearch to your website. We ask that you keep
-the "powered by Algolia" link displayed.
+the "Search by Algolia" link displayed.
 
 DocSearch is [one of our ways][1] to give back to the open source community for
 everything it did for us already.

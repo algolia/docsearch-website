@@ -17,13 +17,14 @@ see how to enable DocSearch on your website:
 - [LaRecipe][8] - [Algolia Search][9]
 - [Orchid][10] - [Algolia Search][11]
 
-If you're a maintaining a similar tool and wants us to add you to the list, get
-[in touch with us][12]. We'd be happy to help.
+If you're maintaining a similar tool and want us to add you to the list, get [in
+touch with us][12]. We'd be happy to help.
 
 [1]: https://docusaurus.io/
 [2]: https://docusaurus.io/docs/en/search#docsNav
 [3]: https://vuepress.vuejs.org/
-[4]: https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-docsearch
+[4]:
+  https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-docsearch
 [5]: https://docs.gitbook.com/
 [6]: https://pkgdown.r-lib.org/
 [7]: https://pkgdown.r-lib.org/articles/search.html
