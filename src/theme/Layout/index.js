@@ -32,6 +32,8 @@ function Layout(props) {
     keywords,
     permalink,
     version,
+    setTheme,
+    theme
   } = props;
   const metaTitle = title || `${defaultTitle} · ${tagline}`;
   const metaImage = image || defaultImage;
@@ -63,7 +65,7 @@ function Layout(props) {
         {permalink && <meta property="og:url" content={siteUrl + permalink} />}
         <meta name="twitter:card" content="summary" />
       </Head>
-      <Navbar />
+      <Navbar setTheme={setTheme} theme={theme}/>
       <div className="main-wrapper">{children}</div>
       {!noFooter && <Footer />}
     </>

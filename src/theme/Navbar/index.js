@@ -43,15 +43,12 @@ function NavLink(props) {
 const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
 const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
 
-function Navbar() {
+function Navbar(props) {
   const context = useDocusaurusContext();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
-  const [theme, setTheme] = useState(currentTheme);
+  const setTheme = props.setTheme
+  const theme = props.theme
   const {siteConfig = {}} = context;
   const {baseUrl, themeConfig = {}} = siteConfig;
   const {algolia, navbar = {}} = themeConfig;

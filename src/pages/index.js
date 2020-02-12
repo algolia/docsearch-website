@@ -29,7 +29,7 @@ function Home() {
       ? document.querySelector('html').getAttribute('data-theme')
       : '';
   const { themeConfig = {} } = siteConfig;
-  const [theme, _] = useState(currentTheme);
+  const [theme, setTheme] = useState(currentTheme);
   const { navbar = {} } = themeConfig;
   const { logo = {} } = navbar;
 
@@ -39,6 +39,8 @@ function Home() {
     <Layout
       title="DocSearch: Search made for documentation"
       description="The easiest way to add search to your documentation - Powered by Algolia"
+      theme={theme}
+      setTheme={setTheme}
     >
       <Hero
         id="hero"
