@@ -89,7 +89,7 @@ function ApplyForm() {
         </LabelText>
 
         <Text small className="uil-pv-8 uil-d-block">
-          We'll scrap pages at this address and index the content on Algolia.
+          We'll scrape pages at this address and index the content on Algolia.
         </Text>
 
         <LabelText tag="label" htmlFor="email" key="email">

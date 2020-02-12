@@ -153,7 +153,7 @@ function Home() {
       <Section>
         <SectionHeader title="How it works" />
         <NumberedList columns={3}>
-          <TextBlock title="We scrap your documentation" label="Scraping">
+          <TextBlock title="We scrape your documentation" label="Scraping">
             <Text>
               We built a website crawler designed to index every section of your
               documentation.
