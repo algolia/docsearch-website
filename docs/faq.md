@@ -21,7 +21,7 @@ The DocSearch crawler is running on our own infra. It reads the HTML content
 from your website and populates an Algolia index every day. All you need to do
 is keep your website online, and we take care of the rest. If you want to edit
 your configuration, please
-[submit a pull request](https://github.com/algolia/docsearch-configs/pulls).
+[submit a pull request][14].
 
 ## How much does it cost?
 
@@ -167,3 +167,4 @@ mate!
 [11]: tips.md
 [12]: https://v2.docusaurus.io/
 [13]: https://docusaurus.io/blog/2020/01/07/tribute-to-endi
+[14]: https://github.com/algolia/docsearch-configs/pulls
