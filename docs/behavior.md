@@ -3,7 +3,7 @@ title: Dropdown Behavior
 sidebar_label: Behavior
 ---
 
-Our JavaScript library [DocSearch.js](https://github.com/algolia/docsearch.js)
+Our JavaScript library [DocSearch.js][7]
 is a wrapper of the [Algolia autocomplete.js][1] library. This library listens
 to every keystrokes typed in the search input, queries Algolia, and displays the
 results in a dropdown. Everything is already configured for you to work with
