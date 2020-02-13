@@ -3,8 +3,8 @@ title: Run your own
 ---
 
 The version of DocSearch we offer for free is hosted on our own servers, running
-every 24 hours. You do not need to think about the crawl. However if you want to
-update your results with more control, or if you are [not compliant with our
+every 24 hours. You do not need to think about the crawl. However, if you want
+to update your results with more control, or if you are [not compliant with our
 checklist][1], or if your website sits behind a firewall, you might want to run
 the crawler yourself.
 

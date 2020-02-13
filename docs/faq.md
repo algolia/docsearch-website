@@ -17,18 +17,19 @@ every 24 hours.
 
 Nothing.
 
-The DocSearch crawler is running on our own infra. It will read the HTML content
-from your website and populate an Algolia index with it every day. All you need
-to do is keep your website online, and we take care of the rest. If you want to
-edit your configuration, please submit a pull request.
+The DocSearch crawler is running on our own infra. It reads the HTML content
+from your website and populates an Algolia index every day. All you need to do
+is keep your website online, and we take care of the rest. If you want to edit
+your configuration, please
+[submit a pull request][14].
 
 ## How much does it cost?
 
 Nothing.
 
-We know that paying for search infrastructure is a cost not all Open Source
+We know that paying for search infrastructure is a cost not all open source
 projects can afford. That's why we decided to keep DocSearch free for everyone.
-All we ask in exchange is that you keep the _powered by [Algolia][2]_ logo
+All we ask in exchange is that you keep the "Search by [Algolia][2]" logo
 displayed next to the search results.
 
 If this is not possible for you, you're free to [open your own Algolia
@@ -40,19 +41,22 @@ account (free accounts can hold as much as 10k records).
 
 We save the data we extract from your website markup, which we put in a custom
 JSON format instead of HTML. This is the data we put in the Algolia DocSearch
-index. The selectors in your config define the data on file,
+index. The selectors in your config define what data to scrape.
 
-As the website owner, we also give you access to the Algolia Analytics
+As the website owner, we also give you access to the
+[Algolia Analytics][15]
 dashboard. This will let you have more data about the anonymized searches in
-your website. You'll see the most searched terms, or those with no results.
+your website. You'll see the most searched terms, or those that lead to no
+results.
 
-With such Analytics, you will better understand what your users are doing.
+With such analytics, you will better understand what your users are searching
+for.
 
 _If you don't have Analytics access, [send us an email][1] and we'll enable it._
 
 ## Where is my data hosted?
 
-We host the DocSearch data in Algolia's servers, with replications around the
+We host the DocSearch data on Algolia's servers, with replications around the
 globe. You can find more details about the actual [server specs here][4], and
 more complete information in our [privacy policy][5].
 
@@ -71,11 +75,11 @@ Yes, but we do not recommend it.
 
 Code samples are a great way for humans to understand how people use a specific
 method. It often requires boilerplate code though, repeated across examples,
-which will add noise to the results.
+which adds noise to the results.
 
 What we recommend instead is to exclude the code blocks from the indexing (by
 using the `selectors_exclude` option in your config), and instead structure your
-content so the method names are actual headers.
+content so the method names are present in the headers.
 
 ## Why do I have duplicate content in my results?
 
@@ -91,7 +95,7 @@ example will exclude all URLs ending with `/` or `index.html`
 }
 ```
 
-## Why are the custom changes from the Algolia dashboard ineffective?
+## Why are custom changes from the Algolia dashboard ineffective?
 
 Changing your setting from the dashboard might be something you want to do for
 some reasons .
@@ -100,7 +104,7 @@ Every successful crawl sets the DocSearch settings. These settings will be
 overridden at the next crawl. We **do not recommend to edit anything from the
 dashboard**. These changes come from the JSON configuration itself.
 
-You can use the [custom_settings parameter][8] in such purpose.
+You can use the [custom_settings parameter][8] for such purpose.
 
 ## A documentation website I like does not use DocSearch. What can I do?
 
@@ -113,25 +117,25 @@ the help we can.
 
 ## How many records does the DocSearch crawl create?
 
-The [property `nb_hits`][8] in your configuration keeps track of the number of
-records the crawl has extracted and indexed by the last DocSearch run. It
+The [`nb_hits` property][8] in your configuration keeps track of the number of
+records the crawl has extracted and indexed by the last DocSearch run. A crawl
 updates this number automatically.
 
 The DocSearch scraper follows [the recommended atomic-reindexing strategy][9].
 It creates a brand new temporary index to populate the data scraped from your
-website. When successful, the crawl overwrite the old index defined in your
+website. When successful, the crawl overwrites the old index defined in your
 configuration with the key `index_name`.
 
 ## Why aren't my pages indexed?
 
 We are scraping your website according to your configuration. It might happen
-that some pages are missing from the search. The possible reasons for that are:
+that some pages are missing from the search. Some possible reasons for that are:
 
 - Makes sure you are not filtering on the search by wrongly using
-  `facetFilters`. [See here for more details]10].
-- Make sure that an other indexed page references the page missing thanks to a
+  `facetFilters`. [See here for more details][10].
+- Make sure that an other indexed page references the page missing with an
   hyperlink tag `<a/>`.
-- Make sure you are [providing a compliant sitemap from the configuration]11]
+- Make sure you are [providing a compliant sitemap from the configuration][11]
   and that it references the page.
 
 ## Can I know when the next crawl will happen?
@@ -144,9 +148,10 @@ If none of the previous points help, you [can contact our support][1].
 
 ## How did we build this website?
 
-We build this website [thanks to docusaurus v2][12]. We were helped by a great
-man who inspire a lot, Endi. We want [to pay a tribute to this exceptional
-human being that will be always part of the DocSearch project][13]. Rest in peace mate!
+We build this website with [Docusaurus v2][12]. We were helped by a great man
+who inspired us a lot, Endi. We want [to pay a tribute to this exceptional human
+being that will be always part of the DocSearch project][13]. Rest in peace
+mate!
 
 [1]: mailto:docsearch@algolia.com
 [2]: https://www.algolia.com/
@@ -162,3 +167,5 @@ human being that will be always part of the DocSearch project][13]. Rest in peac
 [11]: tips.md
 [12]: https://v2.docusaurus.io/
 [13]: https://docusaurus.io/blog/2020/01/07/tribute-to-endi
+[14]: https://github.com/algolia/docsearch-configs/pulls
+[15]: https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/understand-reports/
