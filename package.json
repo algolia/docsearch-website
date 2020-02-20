@@ -2,6 +2,7 @@
   "name": "docsearch",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://docsearch.algolia.com/",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
