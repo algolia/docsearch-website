@@ -88,7 +88,7 @@ function Navbar(props) {
     }
   };
 
-  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src.dark : logo.src.light);
+  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light);
   return (
     <React.Fragment>
       <Head>

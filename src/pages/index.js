@@ -33,7 +33,7 @@ function Home() {
   const { navbar = {} } = themeConfig;
   const { logo = {} } = navbar;
 
-  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src.dark : logo.src.light);
+  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light);
 
   return (
     <Layout

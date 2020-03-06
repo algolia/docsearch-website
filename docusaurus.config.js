@@ -24,10 +24,11 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'DocSearch',
-        src: {
+        src: 'img/docsearch-logo.svg',
+        src_theme: {
           light: 'img/docsearch-logo.svg',
           dark: 'img/docsearch-logo-white.svg',
-        }
+        },
       },
       links: [
         {
