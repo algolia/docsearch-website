@@ -16,5 +16,17 @@ export default function DocSearch({ appId, indexName, apiKey }) {
       });
     });
   }, [docsearchRef, indexName, apiKey]);
-  return <input id="q" ref={docsearchRef} />;
+
+  return (
+    <>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+      />
+      <input
+        id="q"
+        ref={docsearchRef}
+      />
+    </>
+  );
 }
