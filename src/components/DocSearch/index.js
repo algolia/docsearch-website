@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import './DocSearch.css';
 
 export default function DocSearch({ appId, indexName, apiKey }) {
   const docsearchRef = useRef(null);
@@ -23,10 +24,22 @@ export default function DocSearch({ appId, indexName, apiKey }) {
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
       />
-      <input
-        id="q"
-        ref={docsearchRef}
-      />
+      <div
+        style={{
+          marginLeft: '10%',
+          marginRight: '10%',
+          width: '80%',
+        }}
+      >
+        <input
+          id="q"
+          style={{
+            height: '3em',
+            width: '100%',
+          }}
+          ref={docsearchRef}
+        />
+      </div>
     </>
   );
 }

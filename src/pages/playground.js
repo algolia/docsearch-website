@@ -66,13 +66,17 @@ function Playground() {
         <div className="m-auto" style={{ maxWidth: '800px' }}>
           <ErrorBoundary>
             {wrongCredentials && (
-              <Text>
+              <Text color="mars-0">
                 The credentials provided from the URL were wrong, we will demo
                 the search with the search of our documentation instead.
               </Text>
             )}
             {isValidDSCred && (
-              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
+              <DocSearch
+                appId={appId}
+                indexName={indexName}
+                apiKey={apiKey}
+              />
             )}
           </ErrorBoundary>
         </div>

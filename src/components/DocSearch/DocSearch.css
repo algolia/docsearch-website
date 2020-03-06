@@ -1,0 +1,7 @@
+.algolia-autocomplete,
+.ds-without-1,
+.ds-with-1 {
+  min-width: 100% !important;
+  max-width: 100% !important;
+  width: 100%;
+}
