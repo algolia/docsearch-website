@@ -60,9 +60,9 @@ function Playground() {
         title="Playground"
       />
       <Section>
-        <SectionHeader title={`Play with it on the index ${indexName}`}>
-          <Text>{`Play with it on the index ${indexName}`}</Text>
-        </SectionHeader>
+        <SectionHeader
+          title={`Play with it on the index ${indexName}`}
+        ></SectionHeader>
         <div className="m-auto" style={{ maxWidth: '800px' }}>
           <ErrorBoundary>
             {wrongCredentials && (
@@ -72,11 +72,7 @@ function Playground() {
               </Text>
             )}
             {isValidDSCred && (
-              <DocSearch
-                appId={appId}
-                indexName={indexName}
-                apiKey={apiKey}
-              />
+              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
             )}
           </ErrorBoundary>
         </div>
