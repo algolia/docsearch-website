@@ -63,6 +63,10 @@ module.exports = {
               label: 'Run your own scraper',
               to: 'docs/run-your-own'
             },
+            {
+              label: 'Playground',
+              to: 'playground'
+            },
           ]
         },
         {
