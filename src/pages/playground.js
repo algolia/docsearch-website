@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import { Section, Hero, SectionHeader, Text } from '@algolia/ui-library';
+import { LabelText, Hero, Text } from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch';
+import Card from '@algolia/ui-library/public/components/Card';
 
 function Playground() {
   const {
@@ -55,28 +56,32 @@ function Playground() {
       description="Try out the search for your DocSearch project"
     >
       <Hero
-        style={{ backgroundImage: 'linear-gradient(#fff, #f5f5fa)' }}
-        background="curves"
+        style={{
+          backgroundImage: 'linear-gradient(#fff, #f5f5fa)',
+        }}
+        background="orbInside"
         title="Playground"
+        padding="small"
       />
-      <Section>
-        <SectionHeader
-          title={`Play with it on the index ${indexName}`}
-        ></SectionHeader>
+      <Card>
         <div className="m-auto" style={{ maxWidth: '800px' }}>
+          <Text>
+            Try it out with the index:{' '}
+            <LabelText big>{`${indexName}`}</LabelText>
+          </Text>
           <ErrorBoundary>
+            {isValidDSCred && (
+              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
+            )}
             {wrongCredentials && (
               <Text color="mars-0">
                 The credentials provided from the URL were wrong, we will demo
                 the search with the search of our documentation instead.
               </Text>
             )}
-            {isValidDSCred && (
-              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
-            )}
           </ErrorBoundary>
         </div>
-      </Section>
+      </Card>
     </Layout>
   );
 }
