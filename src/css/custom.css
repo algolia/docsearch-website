@@ -1,4 +1,6 @@
 @import url(fragments.css);
+@import url(searchbox.css);
+
 :root {
   --ifm-font-size-base: 16px;
   --ifm-code-font-size: 90%;

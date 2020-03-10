@@ -15,7 +15,7 @@
     "@docusaurus/core": "^2.0.0-alpha.41",
     "@docusaurus/preset-classic": "^2.0.0-alpha.41",
     "@francoischalifour/autocomplete.js": "^1.0.0-alpha.9",
-    "algoliasearch": "^4.0.2",
+    "algoliasearch": "^4.1",
     "classnames": "^2.2.6",
     "docsearch.js": "^2.6.3",
     "file-loader": "^4.3.0",

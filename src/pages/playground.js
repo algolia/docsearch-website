@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import { LabelText, Hero, Text } from '@algolia/ui-library';
+import { Hero, Text, Pill} from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch';
@@ -56,18 +56,14 @@ function Playground() {
       description="Try out the search for your DocSearch project"
     >
       <Hero
-        style={{
-          backgroundImage: 'linear-gradient(#fff, #f5f5fa)',
-        }}
         background="orbInside"
         title="Playground"
         padding="small"
       />
-      <Card>
-        <div className="m-auto" style={{ maxWidth: '800px' }}>
+      <Card className="m-auto mt-4" style={{ position:'relative', maxWidth: '800px' }}>
           <Text>
             Try it out with the index:{' '}
-            <LabelText big>{`${indexName}`}</LabelText>
+            <Pill>{`${indexName}`}</Pill>
           </Text>
           <ErrorBoundary>
             {isValidDSCred && (
@@ -80,7 +76,6 @@ function Playground() {
               </Text>
             )}
           </ErrorBoundary>
-        </div>
       </Card>
     </Layout>
   );
