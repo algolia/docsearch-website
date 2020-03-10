@@ -74,7 +74,7 @@ function Navbar(props) {
       const localStorageTheme = window.localStorage.getItem('theme');
       setTheme(localStorageTheme);
     } catch (err) {
-      console.error(err);
+      throw err;
     }
   }, []);
 
@@ -84,11 +84,13 @@ function Navbar(props) {
     try {
       window.localStorage.setItem('theme', nextTheme);
     } catch (err) {
-      console.error(err);
+      throw err;
     }
   };
 
-  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light);
+  const logoUrl = useBaseUrl(
+    theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
+  );
   return (
     <React.Fragment>
       <Head>

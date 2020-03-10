@@ -63,6 +63,10 @@ module.exports = {
               label: 'Run your own scraper',
               to: 'docs/run-your-own'
             },
+            {
+              label: 'Playground',
+              to: 'playground'
+            },
           ]
         },
         {
@@ -79,6 +83,10 @@ module.exports = {
             {
               label:'Configurations',
               to: 'https://github.com/algolia/docsearch-configs'
+            },
+            {
+              label: 'Playground',
+              to: 'playground',
             },
           ],
         },
@@ -133,7 +141,6 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-          customCss: require.resolve('./src/css/fragments.css'),
         },
       },
     ],
