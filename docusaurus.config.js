@@ -7,7 +7,8 @@
 
 module.exports = {
   title: 'DocSearch',
-  tagline: 'The best search experience for docs, integrates in minutes, for free',
+  tagline:
+    'The best search experience for docs, integrates in minutes, for free',
   url: 'https://docsearch.netlify.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -28,13 +29,15 @@ module.exports = {
         src_theme: {
           light: 'img/docsearch-logo.svg',
           dark: 'img/docsearch-logo-white.svg',
+          href: 'https://docsearch.algolia.com/playground',
         },
       },
       links: [
         {
           label: 'Documentation',
           to: 'docs/what-is-docsearch',
-          position: 'right'},
+          position: 'right',
+        },
         {
           label: 'GitHub',
           href: 'https://github.com/algolia/DocSearch',
@@ -49,40 +52,40 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/what-is-docsearch'
+              to: 'docs/what-is-docsearch',
             },
             {
               label: 'FAQ',
-              to: 'docs/faq'
+              to: 'docs/faq',
             },
             {
               label: 'DocSearch.js',
-              to: 'docs/dropdown'
+              to: 'docs/dropdown',
             },
             {
               label: 'Run your own scraper',
-              to: 'docs/run-your-own'
+              to: 'docs/run-your-own',
             },
             {
               label: 'Playground',
-              to: 'playground'
+              to: 'playground',
             },
-          ]
+          ],
         },
         {
           title: 'DocSearch',
           items: [
             {
-              label:'Issues',
-              to: 'https://github.com/algolia/docsearch/issues'
+              label: 'Issues',
+              to: 'https://github.com/algolia/docsearch/issues',
             },
             {
-              label:'Scraper',
-              to: 'https://github.com/algolia/docsearch-scraper'
+              label: 'Scraper',
+              to: 'https://github.com/algolia/docsearch-scraper',
             },
             {
-              label:'Configurations',
-              to: 'https://github.com/algolia/docsearch-configs'
+              label: 'Configurations',
+              to: 'https://github.com/algolia/docsearch-configs',
             },
             {
               label: 'Playground',
@@ -94,8 +97,8 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label:'Apply',
-              to: 'apply'
+              label: 'Apply',
+              to: 'apply',
             },
             {
               label: 'Forum',
@@ -123,7 +126,7 @@ module.exports = {
               to: 'https://blog.algolia.com/',
             },
           ],
-        }
+        },
       ],
       logo: {
         alt: 'Algolia',
@@ -131,6 +134,7 @@ module.exports = {
       },
       copyright: `DocSearch 2015-now • Designed and Built by Algolia`,
     },
+    image: 'img/og_image.png',
   },
   presets: [
     [
