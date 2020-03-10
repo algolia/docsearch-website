@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import { Hero, Text, Pill} from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
-import algoliasearch from 'algoliasearch';
+import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 
 function Playground() {
