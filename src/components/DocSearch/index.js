@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './DocSearch.css';
+import Head from '@docusaurus/Head';
 
 export default function DocSearch({ appId, indexName, apiKey }) {
   const docsearchRef = useRef(null);
@@ -15,18 +16,20 @@ export default function DocSearch({ appId, indexName, apiKey }) {
         inputSelector: `#${docsearchRef.current.id}`,
         autocompleteOptions: {
           hint: false,
-          appendTo: '.sbx-docsearch-demo__wrapper'
-        }
+          appendTo: '.sbx-docsearch-demo__wrapper',
+        },
       });
     });
   }, [docsearchRef, indexName, apiKey]);
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
-      />
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+        />
+      </Head>
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
           <symbol
@@ -53,7 +56,7 @@ export default function DocSearch({ appId, indexName, apiKey }) {
         <form noValidate="novalidate" className="sbx-docsearch-demo">
           <div role="search" className="sbx-docsearch-demo__wrapper">
             <input
-              id="q" 
+              id="q"
               type="search"
               name="search"
               placeholder="Search documentation..."
