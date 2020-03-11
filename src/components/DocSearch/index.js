@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import './DocSearch.css';
 import Head from '@docusaurus/Head';
 
 export default function DocSearch({ appId, indexName, apiKey }) {
