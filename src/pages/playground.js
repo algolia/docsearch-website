@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import { Hero, Text, Pill} from '@algolia/ui-library';
+import { Hero, Text, Pill, LabelText } from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
@@ -55,27 +55,43 @@ function Playground() {
       title="DocSearch Playground"
       description="Try out the search for your DocSearch project"
     >
-      <Hero
-        background="orbInside"
-        title="Playground"
-        padding="small"
-      />
-      <Card className="m-auto mt-4" style={{ position:'relative', maxWidth: '800px' }}>
-          <Text>
-            Try it out with the index:{' '}
-            <Pill>{`${indexName}`}</Pill>
-          </Text>
-          <ErrorBoundary>
-            {isValidDSCred && (
-              <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
-            )}
-            {wrongCredentials && (
-              <Text color="mars-0">
-                The credentials provided from the URL were wrong, we will demo
-                the search with the search of our documentation instead.
-              </Text>
-            )}
-          </ErrorBoundary>
+      <Hero background="orbInside" title="Playground" padding="small" />
+      <Card
+        className="m-auto mt-4"
+        style={{ position: 'relative', maxWidth: '800px' }}
+      >
+        <Text>
+          Try it out with the index: <Pill>{`${indexName}`}</Pill>
+        </Text>
+        <ErrorBoundary>
+          {isValidDSCred && (
+            <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
+          )}
+          {wrongCredentials && (
+            <Text color="mars-0">
+              The credentials provided from the URL were wrong, we will demo the
+              search with the search of our documentation instead.
+            </Text>
+          )}
+        </ErrorBoundary>
+      </Card>
+      <Card
+        className="m-auto mt-4"
+        style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
+      >
+        <LabelText big>Instructions:</LabelText>
+        <br />
+        <br />
+        <Text>
+          You can try it ou with your own <Pill>apiKey</Pill> and{' '}
+          <Pill>indexName</Pill> by fetching the following URL:
+          <br />
+          <br />
+          <a href="https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>">{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
+          <br />
+          <br />
+          <Pill>appId</Pill> is optionnal.
+        </Text>
       </Card>
     </Layout>
   );
