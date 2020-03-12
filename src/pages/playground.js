@@ -88,7 +88,11 @@ function Playground() {
           <Pill>indexName</Pill> by fetching the following URL:
           <br />
           <br />
-          <a href="https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>">{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
+          <a
+            href={useBaseUrl(
+              '/playground/?indexName=<indexName>&apiKey=<apiKey>'
+            )}
+          >{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
           <br />
           <br />
           <Pill>appId</Pill> is optionnal.
