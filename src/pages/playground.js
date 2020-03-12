@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import { Hero, Text, Pill, LabelText } from '@algolia/ui-library';
+import { Button, Hero, Text, Pill, LabelText } from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 function Playground() {
   const {
@@ -92,6 +93,18 @@ function Playground() {
           <br />
           <Pill>appId</Pill> is optionnal.
         </Text>
+        <LabelText big>Need an index?</LabelText>
+        <br />
+        <br />
+        <div className="jc-center fxd-column d-flex">
+          <Button
+            primary
+            style={{ textDecoration: 'none', alignItems: 'center' }}
+            href={useBaseUrl('/apply')}
+          >
+            Join the Program
+          </Button>
+        </div>
       </Card>
     </Layout>
   );
