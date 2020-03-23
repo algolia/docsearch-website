@@ -51,13 +51,22 @@ function Playground() {
       });
   }, [appId, indexName, apiKey]);
 
+  const currentTheme =
+    typeof document !== 'undefined'
+      ? document.querySelector('html').getAttribute('data-theme')
+      : '';
+  const [theme, setTheme] = useState(currentTheme);
+
   return (
     <Layout
       title="DocSearch Playground"
       description="Try out the search for your DocSearch project"
+      theme={theme}
+      setTheme={setTheme}
     >
       <Hero background="orbInside" title="Playground" padding="small" />
       <Card
+        background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -77,6 +86,7 @@ function Playground() {
         </ErrorBoundary>
       </Card>
       <Card
+        background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
       >

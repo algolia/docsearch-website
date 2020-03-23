@@ -9,6 +9,8 @@ import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import github from 'prism-react-renderer/themes/github';
+import vsDark from 'prism-react-renderer/themes/vsDark';
 
 function Landing() {
   const {
@@ -22,6 +24,12 @@ function Landing() {
   const [appId, setAppId] = useState(appIdQS);
   const [indexName, setIndexName] = useState(indexNameQS);
   const [apiKey, setApiKey] = useState(apiKeyQS);
+
+  const currentTheme =
+    typeof document !== 'undefined'
+      ? document.querySelector('html').getAttribute('data-theme')
+      : '';
+  const [theme, setTheme] = useState(currentTheme);
 
   const fallbackToDocSearchDocCred = () => {
     setisValidDSCred(false);
@@ -56,9 +64,12 @@ function Landing() {
     <Layout
       title="DocSearch Landing"
       description="Try out the search for your DocSearch project"
+      theme={theme}
+      setTheme={setTheme}
     >
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
+        background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -80,6 +91,7 @@ function Landing() {
       <Card
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
+        background={theme === 'dark' ? 'dark' : 'light'}
       >
         <LabelText big>Instructions:</LabelText>
         <br />
@@ -113,6 +125,7 @@ function Landing() {
             transformCode={code =>
               `class Null extends React.Component {render(){return null}}`
             }
+            theme={github | vsDark}
           >
             <LiveEditor />
             <LiveError />
