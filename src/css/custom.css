@@ -51,10 +51,6 @@ html[data-theme='dark'] #hero {
   );
 }
 
-html[data-theme='dark'] h1 img {
-  filter: invert(1) hue-rotate(-180deg);
-}
-
 html[data-theme='dark'] div[class*='background-curves-Hero'] {
   opacity: 0.4;
 }
