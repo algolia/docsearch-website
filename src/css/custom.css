@@ -51,8 +51,7 @@ html[data-theme='dark'] #hero {
   );
 }
 
-html[data-theme='dark'] h1 img,
-html[data-theme='dark'] img. {
+html[data-theme='dark'] h1 img {
   filter: invert(1) hue-rotate(-180deg);
 }
 
