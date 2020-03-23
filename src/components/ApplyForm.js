@@ -11,10 +11,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const MAX_WIDTH = '600px';
 
-function ApplyForm() {
+function ApplyForm(props) {
   const [hasSent, setHasSent] = useState(false);
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
+  const { theme } = props;
 
   function onSubmit(event) {
     event.preventDefault();
@@ -42,7 +43,11 @@ function ApplyForm() {
 
   if (hasSent) {
     return (
-      <Card className="uil-m-auto" style={{ maxWidth: MAX_WIDTH }}>
+      <Card
+        background={theme === 'dark' ? 'dark' : 'light'}
+        className="uil-m-auto"
+        style={{ maxWidth: MAX_WIDTH }}
+      >
         <LabelText style={{ fontSize: '1.2em' }}>Thank you!</LabelText>
         <br />
 
@@ -67,7 +72,11 @@ function ApplyForm() {
   }
 
   return (
-    <Card className="uil-m-auto" style={{ maxWidth: MAX_WIDTH }}>
+    <Card
+      background={theme === 'dark' ? 'dark' : 'light'}
+      className="uil-m-auto"
+      style={{ maxWidth: MAX_WIDTH }}
+    >
       <form
         onSubmit={onSubmit}
         id="form-apply-docsearch"
