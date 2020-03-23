@@ -15,8 +15,11 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import github from 'prism-react-renderer/themes/github';
+import vsDark from 'prism-react-renderer/themes/vsDark';
 
-function Playground() {
+function Landing() {
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
@@ -28,6 +31,12 @@ function Playground() {
   const [appId, setAppId] = useState(appIdQS);
   const [indexName, setIndexName] = useState(indexNameQS);
   const [apiKey, setApiKey] = useState(apiKeyQS);
+
+  const currentTheme =
+    typeof document !== 'undefined'
+      ? document.querySelector('html').getAttribute('data-theme')
+      : '';
+  const [theme, setTheme] = useState(currentTheme);
 
   const fallbackToDocSearchDocCred = () => {
     setisValidDSCred(false);
@@ -58,20 +67,14 @@ function Playground() {
       });
   }, [appId, indexName, apiKey]);
 
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
-  const [theme, setTheme] = useState(currentTheme);
-
   return (
     <Layout
-      title="DocSearch Playground"
+      title="DocSearch Landing"
       description="Try out the search for your DocSearch project"
       theme={theme}
       setTheme={setTheme}
     >
-      <Hero background="orbInside" title="Playground" padding="small" />
+      <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
@@ -93,26 +96,48 @@ function Playground() {
         </ErrorBoundary>
       </Card>
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
+        background={theme === 'dark' ? 'dark' : 'light'}
       >
         <LabelText big>Instructions:</LabelText>
         <br />
         <br />
         <Text>
-          You can try it out with your own <Pill>apiKey</Pill> and{' '}
-          <Pill>indexName</Pill> by fetching the following URL:
+          Congratulations, your search is now ready!
+          <br />
+          We ha've successfully configured the underlying crawler and it will
+          now run every 24h.
           <br />
           <br />
-          <a
-            href={useBaseUrl(
-              '/playground/?indexName=<indexName>&apiKey=<apiKey>'
-            )}
-          >{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
+          You're now a few steps away from having it working on your website:
           <br />
+          Include these assets:
           <br />
-          <Pill>appId</Pill> is optionnal.
+          <LiveProvider
+            code={`<!-- at the end of the HEAD -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+<!-- at the end of the BODY -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+    apiKey: '${apiKey}',
+    indexName: '${indexName}',
+    inputSelector: '### REPLACE ME ####',
+    debug: false // Set to true if you want to inspect the dropdown
+});
+</script>`}
+            language="html"
+            noInline={true}
+            transformCode={code =>
+              `class Null extends React.Component {render(){return null}}`
+            }
+            theme={github | vsDark}
+          >
+            <LiveEditor />
+            <LiveError />
+            <LivePreview />
+          </LiveProvider>
         </Text>
         <Text big>
           Need to change something?
@@ -131,6 +156,8 @@ function Playground() {
         <LabelText big>Need an index?</LabelText>
         <br />
         <br />
+        <br />
+        <br />
         <div className="jc-center fxd-column d-flex">
           <Button
             primary
@@ -145,4 +172,4 @@ function Playground() {
   );
 }
 
-export default Playground;
+export default Landing;
