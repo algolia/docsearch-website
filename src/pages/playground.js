@@ -84,7 +84,7 @@ function Playground() {
         <br />
         <br />
         <Text>
-          You can try it ou with your own <Pill>apiKey</Pill> and{' '}
+          You can try it out with your own <Pill>apiKey</Pill> and{' '}
           <Pill>indexName</Pill> by fetching the following URL:
           <br />
           <br />

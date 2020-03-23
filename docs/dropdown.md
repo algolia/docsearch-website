@@ -27,7 +27,7 @@ and `indexName` credentials as soon as we've created your config.
     // Replace inputSelector with a CSS selector
     // matching your search input
     inputSelector: '<YOUR_CSS_SELECTOR>',
-    // Set debug to true if you want to inspect the dropdown
+    // Set debug to true to inspect the dropdown
     debug: false,
   });
 </script>

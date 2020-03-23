@@ -19,9 +19,8 @@ Nothing.
 
 The DocSearch crawler is running on our own infra. It reads the HTML content
 from your website and populates an Algolia index every day. All you need to do
-is keep your website online, and we take care of the rest. If you want to edit
-your configuration, please
-[submit a pull request][14].
+is keep your website online, and we take care of the rest. To edit your
+configuration, please [submit a pull request][14].
 
 ## How much does it cost?
 
@@ -43,8 +42,7 @@ We save the data we extract from your website markup, which we put in a custom
 JSON format instead of HTML. This is the data we put in the Algolia DocSearch
 index. The selectors in your config define what data to scrape.
 
-As the website owner, we also give you access to the
-[Algolia Analytics][15]
+As the website owner, we also give you access to the [Algolia Analytics][15]
 dashboard. This will let you have more data about the anonymized searches in
 your website. You'll see the most searched terms, or those that lead to no
 results.
@@ -168,4 +166,5 @@ mate!
 [12]: https://v2.docusaurus.io/
 [13]: https://docusaurus.io/blog/2020/01/07/tribute-to-endi
 [14]: https://github.com/algolia/docsearch-configs/pulls
-[15]: https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/understand-reports/
+[15]:
+  https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/understand-reports/
