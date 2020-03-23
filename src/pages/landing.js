@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
-import { Button, Hero, Text, Pill, LabelText } from '@algolia/ui-library';
+import {
+  Button,
+  Hero,
+  Text,
+  Pill,
+  LabelText,
+  InlineLink,
+} from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
@@ -132,7 +139,23 @@ function Landing() {
             <LivePreview />
           </LiveProvider>
         </Text>
+        <Text big>
+          Need to change something?
+          <InlineLink
+            style={{
+              textDecoration: 'none',
+              alignItems: 'center',
+              paddingLeft: '1em',
+            }}
+            href={`https://github.com/algolia/docsearch-configs/blob/master/configs/${indexName}.json`}
+          >
+            Please submit a PR on your configuration
+          </InlineLink>
+        </Text>
+
         <LabelText big>Need an index?</LabelText>
+        <br />
+        <br />
         <br />
         <br />
         <div className="jc-center fxd-column d-flex">
