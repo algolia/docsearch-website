@@ -114,7 +114,7 @@ function Playground() {
           <br />
           <Pill>appId</Pill> is optionnal.
         </Text>
-        <Text big>
+        <Text>
           Need to change something?
           <InlineLink
             style={{

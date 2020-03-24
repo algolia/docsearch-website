@@ -18,58 +18,65 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-function Landing() {
-  const {
-    appId: appIdQS = 'BH4D9OD16A',
-    indexName: indexNameQS = '',
-    apiKey: apiKeyQS = '',
-  } = queryString.parse(useLocation().search);
+function Demo() {
+  const { indexName: indexNameQS = '' } = queryString.parse(
+    useLocation().search
+  );
 
   const [isValidDSCred, setisValidDSCred] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
-  const [appId, setAppId] = useState(appIdQS);
-  const [indexName, setIndexName] = useState(indexNameQS);
-  const [apiKey, setApiKey] = useState(apiKeyQS);
+  let [indexName, setIndexName] = useState(indexNameQS);
 
   const currentTheme =
     typeof document !== 'undefined'
       ? document.querySelector('html').getAttribute('data-theme')
       : '';
   const [theme, setTheme] = useState(currentTheme);
+  const context = useDocusaurusContext();
+  const { siteConfig = {} } = context;
+  const { themeConfig = {} } = siteConfig;
+  const { navbar = {} } = themeConfig;
+  const { logo = {} } = navbar;
+  const logoUrl = useBaseUrl(
+    theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
+  );
 
   const fallbackToDocSearchDocCred = () => {
     setisValidDSCred(false);
-    setAppId('BH4D9OD16A');
     setIndexName('docsearch');
-    setApiKey('25626fae796133dc1e734c6bcaaeac3c');
   };
+  indexName = 'docsearch';
 
   useEffect(() => {
     // Credential not provided
-    if (!indexName && !apiKey) {
+    if (!indexName) {
       fallbackToDocSearchDocCred();
       return;
     }
-    if ((!indexName && !apiKey) || apiKey.length !== 32) {
+    if (!indexName) {
       setWrongCredentials(true);
       fallbackToDocSearchDocCred();
       return;
     }
-    const searchClient = algoliasearch(appId, apiKey);
-    const index = searchClient.initIndex(indexName);
+    const searchClient = algoliasearch(
+      'DSW01O6QPF',
+      'e55d03a808bad4e426d28fd4a1a18338'
+    );
+    const index = searchClient.initIndex('live-demo');
     index
-      .search('')
-      .then(_ => setisValidDSCred(true))
+      .search(indexName)
+      .then(hits => console.log(hits))
       .catch(_ => {
         setWrongCredentials(true);
         fallbackToDocSearchDocCred();
       });
-  }, [appId, indexName, apiKey]);
-
+  }, [indexName]);
+  const apiKey = 32321;
   return (
     <Layout
-      title="DocSearch Landing"
+      title="DocSearch Demo"
       description="Try out the search for your DocSearch project"
       theme={theme}
       setTheme={setTheme}
@@ -100,6 +107,46 @@ function Landing() {
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
         background={theme === 'dark' ? 'dark' : 'light'}
       >
+        <LabelText style={{ margin: '2rem' }} big>
+          <img style={{ height: '2rem' }} src={logoUrl} alt="DocSearch" />
+          {'   '}
+          <img
+            className="ds-icon-heart"
+            src={useBaseUrl('/img/icons/icon-heart.png')}
+            width="30px"
+          />{' '}
+          zapier
+        </LabelText>
+        <Text>
+          This page demonstrates a search as your type experience implemented by
+          DocSearch on Zapier's documentation.{' '}
+        </Text>
+        <ul>
+          <li>
+            <img
+              className="ds-icon"
+              src={useBaseUrl('/img/icons/zap.png')}
+              width="30px"
+            />
+            Smart and Instant
+          </li>
+          <li>
+            <img
+              className="ds-icon"
+              src={useBaseUrl('/img/icons/typo.png')}
+              width="30px"
+            />
+            Typo-tolerance
+          </li>
+          <li>
+            <img
+              className="ds-icon"
+              src={useBaseUrl('/img/icons/highlight.png')}
+              width="30px"
+            />
+            Highlighting
+          </li>
+        </ul>
         <LabelText big>Instructions:</LabelText>
         <br />
         <br />
@@ -173,4 +220,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Demo;

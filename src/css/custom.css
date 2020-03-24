@@ -79,6 +79,10 @@ html[data-theme='dark'] .react-toggle-track {
   background-color: var(--ifm-footer-background-color);
 }
 
+html[data-theme='dark'] img.ds-icon {
+  filter: invert(  );
+}
+
 .footer .footer__logo {
   max-width: 6rem;
 }
@@ -113,6 +117,7 @@ html[data-theme='dark'] .react-toggle-track {
   }
 }
 .ds-icon-heart {
+  margin-left: 1em;
   margin-right: 1em;
   animation: heartbeat 1s infinite;
   transform-origin: center;
