@@ -103,19 +103,36 @@ function Landing() {
         <LabelText big>Instructions:</LabelText>
         <br />
         <br />
-        <Text>
-          Congratulations, your search is now ready!
-          <br />
+        <Text style={{ marginTop: '1.5rem' }}>
           We ha've successfully configured the underlying crawler and it will
           now run every 24h.
           <br />
-          <br />
           You're now a few steps away from having it working on your website:
+          <br />
+          <br />
+          Include a search input:
+        </Text>
+        <LiveProvider
+          code={`<input type="text" id="q" placeholder="Search the doc" />`}
+          language="html"
+          noInline={true}
+          transformCode={code =>
+            `class Null extends React.Component {render(){return null}}`
+          }
+          theme={theme === 'dark' ? vsDark : github}
+        >
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+        <Text>
           <br />
           Include these assets:
           <br />
-          <LiveProvider
-            code={`<!-- at the end of the HEAD -->
+        </Text>
+
+        <LiveProvider
+          code={`<!-- at the end of the HEAD -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
 <!-- at the end of the BODY -->
@@ -123,23 +140,22 @@ function Landing() {
 <script type="text/javascript"> docsearch({
     apiKey: '${apiKey}',
     indexName: '${indexName}',
-    inputSelector: '### REPLACE ME ####',
+    inputSelector: '#q', // CSS selector to target <input/>
     debug: false // Set to true if you want to inspect the dropdown
 });
 </script>`}
-            language="html"
-            noInline={true}
-            transformCode={code =>
-              `class Null extends React.Component {render(){return null}}`
-            }
-            theme={github | vsDark}
-          >
-            <LiveEditor />
-            <LiveError />
-            <LivePreview />
-          </LiveProvider>
-        </Text>
-        <Text big>
+          language="html"
+          noInline={true}
+          transformCode={code =>
+            `class Null extends React.Component {render(){return null}}`
+          }
+          theme={theme === 'dark' ? vsDark : github}
+        >
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+        <Text>
           Need to change something?
           <InlineLink
             style={{
@@ -152,7 +168,6 @@ function Landing() {
             Please submit a PR on your configuration
           </InlineLink>
         </Text>
-
         <LabelText big>Need an index?</LabelText>
         <br />
         <br />
