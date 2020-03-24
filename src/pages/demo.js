@@ -40,12 +40,12 @@ const Hits = ({ hits }) => (
       .filter(e => e.name)
       .map(hit => (
         <li key={hit.objectID}>
-          <a
+          <InlineLink
             style={{ textDecoration: 'none', alignItems: 'center' }}
             href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
           >
             {hit.name}
-          </a>
+          </InlineLink>
           - {hit.documentation.url}
         </li>
       ))}
@@ -246,7 +246,7 @@ function Demo() {
           language="html"
           noInline={true}
           transformCode={code =>
-            `class Null extends React.Component {render(){return null}}`
+            `class Null extends React.Component {render(){returyarn null}}`
           }
           theme={theme === 'dark' ? vsDark : github}
         >
@@ -270,7 +270,7 @@ function Demo() {
             Need an index?
           </LabelText>
           <div
-            style={{ marginTop: '2rem' }}
+            style={{ marginTop: '2rem', marginBottom: '2rem' }}
             className="jc-center fxd-column d-flex"
           >
             <Button
@@ -281,9 +281,7 @@ function Demo() {
               Join the Program
             </Button>
           </div>
-          <LabelText big style={{ marginTop: '1rem' }}>
-            Want to help another project?
-          </LabelText>
+          <LabelText>Want to help another project?</LabelText>
         </Text>
 
         <InstantSearch indexName="live-demo" searchClient={searchClient}>
