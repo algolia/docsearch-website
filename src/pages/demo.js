@@ -146,6 +146,7 @@ function Demo() {
         style={{ position: 'relative', maxWidth: '800px' }}
       >
         <Text>
+          background={theme === 'dark' ? 'dark' : 'light'}
           Try it out with the index: <Pill>{indexName}</Pill>
         </Text>
 
