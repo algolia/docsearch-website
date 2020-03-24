@@ -39,6 +39,9 @@ function Layout(props) {
   const metaImage = image || defaultImage;
   const metaImageUrl = siteUrl + useBaseUrl(metaImage);
   const faviconUrl = useBaseUrl(favicon);
+  if (window.localStorage.getItem('theme') === "dark") {
+    setTheme("dark")
+  }
   return (
     <>
       <Head>
