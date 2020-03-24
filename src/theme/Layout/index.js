@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -15,12 +15,12 @@ import Footer from '@theme/Footer';
 import './styles.css';
 
 function Layout(props) {
-  const {siteConfig = {}} = useDocusaurusContext();
+  const { siteConfig = {} } = useDocusaurusContext();
   const {
     favicon,
     tagline,
     title: defaultTitle,
-    themeConfig: {image: defaultImage},
+    themeConfig: { image: defaultImage },
     url: siteUrl,
   } = siteConfig;
   const {
@@ -33,15 +33,21 @@ function Layout(props) {
     permalink,
     version,
     setTheme,
-    theme
+    theme,
   } = props;
   const metaTitle = title || `${defaultTitle} · ${tagline}`;
   const metaImage = image || defaultImage;
   const metaImageUrl = siteUrl + useBaseUrl(metaImage);
   const faviconUrl = useBaseUrl(favicon);
-  if (window.localStorage.getItem('theme') === "dark") {
-    setTheme("dark")
-  }
+  useEffect(() => {
+    try {
+      const localStorageTheme = window.localStorage.getItem('theme');
+      setTheme(localStorageTheme);
+    } catch (err) {
+      console.error('ups');
+      throw err;
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -68,7 +74,7 @@ function Layout(props) {
         {permalink && <meta property="og:url" content={siteUrl + permalink} />}
         <meta name="twitter:card" content="summary" />
       </Head>
-      <Navbar setTheme={setTheme} theme={theme}/>
+      <Navbar setTheme={setTheme} theme={theme} />
       <div className="main-wrapper">{children}</div>
       {!noFooter && <Footer />}
     </>
