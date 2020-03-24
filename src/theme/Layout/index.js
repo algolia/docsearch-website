@@ -41,12 +41,15 @@ function Layout(props) {
   const faviconUrl = useBaseUrl(favicon);
   useEffect(() => {
     try {
-      const localStorageTheme = window.localStorage.getItem('theme');
-      if (typeof setTheme === 'function') {
-        setTheme(localStorageTheme);
+      const dataTheme =
+        typeof document !== 'undefined'
+          ? document.querySelector('html').getAttribute('data-theme')
+          : '';
+      if (dataTheme === 'dark') {
+        setTheme(dataTheme);
       }
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   }, []);
   return (
