@@ -103,14 +103,27 @@ function Landing() {
         <LabelText big>Instructions:</LabelText>
         <br />
         <br />
-        <Text>
-          Congratulations, your search is now ready!
-          <br />
+        <Text style={{ marginTop: '1.5rem' }}>
           We ha've successfully configured the underlying crawler and it will
           now run every 24h.
           <br />
-          <br />
           You're now a few steps away from having it working on your website:
+          <br />
+          <br />
+          Include a search input:
+          <LiveProvider
+            code={`<input type="text" id="q" placeholder="Search the doc" />`}
+            language="html"
+            noInline={true}
+            transformCode={code =>
+              `class Null extends React.Component {render(){return null}}`
+            }
+            theme={github | vsDark}
+          >
+            <LiveEditor />
+            <LiveError />
+            <LivePreview />
+          </LiveProvider>
           <br />
           Include these assets:
           <br />
@@ -125,7 +138,7 @@ function Landing() {
 <script type="text/javascript"> docsearch({
     apiKey: '${apiKey}',
     indexName: '${indexName}',
-    inputSelector: '### REPLACE ME ####',
+    inputSelector: '#q', // CSS selector to target <input/>
     debug: false // Set to true if you want to inspect the dropdown
 });
 </script>`}

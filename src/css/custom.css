@@ -80,7 +80,7 @@ html[data-theme='dark'] .react-toggle-track {
 }
 
 html[data-theme='dark'] img.ds-icon {
-  filter: invert(  );
+  filter: invert();
 }
 
 .footer .footer__logo {
@@ -121,4 +121,16 @@ html[data-theme='dark'] img.ds-icon {
   margin-right: 1em;
   animation: heartbeat 1s infinite;
   transform-origin: center;
+}
+
+.ais-SearchBox {
+  width: 100%;
+  height: 3rem;
+}
+.ais-SearchBox-input {
+  width: 90%;
+}
+.ais-SearchBox-input,
+.ais-SearchBox-form {
+  height: 100%;
 }
