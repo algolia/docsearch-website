@@ -31,7 +31,18 @@ const Results = connectStateResults(
     searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
       children
     ) : (
-      <div>No results have been found for {searchState.query}.</div>
+      <div
+        style={{ marginTop: '2rem', marginBottom: '2rem' }}
+        className="jc-center fxd-column d-flex"
+      >
+        <Button
+          primary
+          style={{ textDecoration: 'none', alignItems: 'center' }}
+          href={useBaseUrl('/apply')}
+        >
+          Apply for {searchState.query}
+        </Button>
+      </div>
     )
 );
 const Hits = ({ hits }) => (
@@ -71,6 +82,7 @@ function Demo() {
       : '';
   const [theme, setTheme] = useState(currentTheme);
   const context = useDocusaurusContext();
+  console.log(context);
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { navbar = {} } = themeConfig;
@@ -212,7 +224,7 @@ function Demo() {
         </Text>
 
         <LiveProvider
-          code={`<input type="text" id="q" placeholder="Search the doc" />`}
+          code={`<input type="text" id="searchInput" placeholder="Search the doc" />`}
           language="html"
           noInline={true}
           transformCode={code =>
@@ -233,15 +245,14 @@ function Demo() {
         <LiveProvider
           code={`<!-- at the end of the HEAD -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-
 <!-- at the end of the BODY -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript"> docsearch({
-    apiKey: '${apiKey}',
-    indexName: '${indexName}',
-    inputSelector: '#q', // CSS selector to target <input/>
-    debug: false // Set to true if you want to inspect the dropdown
-});
+   apiKey: 'undefined',
+   indexName: 'docsearch',
+   inputSelector: '#searchInput', // CSS selector to target <input/>
+   debug: false // Set to true if you want to inspect the dropdown
+   });
 </script>`}
           language="html"
           noInline={true}
@@ -266,8 +277,9 @@ function Demo() {
           >
             Please submit a PR on your configuration
           </InlineLink>
+          <br />
           <LabelText big style={{ marginTop: '1rem' }}>
-            Need an index?
+            With another website?
           </LabelText>
           <div
             style={{ marginTop: '2rem', marginBottom: '2rem' }}
@@ -281,13 +293,16 @@ function Demo() {
               Join the Program
             </Button>
           </div>
-          <LabelText>Want to help another project?</LabelText>
+          <LabelText>Search for another demo?</LabelText>
         </Text>
 
-        <InstantSearch indexName="live-demo" searchClient={searchClient}>
+           
+        <InstantSearch  classname="mb-2 sbx-docsearch-demo__input" indexName="live-demo" searchClient={searchClient}>
           <Configure filters="status.stage: Outbound" hitsPerPage={4} />
 
-          <SearchBox showLoadingIndicator />
+          <SearchBox
+            showLoadingIndicator
+          />
           <br />
           <Results>
             <CustomHits />
