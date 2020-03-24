@@ -246,7 +246,7 @@ function Demo() {
           language="html"
           noInline={true}
           transformCode={code =>
-            `class Null extends React.Component {render(){returyarn null}}`
+            `class Null extends React.Component {render(){return null}}`
           }
           theme={theme === 'dark' ? vsDark : github}
         >

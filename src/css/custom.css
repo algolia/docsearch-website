@@ -134,8 +134,12 @@ html[data-theme='dark'] img.ds-icon {
 .ais-SearchBox-form {
   height: 100%;
   min-height: 100%;
+  width: 90%;
+  min-width: 90%;
 }
-
+.ais-SearchBox-form button {
+  width: 10%;
+}
 input.ais-SearchBox-input {
   -webkit-appearance: none !important;
 }
