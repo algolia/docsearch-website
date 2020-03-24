@@ -26,6 +26,7 @@ import {
   connectStateResults,
   connectHits,
 } from 'react-instantsearch-dom';
+
 const Results = connectStateResults(
   ({ searchState, searchResults, children }) =>
     searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
@@ -45,7 +46,8 @@ const Results = connectStateResults(
       </div>
     )
 );
-const Hits = ({ hits }) => (
+
+const CustomHits = connectHits(({ hits }) => (
   <ol>
     {hits
       .filter(e => e.name)
@@ -61,72 +63,73 @@ const Hits = ({ hits }) => (
         </li>
       ))}
   </ol>
-);
+));
 
-const CustomHits = connectHits(Hits);
 function Demo() {
-  const { indexName: indexNameQS = '' } = queryString.parse(
-    useLocation().search
-  );
-
-  const [isValidDSCred, setisValidDSCred] = useState(false);
-  const [wrongCredentials, setWrongCredentials] = useState(false);
-  const [selection, setSelection] = useState(false);
-  let [indexName, setIndexName] = useState(indexNameQS);
-  let [apiKey, setApiKey] = useState(null);
-  let [projectName, setProjectName] = useState(null);
-
+  const context = useDocusaurusContext();
   const currentTheme =
     typeof document !== 'undefined'
       ? document.querySelector('html').getAttribute('data-theme')
       : '';
+
+  const { logo } = context.siteConfig.themeConfig.navbar;
   const [theme, setTheme] = useState(currentTheme);
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
-  const { themeConfig = {} } = siteConfig;
-  const { navbar = {} } = themeConfig;
-  const { logo = {} } = navbar;
   const logoUrl = useBaseUrl(
     theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
   );
 
-  const fallbackToDocSearchDocCred = () => {
-    setisValidDSCred(false);
-    setIndexName('docsearch');
-  };
-  const indexNameRef = useRef(indexName);
-  const searchClient = algoliasearch(
-    'DSW01O6QPF',
-    'e55d03a808bad4e426d28fd4a1a18338'
-  );
-  useEffect(() => {
-    if (!indexName && !indexNameRef.current) {
-      fallbackToDocSearchDocCred();
-      return;
-    }
+  const DEFAULT_INDEX_NAME = context.siteConfig.themeConfig.algolia.indexName;
+  const DEFAULT_API_KEY = context.siteConfig.themeConfig.algolia.apiKey;
 
-    if (!selection && !projectName) {
-      const index = searchClient.initIndex('live-demo');
-      index
-        .search(indexNameRef.current)
-        .then(result => {
-          if (!(result.nbHits > 0)) {
-            setWrongCredentials(true);
-          } else {
-            const selected = result.hits[0];
-            setProjectName(selected.name);
-            setIndexName(selected.docsearch.index);
-            setApiKey(selected.docsearch.apiKey);
-            setisValidDSCred(true);
-            setSelection(true);
-          }
-        })
-        .catch(_ => {
-          setWrongCredentials(true);
-          fallbackToDocSearchDocCred();
-        });
-    }
+  const {
+    indexName: indexNameFromUrl = DEFAULT_INDEX_NAME,
+  } = queryString.parse(useLocation().search);
+  const [indexName, setIndexName] = useState(indexNameFromUrl);
+  const [apiKey, setApiKey] = useState(null);
+  const [projectName, setProjectName] = useState(null);
+
+  const searchClient = useRef(
+    algoliasearch('DSW01O6QPF', 'e55d03a808bad4e426d28fd4a1a18338')
+  );
+
+  function resetCredentials() {
+    setIndexName(DEFAULT_INDEX_NAME);
+    setApiKey(DEFAULT_API_KEY);
+  }
+
+  useEffect(() => {
+    const index = searchClient.current.initIndex('live-demo');
+    index
+      .search(indexName, { hitsPerPage: 1 })
+      .then(result => {
+        if (result.nbHits === 0) {
+          resetCredentials();
+        } else {
+          const activeDocSearchIndex = result.hits[0];
+
+          setProjectName(activeDocSearchIndex.name);
+          setIndexName(activeDocSearchIndex.docsearch.index);
+          setApiKey(activeDocSearchIndex.docsearch.apiKey);
+        }
+      })
+      .catch(() => {
+        resetCredentials();
+      });
   }, [indexName]);
+
+  const code = `<!-- at the end of the \`head\` -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+<!-- at the end of the \`body\` -->
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+  docsearch({
+    apiKey: '${apiKey}',
+    indexName: '${indexName}',
+    inputSelector: '#search', // CSS selector to target the <input />
+    debug: false, // Set to \`true\` if you want to inspect the dropdown
+  });
+</script>`;
 
   return (
     <Layout
@@ -142,43 +145,46 @@ function Demo() {
         style={{ position: 'relative', maxWidth: '800px' }}
       >
         <Text>
-          Try it out with the index: <Pill>{`${indexName}`}</Pill>
+          Try it out with the index: <Pill>{indexName}</Pill>
         </Text>
+
         <ErrorBoundary>
-          {isValidDSCred && (
+          {apiKey && (
             <DocSearch
               appId="BH4D9OD16A"
               indexName={indexName}
               apiKey={apiKey}
             />
           )}
-          {wrongCredentials && (
-            <Text color="mars-0">
-              The project provided from the URL were wrong, we will demo the
-              search with the search of our documentation instead.
-            </Text>
-          )}
         </ErrorBoundary>
       </Card>
+
       <Card
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
         background={theme === 'dark' ? 'dark' : 'light'}
       >
-        <LabelText style={{ margin: '2rem' }} big>
-          <img style={{ height: '2rem' }} src={logoUrl} alt="DocSearch" />
-          {'   '}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img src={logoUrl} alt="DocSearch" style={{ height: '2rem' }} />
           <img
             className="ds-icon-heart"
             src={useBaseUrl('/img/icons/icon-heart.png')}
             width="30px"
-          />{' '}
-          {projectName}
-        </LabelText>
+          />
+          <LabelText big>{projectName}</LabelText>
+        </div>
+
         <Text style={{ marginTop: '1.5rem' }}>
-          This page demonstrates a search as your type experience implemented by
-          DocSearch on {projectName}'s documentation.{' '}
+          This page demonstrates a search-as-you-type experience implemented by
+          DocSearch on {projectName}'s documentation.
         </Text>
+
         <ul style={{ marginBottom: '2rem' }}>
           <li>
             <img
@@ -186,7 +192,7 @@ function Demo() {
               src={useBaseUrl('/img/icons/zap.png')}
               width="30px"
             />
-            Smart and Instant
+            Smart and instant
           </li>
           <li>
             <img
@@ -205,23 +211,21 @@ function Demo() {
             Highlighting
           </li>
         </ul>
-        <LabelText big>Instructions:</LabelText>
 
-        <Text style={{ marginTop: '1.5rem' }}>
-          We ha've successfully configured the underlying crawler and it will
-          now run every 24h.
-          <br />
-          You're now a few steps away from having it working on your website:
-          <br />
-          <br />
-          Include a search input:
+        <LabelText big>Instructions</LabelText>
+
+        <Text className="mt-4">
+          We have configured the crawler. It will run every 24 hours. You're now
+          a few steps away from having it work on your website.
         </Text>
 
+        <Text>Include a search input:</Text>
+
         <LiveProvider
-          code={`<input type="text" id="searchInput" placeholder="Search the doc" />`}
+          code={`<input type="text" id="search" placeholder="Search the doc" />`}
           language="html"
           noInline={true}
-          transformCode={code =>
+          transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
           theme={theme === 'dark' ? vsDark : github}
@@ -230,27 +234,14 @@ function Demo() {
           <LiveError />
           <LivePreview />
         </LiveProvider>
-        <Text>
-          <br />
-          Include these assets:
-          <br />
-        </Text>
+
+        <Text className="mt-4">Include these assets:</Text>
 
         <LiveProvider
-          code={`<!-- at the end of the HEAD -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<!-- at the end of the BODY -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script type="text/javascript"> docsearch({
-   apiKey: '${apiKey}',
-   indexName: '${indexName}',
-   inputSelector: '#searchInput', // CSS selector to target <input/>
-   debug: false // Set to true if you want to inspect the dropdown
-   });
-</script>`}
+          code={code}
           language="html"
           noInline={true}
-          transformCode={code =>
+          transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
           theme={theme === 'dark' ? vsDark : github}
@@ -259,27 +250,25 @@ function Demo() {
           <LiveError />
           <LivePreview />
         </LiveProvider>
-        <Text>
-          Need to change something?
+
+        <Text className="pt-2">
+          Need to change something?{' '}
           <InlineLink
             style={{
               textDecoration: 'none',
-              alignItems: 'center',
-              paddingLeft: '1em',
             }}
             href={`https://github.com/algolia/docsearch-configs/blob/master/configs/${indexName}.json`}
           >
             Please submit a PR on your configuration
           </InlineLink>
-          <br />
-          <LabelText big style={{ marginTop: '1rem' }}>
-            With another website?
-          </LabelText>
+          .
         </Text>
-        <div
-          style={{ marginTop: '2rem', marginBottom: '2rem' }}
-          className="jc-center fxd-column d-flex"
-        >
+
+        <Text>
+          <LabelText big>Want another website?</LabelText>
+        </Text>
+
+        <div className="jc-center fxd-column d-flex my-4">
           <Button
             primary
             style={{ textDecoration: 'none', alignItems: 'center' }}
@@ -288,18 +277,20 @@ function Demo() {
             Join the Program
           </Button>
         </div>
+
         <Text>
-          <LabelText>Search for another demo?</LabelText>
+          <LabelText big>Search for another demo</LabelText>
         </Text>
 
         <InstantSearch
-          classname="mb-2 sbx-docsearch-demo__input"
+          searchClient={searchClient.current}
           indexName="live-demo"
-          searchClient={searchClient}
+          classame="mb-2 sbx-docsearch-demo__input"
         >
-          <Configure filters="status.stage: Outbound" hitsPerPage={4} />
+          <Configure filters="status.stage:Outbound" hitsPerPage={4} />
+
           <SearchBox showLoadingIndicator />
-          <br />
+
           <Results>
             <CustomHits />
           </Results>
