@@ -44,7 +44,6 @@ function Layout(props) {
       const localStorageTheme = window.localStorage.getItem('theme');
       setTheme(localStorageTheme);
     } catch (err) {
-      console.error('ups');
       throw err;
     }
   }, []);
