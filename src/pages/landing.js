@@ -119,7 +119,7 @@ function Landing() {
           transformCode={code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={github | vsDark}
+          theme={theme === 'dark' ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />
@@ -149,7 +149,7 @@ function Landing() {
           transformCode={code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={github | vsDark}
+          theme={theme === 'dark' ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />

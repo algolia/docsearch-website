@@ -95,8 +95,8 @@ function Demo() {
       return;
     }
 
-    console.log("Search?")
-    console.log(!selection && !projectName)
+    console.log('Search?');
+    console.log(!selection && !projectName);
 
     if (!selection && !projectName) {
       const index = searchClient.initIndex('live-demo');
@@ -107,7 +107,7 @@ function Demo() {
             setWrongCredentials(true);
           } else {
             const selected = result.hits[0];
-            console.error(selected)
+            console.error(selected);
             setProjectName(selected.name);
             setIndexName(selected.docsearch.index);
             setApiKey(selected.docsearch.apiKey);
@@ -218,7 +218,7 @@ function Demo() {
           transformCode={code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={github | vsDark}
+          theme={theme === 'dark' ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />
@@ -248,7 +248,7 @@ function Demo() {
           transformCode={code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={github | vsDark}
+          theme={theme === 'dark' ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />
