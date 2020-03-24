@@ -114,7 +114,6 @@ function Demo() {
             setWrongCredentials(true);
           } else {
             const selected = result.hits[0];
-            console.error(selected);
             setProjectName(selected.name);
             setIndexName(selected.docsearch.index);
             setApiKey(selected.docsearch.apiKey);
