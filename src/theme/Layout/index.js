@@ -42,7 +42,9 @@ function Layout(props) {
   useEffect(() => {
     try {
       const localStorageTheme = window.localStorage.getItem('theme');
-      setTheme(localStorageTheme);
+      if (typeof setTheme === 'function') {
+        setTheme(localStorageTheme);
+      }
     } catch (err) {
       throw err;
     }
