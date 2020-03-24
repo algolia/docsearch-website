@@ -298,7 +298,6 @@ function Demo() {
           searchClient={searchClient}
         >
           <Configure filters="status.stage: Outbound" hitsPerPage={4} />
-
           <SearchBox showLoadingIndicator />
           <br />
           <Results>
