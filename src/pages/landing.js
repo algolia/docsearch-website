@@ -111,19 +111,21 @@ function Landing() {
           <br />
           <br />
           Include a search input:
-          <LiveProvider
-            code={`<input type="text" id="q" placeholder="Search the doc" />`}
-            language="html"
-            noInline={true}
-            transformCode={code =>
-              `class Null extends React.Component {render(){return null}}`
-            }
-            theme={github | vsDark}
-          >
-            <LiveEditor />
-            <LiveError />
-            <LivePreview />
-          </LiveProvider>
+        </Text>
+        <LiveProvider
+          code={`<input type="text" id="q" placeholder="Search the doc" />`}
+          language="html"
+          noInline={true}
+          transformCode={code =>
+            `class Null extends React.Component {render(){return null}}`
+          }
+          theme={github | vsDark}
+        >
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+        <Text>
           <br />
           Include these assets:
           <br />
@@ -166,7 +168,6 @@ function Landing() {
             Please submit a PR on your configuration
           </InlineLink>
         </Text>
-
         <LabelText big>Need an index?</LabelText>
         <br />
         <br />

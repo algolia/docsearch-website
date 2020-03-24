@@ -42,7 +42,7 @@ const Hits = ({ hits }) => (
         <li key={hit.objectID}>
           <a
             style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl(`/demo?q=${hit.docsearch.index}`)}
+            href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
           >
             {hit.name}
           </a>
@@ -95,6 +95,9 @@ function Demo() {
       return;
     }
 
+    console.log("Search?")
+    console.log(!selection && !projectName)
+
     if (!selection && !projectName) {
       const index = searchClient.initIndex('live-demo');
       index
@@ -104,6 +107,7 @@ function Demo() {
             setWrongCredentials(true);
           } else {
             const selected = result.hits[0];
+            console.error(selected)
             setProjectName(selected.name);
             setIndexName(selected.docsearch.index);
             setApiKey(selected.docsearch.apiKey);
@@ -202,23 +206,25 @@ function Demo() {
           now run every 24h.
           <br />
           You're now a few steps away from having it working on your website:
-          <br /> 
-          <br /> 
-
+          <br />
+          <br />
           Include a search input:
-          <LiveProvider
-            code={`<input type="text" id="q" placeholder="Search the doc" />`}
-            language="html"
-            noInline={true}
-            transformCode={code =>
-              `class Null extends React.Component {render(){return null}}`
-            }
-            theme={github | vsDark}
-          >
-            <LiveEditor />
-            <LiveError />
-            <LivePreview />
-          </LiveProvider>
+        </Text>
+
+        <LiveProvider
+          code={`<input type="text" id="q" placeholder="Search the doc" />`}
+          language="html"
+          noInline={true}
+          transformCode={code =>
+            `class Null extends React.Component {render(){return null}}`
+          }
+          theme={github | vsDark}
+        >
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+        <Text>
           <br />
           Include these assets:
           <br />
@@ -260,27 +266,25 @@ function Demo() {
           >
             Please submit a PR on your configuration
           </InlineLink>
-        </Text>
-
-        <LabelText big style={{ marginTop: '1rem' }}>
-          Need an index?
-        </LabelText>
-        <div
-          style={{ marginTop: '2rem' }}
-          className="jc-center fxd-column d-flex"
-        >
-          <Button
-            primary
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl('/apply')}
+          <LabelText big style={{ marginTop: '1rem' }}>
+            Need an index?
+          </LabelText>
+          <div
+            style={{ marginTop: '2rem' }}
+            className="jc-center fxd-column d-flex"
           >
-            Join the Program
-          </Button>
-        </div>
-
-        <LabelText big style={{ marginTop: '1rem' }}>
-          Want to help another project?
-        </LabelText>
+            <Button
+              primary
+              style={{ textDecoration: 'none', alignItems: 'center' }}
+              href={useBaseUrl('/apply')}
+            >
+              Join the Program
+            </Button>
+          </div>
+          <LabelText big style={{ marginTop: '1rem' }}>
+            Want to help another project?
+          </LabelText>
+        </Text>
 
         <InstantSearch indexName="live-demo" searchClient={searchClient}>
           <Configure filters="status.stage: Outbound" hitsPerPage={4} />
