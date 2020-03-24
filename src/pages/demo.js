@@ -130,7 +130,8 @@ function Demo() {
     debug: false, // Set to \`true\` if you want to inspect the dropdown
   });
 </script>`;
-
+  console.log('Dark ou pas?');
+  console.log(theme === 'dark' ? 'dark' : 'light');
   return (
     <Layout
       title="DocSearch Demo"
