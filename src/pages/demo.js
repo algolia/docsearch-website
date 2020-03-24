@@ -242,8 +242,8 @@ function Demo() {
 <!-- at the end of the BODY -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript"> docsearch({
-   apiKey: 'undefined',
-   indexName: 'docsearch',
+   apiKey: '${apiKey}',
+   indexName: '${indexName}',
    inputSelector: '#searchInput', // CSS selector to target <input/>
    debug: false // Set to true if you want to inspect the dropdown
    });
