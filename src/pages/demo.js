@@ -275,28 +275,31 @@ function Demo() {
           <LabelText big style={{ marginTop: '1rem' }}>
             With another website?
           </LabelText>
-          <div
-            style={{ marginTop: '2rem', marginBottom: '2rem' }}
-            className="jc-center fxd-column d-flex"
+        </Text>
+        <div
+          style={{ marginTop: '2rem', marginBottom: '2rem' }}
+          className="jc-center fxd-column d-flex"
+        >
+          <Button
+            primary
+            style={{ textDecoration: 'none', alignItems: 'center' }}
+            href={useBaseUrl('/apply')}
           >
-            <Button
-              primary
-              style={{ textDecoration: 'none', alignItems: 'center' }}
-              href={useBaseUrl('/apply')}
-            >
-              Join the Program
-            </Button>
-          </div>
+            Join the Program
+          </Button>
+        </div>
+        <Text>
           <LabelText>Search for another demo?</LabelText>
         </Text>
 
-           
-        <InstantSearch  classname="mb-2 sbx-docsearch-demo__input" indexName="live-demo" searchClient={searchClient}>
+        <InstantSearch
+          classname="mb-2 sbx-docsearch-demo__input"
+          indexName="live-demo"
+          searchClient={searchClient}
+        >
           <Configure filters="status.stage: Outbound" hitsPerPage={4} />
 
-          <SearchBox
-            showLoadingIndicator
-          />
+          <SearchBox showLoadingIndicator />
           <br />
           <Results>
             <CustomHits />
