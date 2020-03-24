@@ -82,7 +82,6 @@ function Demo() {
       : '';
   const [theme, setTheme] = useState(currentTheme);
   const context = useDocusaurusContext();
-  console.log(context);
   const { siteConfig = {} } = context;
   const { themeConfig = {} } = siteConfig;
   const { navbar = {} } = themeConfig;
@@ -101,14 +100,10 @@ function Demo() {
     'e55d03a808bad4e426d28fd4a1a18338'
   );
   useEffect(() => {
-    console.log(indexNameRef);
     if (!indexName && !indexNameRef.current) {
       fallbackToDocSearchDocCred();
       return;
     }
-
-    console.log('Search?');
-    console.log(!selection && !projectName);
 
     if (!selection && !projectName) {
       const index = searchClient.initIndex('live-demo');
