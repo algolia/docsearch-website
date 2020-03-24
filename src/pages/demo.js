@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
@@ -19,7 +19,40 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {
+  InstantSearch,
+  SearchBox,
+  Configure,
+  connectStateResults,
+  connectHits,
+} from 'react-instantsearch-dom';
+const Results = connectStateResults(
+  ({ searchState, searchResults, children }) =>
+    searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
+      children
+    ) : (
+      <div>No results have been found for {searchState.query}.</div>
+    )
+);
+const Hits = ({ hits }) => (
+  <ol>
+    {hits
+      .filter(e => e.name)
+      .map(hit => (
+        <li key={hit.objectID}>
+          <a
+            style={{ textDecoration: 'none', alignItems: 'center' }}
+            href={useBaseUrl(`/demo?q=${hit.docsearch.index}`)}
+          >
+            {hit.name}
+          </a>
+          - {hit.documentation.url}
+        </li>
+      ))}
+  </ol>
+);
 
+const CustomHits = connectHits(Hits);
 function Demo() {
   const { indexName: indexNameQS = '' } = queryString.parse(
     useLocation().search
@@ -27,7 +60,10 @@ function Demo() {
 
   const [isValidDSCred, setisValidDSCred] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
+  const [selection, setSelection] = useState(false);
   let [indexName, setIndexName] = useState(indexNameQS);
+  let [apiKey, setApiKey] = useState(null);
+  let [projectName, setProjectName] = useState(null);
 
   const currentTheme =
     typeof document !== 'undefined'
@@ -47,33 +83,41 @@ function Demo() {
     setisValidDSCred(false);
     setIndexName('docsearch');
   };
-  indexName = 'docsearch';
-
+  const indexNameRef = useRef(indexName);
+  const searchClient = algoliasearch(
+    'DSW01O6QPF',
+    'e55d03a808bad4e426d28fd4a1a18338'
+  );
   useEffect(() => {
-    // Credential not provided
-    if (!indexName) {
+    console.log(indexNameRef);
+    if (!indexName && !indexNameRef.current) {
       fallbackToDocSearchDocCred();
       return;
     }
-    if (!indexName) {
-      setWrongCredentials(true);
-      fallbackToDocSearchDocCred();
-      return;
+
+    if (!selection && !projectName) {
+      const index = searchClient.initIndex('live-demo');
+      index
+        .search(indexNameRef.current)
+        .then(result => {
+          if (!(result.nbHits > 0)) {
+            setWrongCredentials(true);
+          } else {
+            const selected = result.hits[0];
+            setProjectName(selected.name);
+            setIndexName(selected.docsearch.index);
+            setApiKey(selected.docsearch.apiKey);
+            setisValidDSCred(true);
+            setSelection(true);
+          }
+        })
+        .catch(_ => {
+          setWrongCredentials(true);
+          fallbackToDocSearchDocCred();
+        });
     }
-    const searchClient = algoliasearch(
-      'DSW01O6QPF',
-      'e55d03a808bad4e426d28fd4a1a18338'
-    );
-    const index = searchClient.initIndex('live-demo');
-    index
-      .search(indexName)
-      .then(hits => console.log(hits))
-      .catch(_ => {
-        setWrongCredentials(true);
-        fallbackToDocSearchDocCred();
-      });
   }, [indexName]);
-  const apiKey = 32321;
+
   return (
     <Layout
       title="DocSearch Demo"
@@ -92,11 +136,15 @@ function Demo() {
         </Text>
         <ErrorBoundary>
           {isValidDSCred && (
-            <DocSearch appId={appId} indexName={indexName} apiKey={apiKey} />
+            <DocSearch
+              appId="BH4D9OD16A"
+              indexName={indexName}
+              apiKey={apiKey}
+            />
           )}
           {wrongCredentials && (
             <Text color="mars-0">
-              The credentials provided from the URL were wrong, we will demo the
+              The project provided from the URL were wrong, we will demo the
               search with the search of our documentation instead.
             </Text>
           )}
@@ -115,13 +163,13 @@ function Demo() {
             src={useBaseUrl('/img/icons/icon-heart.png')}
             width="30px"
           />{' '}
-          zapier
+          {projectName}
         </LabelText>
-        <Text>
+        <Text style={{ marginTop: '1.5rem' }}>
           This page demonstrates a search as your type experience implemented by
-          DocSearch on Zapier's documentation.{' '}
+          DocSearch on {projectName}'s documentation.{' '}
         </Text>
-        <ul>
+        <ul style={{ marginBottom: '2rem' }}>
           <li>
             <img
               className="ds-icon"
@@ -148,16 +196,29 @@ function Demo() {
           </li>
         </ul>
         <LabelText big>Instructions:</LabelText>
-        <br />
-        <br />
-        <Text>
-          Congratulations, your search is now ready!
-          <br />
+
+        <Text style={{ marginTop: '1.5rem' }}>
           We ha've successfully configured the underlying crawler and it will
           now run every 24h.
           <br />
-          <br />
           You're now a few steps away from having it working on your website:
+          <br /> 
+          <br /> 
+
+          Include a search input:
+          <LiveProvider
+            code={`<input type="text" id="q" placeholder="Search the doc" />`}
+            language="html"
+            noInline={true}
+            transformCode={code =>
+              `class Null extends React.Component {render(){return null}}`
+            }
+            theme={github | vsDark}
+          >
+            <LiveEditor />
+            <LiveError />
+            <LivePreview />
+          </LiveProvider>
           <br />
           Include these assets:
           <br />
@@ -172,7 +233,7 @@ function Demo() {
 <script type="text/javascript"> docsearch({
     apiKey: '${apiKey}',
     indexName: '${indexName}',
-    inputSelector: '### REPLACE ME ####',
+    inputSelector: '#q', // CSS selector to target <input/>
     debug: false // Set to true if you want to inspect the dropdown
 });
 </script>`}
@@ -201,12 +262,13 @@ function Demo() {
           </InlineLink>
         </Text>
 
-        <LabelText big>Need an index?</LabelText>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="jc-center fxd-column d-flex">
+        <LabelText big style={{ marginTop: '1rem' }}>
+          Need an index?
+        </LabelText>
+        <div
+          style={{ marginTop: '2rem' }}
+          className="jc-center fxd-column d-flex"
+        >
           <Button
             primary
             style={{ textDecoration: 'none', alignItems: 'center' }}
@@ -215,6 +277,19 @@ function Demo() {
             Join the Program
           </Button>
         </div>
+
+        <LabelText big style={{ marginTop: '1rem' }}>
+          Want to help another project?
+        </LabelText>
+
+        <InstantSearch indexName="live-demo" searchClient={searchClient}>
+          <Configure filters="status.stage: Outbound" hitsPerPage={4} />
+
+          <SearchBox showLoadingIndicator />
+          <Results>
+            <CustomHits />
+          </Results>
+        </InstantSearch>
       </Card>
     </Layout>
   );
