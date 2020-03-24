@@ -160,8 +160,13 @@ function Demo() {
       </Card>
 
       <Card
-        className="m-auto mt-4"
-        style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
+        className="m-auto"
+        style={{
+          position: 'relative',
+          maxWidth: '800px',
+          marginTop: '2rem',
+          marginBottom: '2rem',
+        }}
         background={theme === 'dark' ? 'dark' : 'light'}
       >
         <div
