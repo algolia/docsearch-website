@@ -87,6 +87,8 @@ function Demo() {
   const [indexName, setIndexName] = useState(indexNameFromUrl);
   const [apiKey, setApiKey] = useState(null);
   const [projectName, setProjectName] = useState(null);
+  const [docsearchIssueUrl, setDocsearchIssueUrl] = useState(null);
+  const [selection, setSelection] = useState(false);
 
   const searchClient = useRef(
     algoliasearch('DSW01O6QPF', 'e55d03a808bad4e426d28fd4a1a18338')
@@ -99,22 +101,28 @@ function Demo() {
 
   useEffect(() => {
     const index = searchClient.current.initIndex('live-demo');
-    index
-      .search(indexName, { hitsPerPage: 1 })
-      .then(result => {
-        if (result.nbHits === 0) {
-          resetCredentials();
-        } else {
-          const activeDocSearchIndex = result.hits[0];
+    if (!selection && !projectName) {
+      index
+        .search(indexName, { hitsPerPage: 1 })
+        .then(result => {
+          if (result.nbHits === 0) {
+            resetCredentials();
+          } else {
+            const activeDocSearchIndex = result.hits[0];
 
-          setProjectName(activeDocSearchIndex.name);
-          setIndexName(activeDocSearchIndex.docsearch.index);
-          setApiKey(activeDocSearchIndex.docsearch.apiKey);
-        }
-      })
-      .catch(() => {
-        resetCredentials();
-      });
+            setProjectName(activeDocSearchIndex.name);
+            setIndexName(activeDocSearchIndex.docsearch.index);
+            setApiKey(activeDocSearchIndex.docsearch.apiKey);
+            setDocsearchIssueUrl(
+              activeDocSearchIndex.outbound.docsearchIssueUrl
+            );
+          }
+        })
+        .catch(() => {
+          resetCredentials();
+        });
+      setSelection(true);
+    }
   }, [indexName]);
 
   const code = `<!-- at the end of the \`head\` -->
@@ -130,7 +138,6 @@ function Demo() {
     debug: false, // Set to \`true\` if you want to inspect the dropdown
   });
 </script>`;
-
   return (
     <Layout
       title="DocSearch Demo"
@@ -182,7 +189,7 @@ function Demo() {
             src={useBaseUrl('/img/icons/icon-heart.png')}
             width="30px"
           />
-          <LabelText big>{projectName}</LabelText>
+          {projectName !== null && <LabelText big>{projectName}</LabelText>}
         </div>
 
         <Text style={{ marginTop: '1.5rem' }}>
@@ -223,6 +230,21 @@ function Demo() {
           We have configured the crawler. It will run every 24 hours. You're now
           a few steps away from having it work on your website.
         </Text>
+        {docsearchIssueUrl && (
+          <InlineLink
+            style={{
+              textDecoration: 'none',
+            }}
+            href={docsearchIssueUrl}
+          >
+            Please 👍 the opened issue on{' '}
+            <img
+              src={useBaseUrl('/img/icons/icon-github.png')}
+              width="30px"
+              alt="GitHub"
+            />
+          </InlineLink>
+        )}
 
         <Text>Include a search input:</Text>
 
