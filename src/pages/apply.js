@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '@theme/Layout';
 import { Section, Hero } from '@algolia/ui-library';
 import ApplyForm from '../components/ApplyForm.js';
+import { DocSearchLogo } from '../components/DocSearchLogo';
 
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 
@@ -10,7 +11,7 @@ function Apply() {
 
   return (
     <>
-      <Hero background="curves" title={<img src={logoUrl} alt="DocSearch" />} />
+      <Hero background="curves" title={<DocSearchLogo />} />
       <Section>
         <ApplyForm theme={theme} />
       </Section>

@@ -45,7 +45,7 @@ const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
 
 function Navbar() {
   const context = useDocusaurusContext();
-  const { theme, setTheme, logoUrl } = useDocSearchContext();
+  const { theme, setTheme } = useDocSearchContext();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
 
@@ -158,9 +158,7 @@ function Navbar() {
         <div className="navbar-sidebar">
           <div className="navbar-sidebar__brand">
             <Link className="navbar__brand" onClick={hideSidebar} to={baseUrl}>
-              {logo != null && (
-                <img className="navbar__logo" src={logoUrl} alt={logo.alt} />
-              )}
+              {logo != null && <DocSearchLogo />}
               {title != null && <strong>{title}</strong>}
             </Link>
             {sidebarShown && (

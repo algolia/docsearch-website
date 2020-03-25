@@ -17,21 +17,20 @@ import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import showcaseProjects from './showcase-projects.json';
 import demoProjects from './demo-projects.json';
 import ApplyForm from '../components/ApplyForm.js';
+import { DocSearchLogo } from '../components/DocSearchLogo';
 
 function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const { logoUrl } = useDocSearchContext();
 
   return (
     <>
       <Hero
         id="hero"
         background="curves"
-        title={<img src={logoUrl} alt="DocSearch" />}
+        title={<DocSearchLogo />}
         subtitle={siteConfig.tagline}
         cta={[
           <Button
