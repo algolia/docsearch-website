@@ -34,6 +34,7 @@ function Home() {
   const { logo = {} } = navbar;
 
   const logoUrl = useBaseUrl(theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light);
+  console.log(logoUrl)
 
   return (
     <Layout

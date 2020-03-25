@@ -26,6 +26,7 @@ import {
   connectStateResults,
   connectHits,
 } from 'react-instantsearch-dom';
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 const Results = connectStateResults(
   ({ searchState, searchResults, children }) =>
@@ -67,6 +68,7 @@ const CustomHits = connectHits(({ hits }) => (
 
 function Demo() {
   const context = useDocusaurusContext();
+  const { isDarkTheme } = useThemeContext();
   const currentTheme =
     typeof document !== 'undefined'
       ? document.querySelector('html').getAttribute('data-theme')
@@ -75,7 +77,7 @@ function Demo() {
   const { logo } = context.siteConfig.themeConfig.navbar;
   const [theme, setTheme] = useState(currentTheme);
   const logoUrl = useBaseUrl(
-    theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
+    isDarkTheme ? logo.src_theme.dark : logo.src_theme.light
   );
 
   const DEFAULT_INDEX_NAME = context.siteConfig.themeConfig.algolia.indexName;
@@ -131,7 +133,7 @@ function Demo() {
   });
 </script>`;
   console.log('Dark ou pas?');
-  console.log(theme === 'dark' ? 'dark' : 'light');
+  console.log(isDarkTheme ? 'dark' : 'light');
   return (
     <Layout
       title="DocSearch Demo"
@@ -141,12 +143,12 @@ function Demo() {
     >
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={isDarkTheme ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
         <Text>
-          background={theme === 'dark' ? 'dark' : 'light'}
+          background={isDarkTheme ? 'dark' : 'light'}
           Try it out with the index: <Pill>{indexName}</Pill>
         </Text>
 
@@ -169,7 +171,7 @@ function Demo() {
           marginTop: '2rem',
           marginBottom: '2rem',
         }}
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={isDarkTheme ? 'dark' : 'light'}
       >
         <div
           style={{
@@ -235,7 +237,7 @@ function Demo() {
           transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={theme === 'dark' ? vsDark : github}
+          theme={isDarkTheme ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />
@@ -251,7 +253,7 @@ function Demo() {
           transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={theme === 'dark' ? vsDark : github}
+          theme={isDarkTheme ? vsDark : github}
         >
           <LiveEditor />
           <LiveError />
