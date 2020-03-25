@@ -116,6 +116,7 @@ function Demo() {
             setDocsearchIssueUrl(
               activeDocSearchIndex.outbound.docsearchIssueUrl
             );
+            console.log(activeDocSearchIndex.outbound)
           }
         })
         .catch(() => {
@@ -246,7 +247,7 @@ function Demo() {
           </InlineLink>
         )}
 
-        <Text>Include a search input:</Text>
+        <Text className="mt-4">Include a search input:</Text>
 
         <LiveProvider
           code={`<input type="text" id="search" placeholder="Search the doc" />`}

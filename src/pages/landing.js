@@ -101,17 +101,14 @@ function Landing() {
         background={theme === 'dark' ? 'dark' : 'light'}
       >
         <LabelText big>Instructions:</LabelText>
-        <br />
-        <br />
-        <Text style={{ marginTop: '1.5rem' }}>
+
+        <Text className="mt-4">
           We ha've successfully configured the underlying crawler and it will
           now run every 24h.
           <br />
           You're now a few steps away from having it working on your website:
-          <br />
-          <br />
-          Include a search input:
         </Text>
+        <Text className="mt-4">Include a search input:</Text>
         <LiveProvider
           code={`<input type="text" id="q" placeholder="Search the doc" />`}
           language="html"
@@ -125,11 +122,8 @@ function Landing() {
           <LiveError />
           <LivePreview />
         </LiveProvider>
-        <Text>
-          <br />
-          Include these assets:
-          <br />
-        </Text>
+
+        <Text className="mt-4">Include these assets:</Text>
 
         <LiveProvider
           code={`<!-- at the end of the HEAD -->
@@ -168,12 +162,12 @@ function Landing() {
             Please submit a PR on your configuration
           </InlineLink>
         </Text>
-        <LabelText big>Need an index?</LabelText>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="jc-center fxd-column d-flex">
+
+        <Text>
+          <LabelText big>Want another website?</LabelText>
+        </Text>
+
+        <div className="jc-center fxd-column d-flex my-4">
           <Button
             primary
             style={{ textDecoration: 'none', alignItems: 'center' }}

@@ -98,20 +98,18 @@ function Playground() {
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
       >
         <LabelText big>Instructions:</LabelText>
-        <br />
-        <br />
-        <Text>
+        <Text className="mt-4">
           You can try it out with your own <Pill>apiKey</Pill> and{' '}
           <Pill>indexName</Pill> by fetching the following URL:
-          <br />
-          <br />
+        </Text>
+        <Text className="mt-4">
           <a
             href={useBaseUrl(
               '/playground/?indexName=<indexName>&apiKey=<apiKey>'
             )}
           >{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
-          <br />
-          <br />
+        </Text>
+        <Text className="mt-4">
           <Pill>appId</Pill> is optionnal.
         </Text>
         <Text>
@@ -128,10 +126,11 @@ function Playground() {
           </InlineLink>
         </Text>
 
-        <LabelText big>Need an index?</LabelText>
-        <br />
-        <br />
-        <div className="jc-center fxd-column d-flex">
+        <Text>
+          <LabelText big>Want another website?</LabelText>
+        </Text>
+
+        <div className="jc-center fxd-column d-flex my-4">
           <Button
             primary
             style={{ textDecoration: 'none', alignItems: 'center' }}
