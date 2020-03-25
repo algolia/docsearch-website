@@ -30,7 +30,7 @@ function Home() {
       <Hero
         id="hero"
         background="curves"
-        title={<DocSearchLogo />}
+        title={<DocSearchLogo big />}
         subtitle={siteConfig.tagline}
         cta={[
           <Button
