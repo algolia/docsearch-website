@@ -16,7 +16,11 @@ import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
+import { useDocSearchContext } from '../hooks/useDocSearchContext';
+
 function Playground() {
+  const { theme } = useDocSearchContext();
+
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
@@ -58,19 +62,8 @@ function Playground() {
       });
   }, [appId, indexName, apiKey]);
 
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
-  const [theme, setTheme] = useState(currentTheme);
-
   return (
-    <Layout
-      title="DocSearch Playground"
-      description="Try out the search for your DocSearch project"
-      theme={theme}
-      setTheme={setTheme}
-    >
+    <>
       <Hero background="orbInside" title="Playground" padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
@@ -140,8 +133,19 @@ function Playground() {
           </Button>
         </div>
       </Card>
+    </>
+  );
+}
+
+function PlaygroundPage() {
+  return (
+    <Layout
+      title="DocSearch Playground"
+      description="Try out the search for your DocSearch project"
+    >
+      <Playground />
     </Layout>
   );
 }
 
-export default Playground;
+export default PlaygroundPage;

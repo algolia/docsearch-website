@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -13,6 +13,8 @@ import Navbar from '@theme/Navbar';
 import Footer from '@theme/Footer';
 
 import './styles.css';
+import { useTheme } from '../../hooks/useTheme';
+import { DocSearchContext } from '../../hooks/useDocSearchContext';
 
 function Layout(props) {
   const { siteConfig = {} } = useDocusaurusContext();
@@ -32,27 +34,20 @@ function Layout(props) {
     keywords,
     permalink,
     version,
-    setTheme,
-    theme,
   } = props;
   const metaTitle = title || `${defaultTitle} · ${tagline}`;
   const metaImage = image || defaultImage;
   const metaImageUrl = siteUrl + useBaseUrl(metaImage);
   const faviconUrl = useBaseUrl(favicon);
-  useEffect(() => {
-    try {
-      const localStorageTheme = window.localStorage.getItem('theme');
-      if (typeof setTheme === 'function') {
-        setTheme(localStorageTheme);
-      }
-    } catch (err) {
-      throw err;
-    }
-  }, []);
+  const [theme, setTheme] = useTheme();
+  const { logo: logoConfig } = siteConfig.themeConfig.navbar;
+  const logoUrl = useBaseUrl(
+    theme === 'dark' ? logoConfig.src_theme.dark : logoConfig.src_theme.light
+  );
+
   return (
-    <>
+    <DocSearchContext.Provider value={{ theme, setTheme, logoUrl }}>
       <Head>
-        {/* TODO: Do not assume that it is in english language */}
         <html lang="en" />
 
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
@@ -75,10 +70,13 @@ function Layout(props) {
         {permalink && <meta property="og:url" content={siteUrl + permalink} />}
         <meta name="twitter:card" content="summary" />
       </Head>
-      <Navbar setTheme={setTheme} theme={theme} />
+
+      <Navbar />
+
       <div className="main-wrapper">{children}</div>
+
       {!noFooter && <Footer />}
-    </>
+    </DocSearchContext.Provider>
   );
 }
 

@@ -5,19 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import Toggle from 'react-toggle';
-
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
 import SearchBar from '@theme/SearchBar';
-
 import classnames from 'classnames';
 
 import styles from './styles.module.css';
+import { useDocSearchContext } from '../../hooks/useDocSearchContext';
+import { DocSearchLogo } from '../../components/DocSearchLogo';
 
 function NavLink(props) {
   const toUrl = useBaseUrl(props.to);
@@ -44,19 +43,12 @@ function NavLink(props) {
 const Moon = () => <span className={classnames(styles.toggle, styles.moon)} />;
 const Sun = () => <span className={classnames(styles.toggle, styles.sun)} />;
 
-function Navbar(props) {
+function Navbar() {
   const context = useDocusaurusContext();
+  const { theme, setTheme, logoUrl } = useDocSearchContext();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
-  let setTheme = props.setTheme;
-  let theme = props.theme;
-  if (!setTheme) {
-    const currentTheme =
-      typeof document !== 'undefined'
-        ? document.querySelector('html').getAttribute('data-theme')
-        : '';
-    [theme, setTheme] = useState(currentTheme);
-  }
+
   const { siteConfig = {} } = context;
   const { baseUrl, themeConfig = {} } = siteConfig;
   const { algolia, navbar = {} } = themeConfig;
@@ -69,32 +61,16 @@ function Navbar(props) {
     setSidebarShown(false);
   }, [setSidebarShown]);
 
-  useEffect(() => {
-    try {
-      const localStorageTheme = window.localStorage.getItem('theme');
-      setTheme(localStorageTheme);
-    } catch (err) {
-      throw err;
-    }
-  }, []);
-
-  const onToggleChange = e => {
-    const nextTheme = e.target.checked ? 'dark' : '';
-    setTheme(nextTheme);
-    try {
-      window.localStorage.setItem('theme', nextTheme);
-    } catch (err) {
-      throw err;
-    }
-  };
-
-  const logoUrl = useBaseUrl(
-    theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
+  const onToggleChange = useCallback(
+    function onToggleChange(event) {
+      setTheme(event.target.checked ? 'dark' : 'light');
+    },
+    [setTheme]
   );
+
   return (
     <React.Fragment>
       <Head>
-        {/* TODO: Do not assume that it is in english language */}
         <html lang="en" data-theme={theme} />
       </Head>
       <nav
@@ -131,9 +107,7 @@ function Navbar(props) {
               </svg>
             </div>
             <Link className="navbar__brand" to={baseUrl}>
-              {logo != null && (
-                <img className="navbar__logo" src={logoUrl} alt={logo.alt} />
-              )}
+              {logo != null && <DocSearchLogo />}
               {title != null && (
                 <strong
                   className={isSearchBarExpanded ? styles.hideLogoText : ''}
