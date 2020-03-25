@@ -51,6 +51,14 @@ html[data-theme='dark'] #hero {
   );
 }
 
+.docsearch-logo {
+  color: #21243d;
+}
+
+html[data-theme='dark'] .docsearch-logo {
+  color: #fff;
+}
+
 html[data-theme='dark'] div[class*='background-curves-Hero'] {
   opacity: 0.4;
 }

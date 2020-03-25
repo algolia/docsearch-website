@@ -27,6 +27,9 @@ import {
   connectHits,
 } from 'react-instantsearch-dom';
 
+import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import { DocSearchLogo } from '../components/DocSearchLogo';
+
 const Results = connectStateResults(
   ({ searchState, searchResults, children }) =>
     searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
@@ -66,20 +69,11 @@ const CustomHits = connectHits(({ hits }) => (
 ));
 
 function Demo() {
-  const context = useDocusaurusContext();
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
+  const { siteConfig } = useDocusaurusContext();
+  const { theme, logoUrl } = useDocSearchContext();
 
-  const { logo } = context.siteConfig.themeConfig.navbar;
-  const [theme, setTheme] = useState(currentTheme);
-  const logoUrl = useBaseUrl(
-    theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light
-  );
-
-  const DEFAULT_INDEX_NAME = context.siteConfig.themeConfig.algolia.indexName;
-  const DEFAULT_API_KEY = context.siteConfig.themeConfig.algolia.apiKey;
+  const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
+  const DEFAULT_API_KEY = siteConfig.themeConfig.algolia.apiKey;
 
   const {
     indexName: indexNameFromUrl = DEFAULT_INDEX_NAME,
@@ -116,7 +110,7 @@ function Demo() {
             setDocsearchIssueUrl(
               activeDocSearchIndex.outbound.docsearchIssueUrl
             );
-            console.log(activeDocSearchIndex.outbound)
+            console.log(activeDocSearchIndex.outbound);
           }
         })
         .catch(() => {
@@ -140,12 +134,7 @@ function Demo() {
   });
 </script>`;
   return (
-    <Layout
-      title="DocSearch Demo"
-      description="Try out the search for your DocSearch project"
-      theme={theme}
-      setTheme={setTheme}
-    >
+    <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
@@ -184,7 +173,7 @@ function Demo() {
             justifyContent: 'center',
           }}
         >
-          <img src={logoUrl} alt="DocSearch" style={{ height: '2rem' }} />
+          <DocSearchLogo />
           <img
             className="ds-icon-heart"
             src={useBaseUrl('/img/icons/icon-heart.png')}
@@ -324,8 +313,19 @@ function Demo() {
           </Results>
         </InstantSearch>
       </Card>
+    </>
+  );
+}
+
+function DemoPage() {
+  return (
+    <Layout
+      title="DocSearch Demo"
+      description="Try out the search for your DocSearch project"
+    >
+      <Demo />
     </Layout>
   );
 }
 
-export default Demo;
+export default DemoPage;

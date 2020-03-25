@@ -19,7 +19,11 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 
+import { useDocSearchContext } from '../hooks/useDocSearchContext';
+
 function Landing() {
+  const { theme } = useDocSearchContext();
+
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
@@ -31,12 +35,6 @@ function Landing() {
   const [appId, setAppId] = useState(appIdQS);
   const [indexName, setIndexName] = useState(indexNameQS);
   const [apiKey, setApiKey] = useState(apiKeyQS);
-
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
-  const [theme, setTheme] = useState(currentTheme);
 
   const fallbackToDocSearchDocCred = () => {
     setisValidDSCred(false);
@@ -68,12 +66,7 @@ function Landing() {
   }, [appId, indexName, apiKey]);
 
   return (
-    <Layout
-      title="DocSearch Landing"
-      description="Try out the search for your DocSearch project"
-      theme={theme}
-      setTheme={setTheme}
-    >
+    <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
@@ -177,8 +170,19 @@ function Landing() {
           </Button>
         </div>
       </Card>
+    </>
+  );
+}
+
+function LandingPage() {
+  return (
+    <Layout
+      title="DocSearch Landing"
+      description="Try out the search for your DocSearch project"
+    >
+      <Landing />
     </Layout>
   );
 }
 
-export default Landing;
+export default LandingPage;

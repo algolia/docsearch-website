@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React from 'react';
 import {
   LightCta,
   Section,
@@ -17,40 +16,29 @@ import {
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
+import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import showcaseProjects from './showcase-projects.json';
 import demoProjects from './demo-projects.json';
 import ApplyForm from '../components/ApplyForm.js';
 
 function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
-  const currentTheme =
-    typeof document !== 'undefined'
-      ? document.querySelector('html').getAttribute('data-theme')
-      : '';
-  const { themeConfig = {} } = siteConfig;
-  const [theme, setTheme] = useState(currentTheme);
-  const { navbar = {} } = themeConfig;
-  const { logo = {} } = navbar;
-
-  const logoUrl = useBaseUrl(theme === 'dark' ? logo.src_theme.dark : logo.src_theme.light);
+  const { siteConfig } = useDocusaurusContext();
+  const { logoUrl } = useDocSearchContext();
 
   return (
-    <Layout
-      title="DocSearch: Search made for documentation"
-      description="The easiest way to add search to your documentation - Powered by Algolia"
-      theme={theme}
-      setTheme={setTheme}
-    >
+    <>
       <Hero
         id="hero"
         background="curves"
-        title={
-          <img src={logoUrl} alt="DocSearch" />
-        }
+        title={<img src={logoUrl} alt="DocSearch" />}
         subtitle={siteConfig.tagline}
         cta={[
-          <Button primary style={{ textDecoration: 'none' }} href={useBaseUrl("/apply")}>
+          <Button
+            primary
+            style={{ textDecoration: 'none' }}
+            href={useBaseUrl('/apply')}
+          >
             Join the Program
           </Button>,
         ]}
@@ -230,10 +218,22 @@ function Home() {
             No commitment. No subscription. Everything is on us!
           </Text>
         </SectionHeader>
+
         <ApplyForm />
       </Section>
+    </>
+  );
+}
+
+function HomePage() {
+  return (
+    <Layout
+      title="DocSearch: Search made for documentation"
+      description="The easiest way to add search to your documentation - Powered by Algolia"
+    >
+      <Home />
     </Layout>
   );
 }
 
-export default Home;
+export default HomePage;

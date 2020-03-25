@@ -9,13 +9,13 @@ import {
 } from '@algolia/ui-library';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-const MAX_WIDTH = '600px';
+import { useDocSearchContext } from '../hooks/useDocSearchContext';
 
-function ApplyForm(props) {
+function ApplyForm() {
+  const { theme } = useDocSearchContext();
   const [hasSent, setHasSent] = useState(false);
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
-  const { theme } = props;
 
   function onSubmit(event) {
     event.preventDefault();
@@ -46,7 +46,7 @@ function ApplyForm(props) {
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
         className="uil-m-auto"
-        style={{ maxWidth: MAX_WIDTH }}
+        style={{ maxWidth: 600 }}
       >
         <LabelText style={{ fontSize: '1.2em' }}>Thank you!</LabelText>
         <br />
@@ -75,7 +75,7 @@ function ApplyForm(props) {
     <Card
       background={theme === 'dark' ? 'dark' : 'light'}
       className="uil-m-auto"
-      style={{ maxWidth: MAX_WIDTH }}
+      style={{ maxWidth: 600 }}
     >
       <form
         onSubmit={onSubmit}
