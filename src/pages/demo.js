@@ -213,7 +213,7 @@ function Demo() {
         </Text>
 
         <Text>
-          <LabelText big>Want another website?</LabelText>
+          <LabelText big>DocSearch on another website?</LabelText>
         </Text>
 
         <div className="jc-center fxd-column d-flex my-4">
