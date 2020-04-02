@@ -158,7 +158,7 @@ function Demo() {
             }}
             href={docsearchIssueUrl}
           >
-            Please 👍 the opened issue on{' '}
+            Thumb up the request to feature DocSearch on the repo 👍{' '}
             <img
               className="github__logo"
               src={useBaseUrl('/img/icons/icon-github.png')}
