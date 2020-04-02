@@ -4,10 +4,10 @@ export function DocSearchLogo(props) {
   const { big = false } = props;
   return (
     <svg
-      width={big ? (big === '100%' ? '100%' : '50%') : '190'}
+      width={big ? (big === true ? big : '50%') : '190'}
       viewBox="0 0 476 78"
       className="docsearch-logo"
-      style={big === '100%' ? { maxWidth: '190px', minWidth: '150px' } : {}}
+      style={big === true ? { maxWidth: '190px', minWidth: '150px' } : {}}
     >
       <g fill-rule="nonzero" fill="none">
         <path
