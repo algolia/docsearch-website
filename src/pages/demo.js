@@ -19,54 +19,9 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {
-  InstantSearch,
-  SearchBox,
-  Configure,
-  connectStateResults,
-  connectHits,
-} from 'react-instantsearch-dom';
 
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { DocSearchLogo } from '../components/DocSearchLogo';
-
-const Results = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
-      children
-    ) : (
-      <div
-        style={{ marginTop: '2rem', marginBottom: '2rem' }}
-        className="jc-center fxd-column d-flex"
-      >
-        <Button
-          primary
-          style={{ textDecoration: 'none', alignItems: 'center' }}
-          href={useBaseUrl('/apply')}
-        >
-          Apply for {searchState.query}
-        </Button>
-      </div>
-    )
-);
-
-const CustomHits = connectHits(({ hits }) => (
-  <ol>
-    {hits
-      .filter(e => e.name)
-      .map(hit => (
-        <li key={hit.objectID}>
-          <InlineLink
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
-          >
-            {hit.name}
-          </InlineLink>
-          - {hit.documentation.url}
-        </li>
-      ))}
-  </ol>
-));
 
 function Demo() {
   const { siteConfig } = useDocusaurusContext();
@@ -176,7 +131,7 @@ function Demo() {
             justifyContent: 'center',
           }}
         >
-          <DocSearchLogo />
+          <DocSearchLogo width="190px" />
           <img
             className="ds-icon-heart"
             src={useBaseUrl('/img/icons/icon-heart.png')}
@@ -189,33 +144,6 @@ function Demo() {
           This page demonstrates a search-as-you-type experience implemented by
           DocSearch on {projectName}'s documentation.
         </Text>
-
-        <ul style={{ marginBottom: '2rem' }}>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/zap.png')}
-              width="30px"
-            />
-            Smart and instant
-          </li>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/typo.png')}
-              width="30px"
-            />
-            Typo-tolerance
-          </li>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/highlight.png')}
-              width="30px"
-            />
-            Highlighting
-          </li>
-        </ul>
 
         <LabelText big>Instructions</LabelText>
 
@@ -230,8 +158,9 @@ function Demo() {
             }}
             href={docsearchIssueUrl}
           >
-            Please 👍 the opened issue on{' '}
+            Thumb up the request to feature DocSearch on the repo 👍{' '}
             <img
+              className="github__logo"
               src={useBaseUrl('/img/icons/icon-github.png')}
               width="30px"
               alt="GitHub"
@@ -285,7 +214,7 @@ function Demo() {
         </Text>
 
         <Text>
-          <LabelText big>Want another website?</LabelText>
+          <LabelText big>DocSearch on another website?</LabelText>
         </Text>
 
         <div className="jc-center fxd-column d-flex my-4">
@@ -297,24 +226,6 @@ function Demo() {
             Join the Program
           </Button>
         </div>
-
-        <Text>
-          <LabelText big>Search for another demo</LabelText>
-        </Text>
-
-        <InstantSearch
-          searchClient={searchClient.current}
-          indexName="live-demo"
-          classame="mb-2 sbx-docsearch-demo__input"
-        >
-          <Configure filters="status.stage:Outbound" hitsPerPage={4} />
-
-          <SearchBox showLoadingIndicator />
-
-          <Results>
-            <CustomHits />
-          </Results>
-        </InstantSearch>
       </Card>
     </>
   );

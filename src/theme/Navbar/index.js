@@ -107,7 +107,12 @@ function Navbar() {
               </svg>
             </div>
             <Link className="navbar__brand" to={baseUrl}>
-              {logo != null && <DocSearchLogo />}
+              {logo != null && (
+                <DocSearchLogo
+                  width="100%"
+                  style={{ maxWidth: '190px', minWidth: '150px' }}
+                />
+              )}
               {title != null && (
                 <strong
                   className={isSearchBarExpanded ? styles.hideLogoText : ''}
@@ -158,7 +163,12 @@ function Navbar() {
         <div className="navbar-sidebar">
           <div className="navbar-sidebar__brand">
             <Link className="navbar__brand" onClick={hideSidebar} to={baseUrl}>
-              {logo != null && <DocSearchLogo />}
+              {logo != null && (
+                <DocSearchLogo
+                  width="100%"
+                  style={{ maxWidth: '190px', minWidth: '150px' }}
+                />
+              )}
               {title != null && <strong>{title}</strong>}
             </Link>
             {sidebarShown && (
