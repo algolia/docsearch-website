@@ -91,6 +91,13 @@ html[data-theme='dark'] img.ds-icon {
   filter: invert();
 }
 
+html[data-theme='dark'] img.github__logo {
+  filter: none;
+}
+html:not([data-theme='dark']) img.github__logo {
+  filter: invert();
+}
+
 html[data-theme='dark'] [class*='light-Card'] {
   -webkit-transition: -webkit-transform 0.2s ease-out, box-shadow 0.2s ease-out;
   -webkit-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;

@@ -160,6 +160,7 @@ function Demo() {
           >
             Please 👍 the opened issue on{' '}
             <img
+              className="github__logo"
               src={useBaseUrl('/img/icons/icon-github.png')}
               width="30px"
               alt="GitHub"
