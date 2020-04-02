@@ -145,33 +145,6 @@ function Demo() {
           DocSearch on {projectName}'s documentation.
         </Text>
 
-        <ul style={{ marginBottom: '2rem' }}>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/zap.png')}
-              width="30px"
-            />
-            Smart and instant
-          </li>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/typo.png')}
-              width="30px"
-            />
-            Typo-tolerance
-          </li>
-          <li>
-            <img
-              className="ds-icon"
-              src={useBaseUrl('/img/icons/highlight.png')}
-              width="30px"
-            />
-            Highlighting
-          </li>
-        </ul>
-
         <LabelText big>Instructions</LabelText>
 
         <Text className="mt-4">
