@@ -19,54 +19,9 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {
-  InstantSearch,
-  SearchBox,
-  Configure,
-  connectStateResults,
-  connectHits,
-} from 'react-instantsearch-dom';
 
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { DocSearchLogo } from '../components/DocSearchLogo';
-
-const Results = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
-      children
-    ) : (
-      <div
-        style={{ marginTop: '2rem', marginBottom: '2rem' }}
-        className="jc-center fxd-column d-flex"
-      >
-        <Button
-          primary
-          style={{ textDecoration: 'none', alignItems: 'center' }}
-          href={useBaseUrl('/apply')}
-        >
-          Apply for {searchState.query}
-        </Button>
-      </div>
-    )
-);
-
-const CustomHits = connectHits(({ hits }) => (
-  <ol>
-    {hits
-      .filter(e => e.name)
-      .map(hit => (
-        <li key={hit.objectID}>
-          <InlineLink
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
-          >
-            {hit.name}
-          </InlineLink>
-          - {hit.documentation.url}
-        </li>
-      ))}
-  </ol>
-));
 
 function Demo() {
   const { siteConfig } = useDocusaurusContext();
@@ -297,24 +252,6 @@ function Demo() {
             Join the Program
           </Button>
         </div>
-
-        <Text>
-          <LabelText big>Search for another demo</LabelText>
-        </Text>
-
-        <InstantSearch
-          searchClient={searchClient.current}
-          indexName="live-demo"
-          classame="mb-2 sbx-docsearch-demo__input"
-        >
-          <Configure filters="status.stage:Outbound" hitsPerPage={4} />
-
-          <SearchBox showLoadingIndicator />
-
-          <Results>
-            <CustomHits />
-          </Results>
-        </InstantSearch>
       </Card>
     </>
   );
