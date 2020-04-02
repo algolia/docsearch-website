@@ -97,7 +97,10 @@ function Demo() {
     const index = searchClient.current.initIndex('live-demo');
     if (!selection && !projectName) {
       index
-        .search(indexName, { hitsPerPage: 1 })
+        .search(indexName, {
+          filters: 'status.stage: "Outbound"',
+          hitsPerPage: 1,
+        })
         .then(result => {
           if (result.nbHits === 0) {
             resetCredentials();
