@@ -11,7 +11,7 @@ function Apply() {
 
   return (
     <>
-      <Hero background="curves" title={<DocSearchLogo big/>} />
+      <Hero background="curves" title={<DocSearchLogo width="50%" />} />
       <Section>
         <ApplyForm theme={theme} />
       </Section>

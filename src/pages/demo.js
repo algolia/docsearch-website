@@ -131,7 +131,7 @@ function Demo() {
             justifyContent: 'center',
           }}
         >
-          <DocSearchLogo />
+          <DocSearchLogo width="190px" />
           <img
             className="ds-icon-heart"
             src={useBaseUrl('/img/icons/icon-heart.png')}
