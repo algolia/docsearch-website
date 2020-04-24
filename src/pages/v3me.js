@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import LayoutV3 from '@theme/LayoutV3';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
+import Layout from '@theme/Layout';
 import {
   Button,
   Hero,
@@ -10,12 +10,12 @@ import {
   LabelText,
   InlineLink,
 } from '@algolia/ui-library';
-import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {DocSearch} from '@theme/DocSearch-react/esm/';
+import { DocSearchModal as DocSearch } from '@francoischalifour/docsearch-react';
 
+import ErrorBoundary from '../components/ErrorBoundary';
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 
 function V3Me() {
@@ -79,13 +79,12 @@ function V3Me() {
         </Text>
         <ErrorBoundary>
           {isValidDSCred && (
-              <DocSearch
+            <DocSearch
               appId={appId}
               apiKey={apiKey}
               indexName={indexName}
               navigator={{
                 navigate({ suggestionUrl }) {
-                  console.log("suggestionUrl", suggestionUrl)
                   history.push(suggestionUrl);
                 },
               }}
@@ -119,9 +118,7 @@ function V3Me() {
         </Text>
         <Text className="mt-4">
           <a
-            href={useBaseUrl(
-              '/v3me/?indexName=<indexName>&apiKey=<apiKey>'
-            )}
+            href={useBaseUrl('/v3me/?indexName=<indexName>&apiKey=<apiKey>')}
           >{`https://docsearch.algolia.com/v3me/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
         </Text>
         <Text className="mt-4">
@@ -161,12 +158,9 @@ function V3Me() {
 
 function V3MePage() {
   return (
-    <LayoutV3
-      title="DocSearch V3Me"
-      description="Try out the search for your DocSearch project"
-    >
+    <Layout>
       <V3Me />
-    </LayoutV3>
+    </Layout>
   );
 }
 
