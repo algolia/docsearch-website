@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
+import Layout from '@theme/Layout';
 import {
   Button,
   Hero,
@@ -156,7 +157,11 @@ function V3Me() {
 }
 
 function V3MePage() {
-  return <V3Me />;
+  return (
+    <Layout>
+      <V3Me />
+    </Layout>
+  );
 }
 
 export default V3MePage;
