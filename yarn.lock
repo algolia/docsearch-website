@@ -981,7 +981,7 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-transform-typescript" "^7.9.0"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
   integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
@@ -1347,23 +1347,24 @@
     url "^0.11.0"
     webpack-sources "^1.4.3"
 
-"@francoischalifour/autocomplete-core@^1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.10.tgz#1eb4343b43c33998d793fd797ae49fd91d67ca4e"
-  integrity sha512-+AS+gveJLx1MMtmtjdLdfjv5rALPc4mxt3fvEdT7oXY9A6D0RcmzbkRlBQgGd1KYTSlWHg3Puh9dv7e4RbicFg==
+"@francoischalifour/autocomplete-core@^1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.13.tgz#bfbc874344ca1b88228e5dc0492e598bf988e079"
+  integrity sha512-RrX9/Q2I7W+gUL2iljbBQGd1hDbiUX2iBtBvLeRzTej0XRahpeFZXDgod7WhLiRk1OlNm33yCsKq+I2A8k7pHQ==
 
-"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.10":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.10.tgz#01bfb4f2890ac16484a5aad77596e3c392d7e4a4"
-  integrity sha512-yOdow7WdRS44zkv3/bKPCQDsLpkib0QnukmtU+iJGO5eClux2iDXszJ87AQw/mKn29wfJit4n3cToNSJbJgTZw==
+"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.13.tgz#370b3de1de6cf382ea44f0611f4bb34fe5ad9a7d"
+  integrity sha512-P5GlWb4dTPkdWSruJjisDs9RvIsx8zuvIkBgN6q+esCdAGzyDAjp05EuoeJpxFiiEAO1E2itB/xczBqt9oQ5ag==
 
-"@francoischalifour/autocomplete.js@^1.0.0-alpha.9":
-  version "1.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete.js/-/autocomplete.js-1.0.0-alpha.10.tgz#1b06b660cfdaed9a880e4bc1279556a0724eda09"
-  integrity sha512-T4aj50YFeScUpZo1XUT5USgJxiXjY6Pev75nkTvRddHWBcEWMqkTqQCt71lcLwJOpkW/b+gtZds0z/Kad8QeMg==
+"@francoischalifour/docsearch-react@1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/docsearch-react/-/docsearch-react-1.0.0-alpha.13.tgz#9d3fd3c6b0afc09b979b89f0f6b949f0af207e93"
+  integrity sha512-JU11cOYMvlEuDoVfeiyKmh+vLnFqnwR4sUUBLU2xFXtCIkoRgNDyFgdkkVXMbjn00foNohgoE4Vnht+pGEabqw==
   dependencies:
-    downshift "https://github.com/francoischalifour/downshift#ac372e473eea78ac7db8775acbae6726adc7e325"
-    preact "^10.0.0"
+    "@francoischalifour/autocomplete-core" "^1.0.0-alpha.13"
+    "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.13"
+    algoliasearch "^4.0.0"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -2292,7 +2293,7 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-algoliasearch@^4.1.0:
+algoliasearch@^4.0.0, algoliasearch@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.2.0.tgz#dd81a1a0c57eb9f74af6db70b0c11f256692d1e6"
   integrity sha512-CgbyDBGMSzNISBFezPt68xAseknork+wNe/Oour1Hluk4OwbtobysRawFf93ZbLSQw/KbeGlVmVAvujeVIVdnQ==
@@ -3638,11 +3639,6 @@ compression@^1.7.4:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
-compute-scroll-into-view@^1.0.9:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-1.0.13.tgz#be1b1663b0e3f56cd5f7713082549f562a3477e2"
-  integrity sha512-o+w9w7A98aAFi/GjK8cxSV+CdASuPa2rR5UWs3+yHkJzWqaKoBEufFNWYaXInCSmUfDCVhesG+v9MTWqOjsxFg==
-
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -4630,15 +4626,6 @@ download@^7.1.0:
     make-dir "^1.2.0"
     p-event "^2.1.0"
     pify "^3.0.0"
-
-"downshift@https://github.com/francoischalifour/downshift#ac372e473eea78ac7db8775acbae6726adc7e325":
-  version "0.0.0-semantically-released"
-  resolved "https://github.com/francoischalifour/downshift#ac372e473eea78ac7db8775acbae6726adc7e325"
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    compute-scroll-into-view "^1.0.9"
-    prop-types "^15.7.2"
-    react-is "^16.9.0"
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -8209,16 +8196,6 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
-
-needle@^2.2.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/needle/-/needle-2.4.1.tgz#14af48732463d7475696f937626b1b993247a56a"
-  integrity sha512-x/gi6ijr4B7fwl6WYL9FwlCvRQKGlUNvnceho8wxkwXqN8jvVmmmATTmZPRRG7b/yC1eode26C2HO9jl78Du9g==
-  dependencies:
-    debug "^3.2.6"
-    iconv-lite "^0.4.4"
-    sax "^1.2.4"
-
 negotiator@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
@@ -9822,11 +9799,6 @@ postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.16, postcss@^7.0.1
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-preact@^10.0.0:
-  version "10.4.1"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.4.1.tgz#9b3ba020547673a231c6cf16f0fbaef0e8863431"
-  integrity sha512-WKrRpCSwL2t3tpOOGhf2WfTpcmbpxaWtDbdJdKdjd0aEiTkvOmS4NBkG6kzlaAHI9AkQ3iVqbFWM3Ei7mZ4o1Q==
-
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -10233,7 +10205,6 @@ react-fast-compare@^2.0.4:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-
 react-fast-compare@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-3.0.1.tgz#884d339ce1341aad22392e7a88664c71da48600e"
@@ -10279,7 +10250,7 @@ react-input-autosize@^2.2.2:
   dependencies:
     prop-types "^15.5.8"
 
-react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
+react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==

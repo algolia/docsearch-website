@@ -191,3 +191,9 @@ input.ais-SearchBox-input:hover {
   width: 100%;
   min-width: 100%;
 }
+
+/* DocSearch v3 */
+
+.DocSearch-Modal {
+  width: 100%;
+}
