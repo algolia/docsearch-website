@@ -39,10 +39,6 @@ function V3Me() {
     setIndexName('docsearch');
     setApiKey('25626fae796133dc1e734c6bcaaeac3c');
   };
-  console.log(appId);
-  console.log(appIdQS);
-  console.log(useLocation().search);
-  console.log(queryString.parse(useLocation().search));
 
   useEffect(() => {
     // Credential not provided
