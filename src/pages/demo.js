@@ -3,87 +3,52 @@ import Layout from '@theme/Layout';
 import { useLocation } from 'react-router';
 import queryString from 'query-string';
 import {
-  Button,
   Hero,
   Text,
-  Pill,
   LabelText,
   InlineLink,
 } from '@algolia/ui-library';
 import DocSearch from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
-import algoliasearch from 'algoliasearch/lite';
+
+import algoliasearch from 'algoliasearch';
+
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {
-  InstantSearch,
-  SearchBox,
-  Configure,
-  connectStateResults,
-  connectHits,
-} from 'react-instantsearch-dom';
 
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
-import { DocSearchLogo } from '../components/DocSearchLogo';
+import { Autocomplete } from '../components/Autocomplete';
+import { getAlgoliaHits } from '@francoischalifour/autocomplete-preset-algolia';
 
 function Demo() {
   const { siteConfig } = useDocusaurusContext();
   const { theme, logoUrl } = useDocSearchContext();
 
-  const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
-  const DEFAULT_API_KEY = siteConfig.themeConfig.algolia.apiKey;
+  const autocompleteSearchClient = algoliasearch(
+    'DSW01O6QPF',
+    'e55d03a808bad4e426d28fd4a1a18338'
+  );
 
-  const {
-    indexName: indexNameFromUrl = DEFAULT_INDEX_NAME,
-  } = queryString.parse(useLocation().search);
-  const [indexName, setIndexName] = useState(indexNameFromUrl);
+  const [indexName, setIndexName] = useState(null);
   const [apiKey, setApiKey] = useState(null);
   const [projectName, setProjectName] = useState(null);
   const [docsearchIssueUrl, setDocsearchIssueUrl] = useState(null);
+  const [isShowing, setIsShowing] = useState(false);
   const [selection, setSelection] = useState(false);
 
-  const searchClient = useRef(
-    algoliasearch('DSW01O6QPF', 'e55d03a808bad4e426d28fd4a1a18338')
-  );
-
   function resetCredentials() {
-    setIndexName(DEFAULT_INDEX_NAME);
-    setApiKey(DEFAULT_API_KEY);
+    setIndexName("docsearch");
+    setApiKey("25626fae796133dc1e734c6bcaaeac3c");
+    setProjectName("DocSearch");
   }
 
   useEffect(() => {
-    const index = searchClient.current.initIndex('live-demo');
-    if (!selection && !projectName) {
-      index
-        .search(indexName, {
-          filters: 'status.stage: "Outbound"',
-          hitsPerPage: 1,
-        })
-        .then(result => {
-          if (result.nbHits === 0) {
-            resetCredentials();
-          } else {
-            const activeDocSearchIndex = result.hits[0];
-
-            setProjectName(activeDocSearchIndex.name);
-            setIndexName(activeDocSearchIndex.docsearch.index);
-            setApiKey(activeDocSearchIndex.docsearch.apiKey);
-            setDocsearchIssueUrl(
-              activeDocSearchIndex.outbound.docsearchIssueUrl
-            );
-            console.log(activeDocSearchIndex.outbound);
-          }
-        })
-        .catch(() => {
-          resetCredentials();
-        });
-      setSelection(true);
-    }
-  }, [indexName]);
+    //resetCredentials();
+  });
 
   const code = `<!-- at the end of the \`head\` -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -100,15 +65,70 @@ function Demo() {
 </script>`;
   return (
     <>
-      <Hero background="orbInside" title="Integrate it!" padding="small" />
+      <Hero background="orbInside" title="Demo" subtitle={`DocSearch for ${projectName}`} padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
-        <Text>
-          Try it out with the index: <Pill>{indexName}</Pill>
-        </Text>
+      
+      <div className="algolia-autocomplete-demo-settings">
+        Demo Settings:
+        <span className="algolia-autocomplete-button">
+          <span className="algolia-autocomplete-button-label">UI</span>
+          version 2
+          <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
+        </span>
+        {!isShowing &&
+          <button className="algolia-autocomplete-button" onClick={() => setIsShowing(true)}>
+            <span className="algolia-autocomplete-button-label">Index</span>
+            {indexName || 'DocSearch'}
+            <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
+          </button>
+        }
+        {isShowing &&
+      <Autocomplete
+          // initialState= {{query: indexName}}
+          autoFocus
+          openOnFocus
+          showCompletion
+          placeholder="Search index..."
+          getSources={() => {
+            return [
+              {
+                onSelect: ({suggestion}) => {
+                  setIsShowing(false);
+                  setProjectName(suggestion.name);
+                  setIndexName(suggestion.docsearch.index);
+                  setApiKey(suggestion.docsearch.apiKey);
+                  setDocsearchIssueUrl(
+                    suggestion.outbound.docsearchIssueUrl
+                  );
+                },
+                getInputValue: ({ suggestion }) => suggestion.docsearch.index,
+                getSuggestions({ query }) {
+                  return getAlgoliaHits({
+                    searchClient: autocompleteSearchClient,
+                    queries: [
+                      {
+                        indexName: 'live-demo',
+                        query,
+                        params: {
+                          filters: 'status.stage: "Outbound"',
+                          hitsPerPage: 4,
+                        },
+                      },
+                    ],
+                  });
+                },
+              },
+            ];
+          }}
+        />
+        }
+      </div>
+
+
 
         <ErrorBoundary>
           {apiKey && (
@@ -124,35 +144,12 @@ function Demo() {
       <Card
         className="m-auto"
         style={{
-          position: 'relative',
           maxWidth: '800px',
-          marginTop: '2rem',
-          marginBottom: '2rem',
         }}
         background={theme === 'dark' ? 'dark' : 'light'}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <DocSearchLogo width="190px" />
-          <img
-            className="ds-icon-heart"
-            src={useBaseUrl('/img/icons/icon-heart.png')}
-            width="30px"
-          />
-          {projectName !== null && <LabelText big>{projectName}</LabelText>}
-        </div>
 
-        <Text style={{ marginTop: '1.5rem' }}>
-          This page demonstrates a search-as-you-type experience implemented by
-          DocSearch on {projectName}'s documentation.
-        </Text>
-
-        <LabelText big>Instructions</LabelText>
+        <LabelText big>How to Install</LabelText>
 
         <Text className="mt-4">
           We have configured the crawler. It will run every 24 hours. You're now
@@ -208,90 +205,21 @@ function Demo() {
         </LiveProvider>
 
         <Text className="pt-2">
-          Need to change something?{' '}
           <InlineLink
             style={{
               textDecoration: 'none',
             }}
             href={`https://github.com/algolia/docsearch-configs/blob/master/configs/${indexName}.json`}
           >
-            Please submit a PR on your configuration
+            Edit this configuration
           </InlineLink>
           .
         </Text>
-
-        <Text>
-          <LabelText big>DocSearch on another website?</LabelText>
-        </Text>
-
-        <div className="jc-center fxd-column d-flex my-4">
-          <Button
-            primary
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl('/apply')}
-          >
-            Join the Program
-          </Button>
-        </div>
-
-        <Text>
-          <LabelText big>Search for another demo</LabelText>
-        </Text>
-
-        <InstantSearch
-          searchClient={searchClient.current}
-          indexName="live-demo"
-          classame="sbx-docsearch-demo__input"
-        >
-          <Configure filters="status.stage:Outbound" hitsPerPage={4} />
-
-          <SearchBox showLoadingIndicator />
-
-          <Results>
-            <CustomHits />
-          </Results>
-        </InstantSearch>
       </Card>
     </>
   );
 }
-const Results = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
-      children
-    ) : (
-      <div
-        style={{ marginTop: '2rem', marginBottom: '2rem' }}
-        className="jc-center fxd-column d-flex"
-      >
-        <Button
-          primary
-          style={{ textDecoration: 'none', alignItems: 'center' }}
-          href={useBaseUrl('/apply')}
-        >
-          Apply for {searchState.query}
-        </Button>
-      </div>
-    )
-);
 
-const CustomHits = connectHits(({ hits }) => (
-  <ul>
-    {hits
-      .filter(e => e.name)
-      .map(hit => (
-        <li key={hit.objectID} style={{margin:"1rem"}}>
-          <InlineLink
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
-          >
-            {hit.name}
-          </InlineLink>
-          - {hit.documentation.url}
-        </li>
-      ))}
-  </ul>
-));
 
 function DemoPage() {
   return (
