@@ -2449,27 +2449,7 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-algoliasearch@^4.0.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.3.0.tgz#4f6db58d405d7ecc38073e17c2996066455e9979"
-  integrity sha512-H2woXyqmd1nFYDrQKLZXgghNkLBTcBXJ7Q/bxQ+F9WWS4H0Kb7IlQvNi7bDzHyldhDhIthImaUwcKqr5iiyMFQ==
-  dependencies:
-    "@algolia/cache-browser-local-storage" "4.3.0"
-    "@algolia/cache-common" "4.3.0"
-    "@algolia/cache-in-memory" "4.3.0"
-    "@algolia/client-account" "4.3.0"
-    "@algolia/client-analytics" "4.3.0"
-    "@algolia/client-common" "4.3.0"
-    "@algolia/client-recommendation" "4.3.0"
-    "@algolia/client-search" "4.3.0"
-    "@algolia/logger-common" "4.3.0"
-    "@algolia/logger-console" "4.3.0"
-    "@algolia/requester-browser-xhr" "4.3.0"
-    "@algolia/requester-common" "4.3.0"
-    "@algolia/requester-node-http" "4.3.0"
-    "@algolia/transporter" "4.3.0"
-
-algoliasearch@^4.1.0:
+algoliasearch@^4.0.0, algoliasearch@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.2.0.tgz#dd81a1a0c57eb9f74af6db70b0c11f256692d1e6"
   integrity sha512-CgbyDBGMSzNISBFezPt68xAseknork+wNe/Oour1Hluk4OwbtobysRawFf93ZbLSQw/KbeGlVmVAvujeVIVdnQ==
@@ -10513,7 +10493,7 @@ react-instantsearch-dom@^6.4.0:
     prop-types "^15.5.10"
     react-instantsearch-core "^6.4.0"
 
-react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.9.0:
+react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
