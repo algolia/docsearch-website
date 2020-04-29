@@ -15,8 +15,8 @@ import algoliasearch from 'algoliasearch';
 
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import github from 'prism-react-renderer/themes/github';
+import { LiveProvider, LiveEditor } from 'react-live';
+// import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
@@ -33,22 +33,49 @@ function Demo() {
     'e55d03a808bad4e426d28fd4a1a18338'
   );
 
-  const [indexName, setIndexName] = useState(null);
+  const [indexName, setIndexName] = useState("docsearch");
   const [apiKey, setApiKey] = useState(null);
   const [projectName, setProjectName] = useState(null);
-  const [docsearchIssueUrl, setDocsearchIssueUrl] = useState(null);
+  // const [docsearchIssueUrl, setDocsearchIssueUrl] = useState(null);
   const [isShowing, setIsShowing] = useState(false);
   const [selection, setSelection] = useState(false);
+  const [docsearchConfig, setDocsearchConfig] = useState({appId:null,indexName:null,apiKey:null});
 
   function resetCredentials() {
     setIndexName("docsearch");
     setApiKey("25626fae796133dc1e734c6bcaaeac3c");
     setProjectName("DocSearch");
   }
+  
+  const index = autocompleteSearchClient.initIndex('live-demo');
 
   useEffect(() => {
-    //resetCredentials();
-  });
+    if (!selection && !projectName) {
+        index.search(indexName, {
+          hitsPerPage: 1,
+        })
+        .then(result => {
+          if (result.nbHits === 0) {
+            resetCredentials();
+          } else {
+            const activeDocSearchIndex = result.hits[0];
+            setProjectName(activeDocSearchIndex.name);
+            setIndexName(activeDocSearchIndex.docsearch.index);
+            setApiKey(activeDocSearchIndex.docsearch.apiKey);
+            setDocsearchConfig({appId:"BH4D9OD16A",indexName:activeDocSearchIndex.docsearch.index,apiKey:activeDocSearchIndex.docsearch.apiKey});
+            // setDocsearchIssueUrl(
+            //   activeDocSearchIndex.outbound.docsearchIssueUrl
+            // );
+          }
+        })
+        .catch(() => {
+          resetCredentials();
+        });
+      setSelection(true);
+    }
+  }, [indexName]);
+
+
 
   const code = `<!-- at the end of the \`head\` -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
@@ -68,7 +95,7 @@ function Demo() {
       <Hero background="orbInside" title="Demo" subtitle={`DocSearch for ${projectName}`} padding="small" />
       <Card
         background={theme === 'dark' ? 'dark' : 'light'}
-        className="m-auto mt-4"
+        className="m-auto mb-4 "
         style={{ position: 'relative', maxWidth: '800px' }}
       >
       
@@ -82,7 +109,7 @@ function Demo() {
         {!isShowing &&
           <button className="algolia-autocomplete-button" onClick={() => setIsShowing(true)}>
             <span className="algolia-autocomplete-button-label">Index</span>
-            {indexName || 'DocSearch'}
+            {indexName}
             <svg height="20" width="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path></svg>
           </button>
         }
@@ -97,13 +124,15 @@ function Demo() {
             return [
               {
                 onSelect: ({suggestion}) => {
+                  // algoliasearch = null
                   setIsShowing(false);
                   setProjectName(suggestion.name);
                   setIndexName(suggestion.docsearch.index);
                   setApiKey(suggestion.docsearch.apiKey);
-                  setDocsearchIssueUrl(
-                    suggestion.outbound.docsearchIssueUrl
-                  );
+                  setDocsearchConfig({appId:"BH4D9OD16A",indexName:suggestion.docsearch.index,apiKey:suggestion.docsearch.apiKey});
+                  // setDocsearchIssueUrl(
+                  //   suggestion.outbound.docsearchIssueUrl
+                  // );
                 },
                 getInputValue: ({ suggestion }) => suggestion.docsearch.index,
                 getSuggestions({ query }) {
@@ -115,7 +144,7 @@ function Demo() {
                         query,
                         params: {
                           filters: 'status.stage: "Outbound"',
-                          hitsPerPage: 4,
+                          hitsPerPage: 8,
                         },
                       },
                     ],
@@ -128,23 +157,20 @@ function Demo() {
         }
       </div>
 
-
-
         <ErrorBoundary>
-          {apiKey && (
+          {docsearchConfig && (
             <DocSearch
-              appId="BH4D9OD16A"
-              indexName={indexName}
-              apiKey={apiKey}
+              docsearchConfig={docsearchConfig}
             />
           )}
         </ErrorBoundary>
       </Card>
 
       <Card
-        className="m-auto"
+        className="m-auto mb-4"
         style={{
           maxWidth: '800px',
+          position: 'relative',
         }}
         background={theme === 'dark' ? 'dark' : 'light'}
       >
@@ -155,7 +181,9 @@ function Demo() {
           We have configured the crawler. It will run every 24 hours. You're now
           a few steps away from having it work on your website.
         </Text>
-        {docsearchIssueUrl && (
+
+
+        {/* {docsearchIssueUrl && (
           <InlineLink
             style={{
               textDecoration: 'none',
@@ -170,9 +198,9 @@ function Demo() {
               alt="GitHub"
             />
           </InlineLink>
-        )}
+        )} */}
 
-        <Text className="mt-4">Include a search input:</Text>
+        <Text className="mt-4 mb-0">Include a search input:</Text>
 
         <LiveProvider
           code={`<input type="text" id="search" placeholder="Search the doc" />`}
@@ -181,14 +209,12 @@ function Demo() {
           transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={theme === 'dark' ? vsDark : github}
+          theme={vsDark}
         >
           <LiveEditor />
-          <LiveError />
-          <LivePreview />
         </LiveProvider>
 
-        <Text className="mt-4">Include these assets:</Text>
+        <Text className="mt-4 mb-0">Include these assets:</Text>
 
         <LiveProvider
           code={code}
@@ -197,11 +223,9 @@ function Demo() {
           transformCode={_code =>
             `class Null extends React.Component {render(){return null}}`
           }
-          theme={theme === 'dark' ? vsDark : github}
+          theme={vsDark}
         >
           <LiveEditor />
-          <LiveError />
-          <LivePreview />
         </LiveProvider>
 
         <Text className="pt-2">

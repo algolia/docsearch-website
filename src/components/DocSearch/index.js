@@ -1,21 +1,27 @@
 import React, { useRef, useEffect } from 'react';
 import Head from '@docusaurus/Head';
 
-export default function DocSearch({ appId, indexName, apiKey }) {
+export default function DocSearch({ docsearchConfig }) {
+  
   const docsearchRef = useRef(null);
+
+  const {appId, apiKey, indexName} = docsearchConfig;
+
   useEffect(() => {
-    if (!docsearchRef.current) {
+
+    if ( !apiKey && !indexName || !docsearchRef.current) {
       return;
     }
+    
     import('docsearch.js').then(({ default: docsearch }) => {
       docsearch({
         appId,
         apiKey,
         indexName,
-        inputSelector: `#${docsearchRef.current.id}`,
+        inputSelector: `#${indexName}`,
         autocompleteOptions: {
           hint: false,
-          appendTo: '.sbx-docsearch-demo__wrapper',
+          appendTo: `.sbx-docsearch-demo__wrapper-${indexName}`,
         },
       });
     });
@@ -53,9 +59,9 @@ export default function DocSearch({ appId, indexName, apiKey }) {
           </symbol>
         </svg>
         <form noValidate="novalidate" className="sbx-docsearch-demo">
-          <div role="search" className="sbx-docsearch-demo__wrapper">
+          <div role="search" key={indexName} className={`sbx-docsearch-demo__wrapper sbx-docsearch-demo__wrapper-${indexName}`}>
             <input
-              id="q"
+              id={indexName}
               type="search"
               name="search"
               placeholder="Search documentation..."
