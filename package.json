@@ -25,6 +25,7 @@
     "image-webpack-loader": "^6.0.0",
     "imagemin": "^7.0.0",
     "my-loaders": "file:plugins/my-loaders",
+    "prism-react-renderer": "^1.1.0",
     "query-string": "^6.9.0",
     "react-autosuggest": "^9.4.3",
     "react-instantsearch-dom": "^6.4.0",
