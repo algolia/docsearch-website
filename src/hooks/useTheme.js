@@ -12,11 +12,8 @@ export function useTheme() {
   }, [theme]);
 
   useEffect(() => {
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addListener(({ matches }) => {
-        setTheme(matches ? 'dark' : '');
-      });
+    const { matches } = window.matchMedia('(prefers-color-scheme: dark)');
+    matches && setTheme('dark');
   }, []);
 
   return [theme, setTheme];
