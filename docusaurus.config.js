@@ -9,7 +9,7 @@ module.exports = {
   title: 'DocSearch',
   tagline:
     'The best search experience for docs, integrated in minutes, for free',
-  url: 'https://docsearch.netlify.com',
+  url: 'https://docsearch.algolia.com',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'Algolia',
