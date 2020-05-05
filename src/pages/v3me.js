@@ -21,11 +21,24 @@ import { useDocSearchContext } from '../hooks/useDocSearchContext';
 function V3Me() {
   const { theme } = useDocSearchContext();
 
+  const getParams = queryString.parse(useLocation().search);
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
     apiKey: apiKeyQS = '',
-  } = queryString.parse(useLocation().search);
+  } = getParams;
+
+  const searchParameters = { hitsPerPage: 10 };
+
+  for (const [name, value] of Object.entries(getParams)) {
+    if (name !== 'appId' && name !== 'indexName' && name !== 'apiKey') {
+      const parsedInt = parseInt(value, 10);
+      const parsedBool =
+        value === 'true' ? true : value === 'false' ? false : null;
+      searchParameters[name] =
+        parsedInt !== NaN ? parsedInt : parsedBool ? parsedBool !== null : value;
+    }
+  }
 
   const [isValidDSCred, setisValidDSCred] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
@@ -84,6 +97,7 @@ function V3Me() {
                   history.push(suggestionUrl);
                 },
               }}
+              searchParameters={searchParameters}
               transformItems={items => {
                 return items.map(item => {
                   return {
