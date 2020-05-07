@@ -27,7 +27,7 @@ function Inspector() {
 
   const searchClient = algoliasearch(
     'BH4D9OD16A',
-    'd28344228b0fd292d325f86cd570f887dcfb69f9'
+    '2b64d7d554f4bea7e9f7fa5c0ae39948'
   );
   const index = searchClient.initIndex(indexName);
 
