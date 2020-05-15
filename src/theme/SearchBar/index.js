@@ -1,21 +1,19 @@
 /* eslint-disable import/no-unresolved */
 
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
 import Link from '@docusaurus/Link';
 import Head from '@docusaurus/Head';
-import { DocSearchButton } from '@francoischalifour/docsearch-react/button';
+import { DocSearchButton, useDocSearchKeyboardEvents } from '@docsearch/react';
 
-let DocSearch = null;
+let DocSearchModal = null;
 
 function SearchBar() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isShowing, setIsShowing] = useState(false);
-  const scrollY = useRef(0);
   const { siteConfig = {} } = useDocusaurusContext();
   const history = useHistory();
+  const [isOpen, setIsOpen] = useState(false);
 
   const {
     indexName,
@@ -24,65 +22,39 @@ function SearchBar() {
     searchParameters,
   } = siteConfig.themeConfig.algolia;
 
-  const load = useCallback(
-    function load() {
-      if (isLoaded === true) {
+  const importDocSearchModalIfNeeded = useCallback(
+    function importDocSearchModalIfNeeded() {
+      if (DocSearchModal) {
         return Promise.resolve();
       }
 
       return Promise.all([
-        import('@francoischalifour/docsearch-react/modal'),
-        import('@francoischalifour/docsearch-react/style'),
-      ]).then(([{ DocSearchModal }]) => {
-        DocSearch = DocSearchModal;
-        setIsLoaded(true);
+        import('@docsearch/react/modal'),
+        import('@docsearch/react/style'),
+      ]).then(([{ DocSearchModal: Modal }]) => {
+        DocSearchModal = Modal;
       });
     },
-    [isLoaded, setIsLoaded]
+    []
   );
 
   const onOpen = useCallback(
     function onOpen() {
-      load().then(() => {
-        scrollY.current = window.scrollY;
-        setIsShowing(true);
-        document.body.classList.add('DocSearch--active');
+      importDocSearchModalIfNeeded().then(() => {
+        setIsOpen(true);
       });
     },
-    [load, setIsShowing]
+    [importDocSearchModalIfNeeded, setIsOpen]
   );
 
   const onClose = useCallback(
     function onClose() {
-      setIsShowing(false);
-      document.body.classList.remove('DocSearch--active');
-      window.scrollTo(0, scrollY.current);
+      setIsOpen(false);
     },
-    [setIsShowing]
+    [setIsOpen]
   );
 
-  useEffect(() => {
-    function onKeyDown(event) {
-      if (
-        (event.key === 'Escape' && isShowing) ||
-        (event.key === 'k' && (event.metaKey || event.ctrlKey))
-      ) {
-        event.preventDefault();
-
-        if (isShowing) {
-          onClose();
-        } else {
-          onOpen();
-        }
-      }
-    }
-
-    window.addEventListener('keydown', onKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [isShowing, onOpen, onClose]);
+  useDocSearchKeyboardEvents({ isOpen, onOpen, onClose });
 
   return (
     <>
@@ -94,12 +66,15 @@ function SearchBar() {
         />
       </Head>
 
-      <DocSearchButton onClick={onOpen} />
+      <DocSearchButton
+        onTouchStart={importDocSearchModalIfNeeded}
+        onMouseOver={importDocSearchModalIfNeeded}
+        onClick={onOpen}
+      />
 
-      {isLoaded &&
-        isShowing &&
+      {isOpen &&
         createPortal(
-          <DocSearch
+          <DocSearchModal
             appId={appId}
             apiKey={apiKey}
             indexName={indexName}
@@ -112,9 +87,13 @@ function SearchBar() {
             }}
             transformItems={items => {
               return items.map(item => {
+                const url = new URL(item.url);
+
                 return {
                   ...item,
-                  url: item.url.replace('#__docusaurus', ''),
+                  url: item.url
+                    .replace(url.origin, '')
+                    .replace('#__docusaurus', ''),
                 };
               });
             }}
