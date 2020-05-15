@@ -13,7 +13,7 @@ import {
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { DocSearchModal as DocSearch } from '@francoischalifour/docsearch-react';
+import { DocSearchModal } from '@docsearch/react';
 
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
@@ -88,24 +88,10 @@ function V3Me() {
         </Text>
         <ErrorBoundary>
           {isValidDSCred && (
-            <DocSearch
+            <DocSearchModal
               appId={appId}
               apiKey={apiKey}
               indexName={indexName}
-              navigator={{
-                navigate({ suggestionUrl }) {
-                  history.push(suggestionUrl);
-                },
-              }}
-              searchParameters={searchParameters}
-              transformItems={items => {
-                return items.map(item => {
-                  return {
-                    ...item,
-                    url: item.url.replace('#__docusaurus', ''),
-                  };
-                });
-              }}
             />
           )}
           {wrongCredentials && (
