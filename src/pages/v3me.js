@@ -13,7 +13,7 @@ import {
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { DocSearchModal as DocSearch } from '@francoischalifour/docsearch-react';
+import { DocSearchModal } from '@docsearch/react';
 
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
@@ -21,11 +21,24 @@ import { useDocSearchContext } from '../hooks/useDocSearchContext';
 function V3Me() {
   const { theme } = useDocSearchContext();
 
+  const getParams = queryString.parse(useLocation().search);
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
     apiKey: apiKeyQS = '',
-  } = queryString.parse(useLocation().search);
+  } = getParams;
+
+  const searchParameters = { hitsPerPage: 10 };
+
+  for (const [name, value] of Object.entries(getParams)) {
+    if (name !== 'appId' && name !== 'indexName' && name !== 'apiKey') {
+      const parsedInt = parseInt(value, 10);
+      const parsedBool =
+        value === 'true' ? true : value === 'false' ? false : null;
+      searchParameters[name] =
+        parsedInt !== NaN ? parsedInt : parsedBool ? parsedBool !== null : value;
+    }
+  }
 
   const [isValidDSCred, setisValidDSCred] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
@@ -75,23 +88,10 @@ function V3Me() {
         </Text>
         <ErrorBoundary>
           {isValidDSCred && (
-            <DocSearch
+            <DocSearchModal
               appId={appId}
               apiKey={apiKey}
               indexName={indexName}
-              navigator={{
-                navigate({ suggestionUrl }) {
-                  history.push(suggestionUrl);
-                },
-              }}
-              transformItems={items => {
-                return items.map(item => {
-                  return {
-                    ...item,
-                    url: item.url.replace('#__docusaurus', ''),
-                  };
-                });
-              }}
             />
           )}
           {wrongCredentials && (
