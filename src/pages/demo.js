@@ -1,19 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
-import { Hero, Text, LabelText, InlineLink } from '@algolia/ui-library';
-import DocSearchV2 from '../components/DocSearch';
-import { DocSearch } from '@docsearch/react';
-import ErrorBoundary from '../components/ErrorBoundary';
-
-import algoliasearch from 'algoliasearch';
-
-import Card from '@algolia/ui-library/public/components/Card';
+import { Hero, Text, LabelText, InlineLink, Card } from '@algolia/ui-library';
+import algoliasearch from 'algoliasearch/lite';
 import { LiveProvider, LiveEditor } from 'react-live';
 import vsDark from 'prism-react-renderer/themes/vsDark';
+import { DocSearch } from '@docsearch/react';
+import { getAlgoliaHits } from '@francoischalifour/autocomplete-preset-algolia';
 
+import DocSearchV2 from '../components/DocSearch';
+import ErrorBoundary from '../components/ErrorBoundary';
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { Autocomplete } from '../components/Autocomplete';
-import { getAlgoliaHits } from '@francoischalifour/autocomplete-preset-algolia';
 
 const autocompleteSearchClient = algoliasearch(
   'DSW01O6QPF',
@@ -62,7 +59,6 @@ function DocSearchIndexSelector(props) {
               onSelect: ({ suggestion }) => {
                 props.onChange({
                   projectName: suggestion.name,
-                  appId: 'BH4D9OD16A',
                   indexName: suggestion.docsearch.index,
                   apiKey: suggestion.docsearch.apiKey,
                 });
@@ -77,7 +73,9 @@ function DocSearchIndexSelector(props) {
                       indexName: 'live-demo',
                       query,
                       params: {
-                        filters: 'status.stage:Outbound',
+                        facetFilters: [
+                          ['status.stage:Outbound', 'status.stage:Live'],
+                        ],
                         hitsPerPage: 8,
                       },
                     },
