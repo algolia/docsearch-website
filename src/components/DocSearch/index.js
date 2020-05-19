@@ -1,18 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import Head from '@docusaurus/Head';
 
-export default function DocSearch({ docsearchConfig }) {
-  
+export default function DocSearch({ appId, apiKey, indexName }) {
   const docsearchRef = useRef(null);
 
-  const {appId, apiKey, indexName} = docsearchConfig;
-
   useEffect(() => {
-
-    if ( !apiKey && !indexName || !docsearchRef.current) {
+    if ((!apiKey && !indexName) || !docsearchRef.current) {
       return;
     }
-    
+
     import('docsearch.js').then(({ default: docsearch }) => {
       docsearch({
         appId,
@@ -59,7 +55,11 @@ export default function DocSearch({ docsearchConfig }) {
           </symbol>
         </svg>
         <form noValidate="novalidate" className="sbx-docsearch-demo">
-          <div role="search" key={indexName} className={`sbx-docsearch-demo__wrapper sbx-docsearch-demo__wrapper-${indexName}`}>
+          <div
+            role="search"
+            key={indexName}
+            className={`sbx-docsearch-demo__wrapper sbx-docsearch-demo__wrapper-${indexName}`}
+          >
             <input
               id={indexName}
               type="search"

@@ -31,8 +31,17 @@ export function Dropdown(props) {
                             source,
                           })}
                         >
-                          <img className="algolia-autocomplete-suggestion-icon" src={item.documentation.favicon} width="18px"/>
-                          <ReverseHighlight hit={item} attribute="docsearch.index" />
+                          {item.documentation?.favicon && (
+                            <img
+                              className="algolia-autocomplete-suggestion-icon"
+                              src={item.documentation.favicon}
+                              width="18px"
+                            />
+                          )}
+                          <ReverseHighlight
+                            hit={item}
+                            attribute="docsearch.index"
+                          />
                         </li>
                       );
                     })}
