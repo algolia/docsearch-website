@@ -200,3 +200,12 @@ input.ais-SearchBox-input:hover {
   height: 100%;
   width: 100%;
 }
+
+.main-wrapper .algolia-autocomplete .ds-dropdown-menu{
+  width: 100%;
+  max-width: 100%;
+}
+
+.sbx-docsearch-demo__submit ~ .algolia-autocomplete{
+  max-width: calc(100% - 48px);
+}

@@ -242,43 +242,6 @@ function Demo() {
     </>
   );
 }
-const Results = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.hits.filter(e => e.name).length !== 0 ? (
-      children
-    ) : (
-      <div
-        style={{ marginTop: '2rem', marginBottom: '2rem' }}
-        className="jc-center fxd-column d-flex"
-      >
-        <Button
-          primary
-          style={{ textDecoration: 'none', alignItems: 'center' }}
-          href={useBaseUrl('/apply')}
-        >
-          Apply for {searchState.query}
-        </Button>
-      </div>
-    )
-);
-
-const CustomHits = connectHits(({ hits }) => (
-  <ul>
-    {hits
-      .filter(e => e.name)
-      .map(hit => (
-        <li key={hit.objectID} style={{margin:"1rem"}}>
-          <InlineLink
-            style={{ textDecoration: 'none', alignItems: 'center' }}
-            href={useBaseUrl(`/demo?indexName=${hit.docsearch.index}`)}
-          >
-            {hit.name}
-          </InlineLink>
-          - {hit.documentation.url}
-        </li>
-      ))}
-  </ul>
-));
 
 function DemoPage() {
   return (
