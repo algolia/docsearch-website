@@ -1,16 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '@theme/Layout';
-import { Hero, Text, LabelText, InlineLink, Card } from '@algolia/ui-library';
+import {
+  Hero,
+  Text,
+  LabelText,
+  InlineLink,
+  Card,
+  Button,
+} from '@algolia/ui-library';
 import algoliasearch from 'algoliasearch/lite';
 import { LiveProvider, LiveEditor } from 'react-live';
 import vsDark from 'prism-react-renderer/themes/vsDark';
-import { DocSearch } from '@docsearch/react';
 import { getAlgoliaHits } from '@francoischalifour/autocomplete-preset-algolia';
 
 import DocSearchV2 from '../components/DocSearch';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { Autocomplete } from '../components/Autocomplete';
+
+import { createPortal } from 'react-dom';
+import Link from '@docusaurus/Link';
+
+import queryString from 'query-string';
+import { useLocation } from 'react-router';
 
 const autocompleteSearchClient = algoliasearch(
   'DSW01O6QPF',
@@ -42,6 +54,8 @@ function VersionSelector(props) {
     </span>
   );
 }
+
+let DocSearchModal = null;
 
 function DocSearchIndexSelector(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -109,6 +123,10 @@ function DocSearchIndexSelector(props) {
   );
 }
 
+function Hit({ hit, children }) {
+  return <Link to={hit.url}>{children}</Link>;
+}
+
 function Demo() {
   const { theme } = useDocSearchContext();
 
@@ -118,6 +136,48 @@ function Demo() {
   function resetCredentials() {
     setProject(defaultProject);
   }
+
+  const { v3 = false } = queryString.parse(useLocation().search);
+
+  const [isV3, setIsV3] = useState(v3);
+
+  useEffect(() => {
+    setIsV3(isV3);
+    if (isV3) setVersion(3);
+  }, [isV3]);
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const importDocSearchModalIfNeeded = useCallback(
+    function importDocSearchModalIfNeeded() {
+      if (DocSearchModal) {
+        return Promise.resolve();
+      }
+
+      return Promise.all([
+        import('@docsearch/react/modal'),
+        import('@docsearch/react/style'),
+      ]).then(([{ DocSearchModal: Modal }]) => {
+        DocSearchModal = Modal;
+      });
+    },
+    []
+  );
+
+  const onOpen = useCallback(
+    function onOpen() {
+      importDocSearchModalIfNeeded().then(() => {
+        setIsOpen(true);
+      });
+    },
+    [importDocSearchModalIfNeeded, setIsOpen]
+  );
+  const onClose = useCallback(
+    function onClose() {
+      setIsOpen(false);
+    },
+    [setIsOpen]
+  );
 
   useEffect(() => {
     autocompleteIndex
@@ -180,7 +240,42 @@ function Demo() {
             <DocSearchV2 {...project} />
           </ErrorBoundary>
         ) : (
-          <DocSearch {...project} />
+          <div className="uil-ph-32 uil-ta-center uil-d-flex uil-fxd-column">
+            <Button
+              onClick={onOpen}
+              className="uil-mt-16 uil-mb-16 uil-m-auto"
+              tag="button"
+              type="submit"
+              id="searchButton"
+              primary
+            >
+              Open modal to search on {project.indexName}
+            </Button>
+            {isOpen &&
+              createPortal(
+                <DocSearchModal
+                  {...project}
+                  navigator={{
+                    navigate({ suggestionUrl }) {
+                      history.push(suggestionUrl);
+                    },
+                  }}
+                  onClose={onClose}
+                  transformItems={items => {
+                    return items.map(item => {
+                      const url = new URL(item.url);
+
+                      return {
+                        ...item,
+                        url: item.url.replace(url.origin, ''),
+                      };
+                    });
+                  }}
+                  hitComponent={Hit}
+                />,
+                document.body
+              )}
+          </div>
         )}
       </Card>
 
