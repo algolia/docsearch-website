@@ -137,7 +137,11 @@ function Demo() {
     setProject(defaultProject);
   }
 
-  const { v3 = false } = queryString.parse(useLocation().search);
+  const {
+    indexName: indexNameQS = null,
+    apiKey: apiKeyQS = null,
+    v3 = false,
+  } = queryString.parse(useLocation().search);
 
   const [isV3, setIsV3] = useState(v3);
 
@@ -180,24 +184,32 @@ function Demo() {
   );
 
   useEffect(() => {
-    autocompleteIndex
-      .search(project.indexName, { hitsPerPage: 1 })
-      .then(result => {
-        if (result.nbHits === 0) {
-          resetCredentials();
-        } else {
-          const activeDocSearchIndex = result.hits[0];
-          setProject({
-            projectName: activeDocSearchIndex.name,
-            indexName: activeDocSearchIndex.docsearch.index,
-            apiKey: activeDocSearchIndex.docsearch.apiKey,
-          });
-        }
-      })
-      .catch(() => {
-        resetCredentials();
+    if (indexNameQS && apiKeyQS) {
+      setProject({
+        projectName: `DocSearch on ${indexNameQS}`,
+        indexName: indexNameQS,
+        apiKey: apiKeyQS,
       });
-  }, [project.indexName]);
+    } else {
+      autocompleteIndex
+        .search(project.indexName, { hitsPerPage: 1 })
+        .then(result => {
+          if (result.nbHits === 0) {
+            resetCredentials();
+          } else {
+            const activeDocSearchIndex = result.hits[0];
+            setProject({
+              projectName: activeDocSearchIndex.name,
+              indexName: activeDocSearchIndex.docsearch.index,
+              apiKey: activeDocSearchIndex.docsearch.apiKey,
+            });
+          }
+        })
+        .catch(() => {
+          resetCredentials();
+        });
+    }
+  }, [project.indexName, indexNameQS, apiKeyQS]);
 
   const code = `<!-- at the end of the \`head\` -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
