@@ -196,16 +196,25 @@ input.ais-SearchBox-input:hover {
 .DocSearch-Modal {
   width: 100%;
 }
-.ais-SearchBox-submit, .ais-SearchBox-reset{
+.ais-SearchBox-submit,
+.ais-SearchBox-reset {
   height: 100%;
   width: 100%;
 }
 
-.main-wrapper .algolia-autocomplete .ds-dropdown-menu{
+.main-wrapper .algolia-autocomplete .ds-dropdown-menu {
   width: 100%;
   max-width: 100%;
 }
 
-.sbx-docsearch-demo__submit ~ .algolia-autocomplete{
+.sbx-docsearch-demo__submit ~ .algolia-autocomplete {
   max-width: calc(100% - 48px);
+}
+html[data-theme='dark'] .algolia-autocomplete-input,
+html[data-theme='dark'] .algolia-autocomplete-input::placeholder {
+  color: var(--ifm-font-base-color);
+}
+
+html[data-theme='dark'] .algolia-autocomplete-dropdown {
+  color: var(--ifm-menu-color-background-active);
 }

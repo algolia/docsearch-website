@@ -48,8 +48,12 @@ function VersionSelector(props) {
           props.onChange(Number(event.target.value));
         }}
       >
-        <option value="2">version 2</option>
-        <option value="3">version 3</option>
+        <option value="2" selected={props.selected === 2}>
+          version 2
+        </option>
+        <option value="3" selected={props.selected === 3}>
+          version 3
+        </option>
       </select>
     </span>
   );
@@ -66,7 +70,7 @@ function DocSearchIndexSelector(props) {
         autoFocus
         openOnFocus
         showCompletion
-        placeholder="Search index..."
+        placeholder="Search a demo"
         getSources={() => {
           return [
             {
@@ -240,7 +244,10 @@ function Demo() {
       >
         <div className="algolia-autocomplete-demo-settings">
           Demo Settings:
-          <VersionSelector onChange={nextVersion => setVersion(nextVersion)} />
+          <VersionSelector
+            selected={version}
+            onChange={nextVersion => setVersion(nextVersion)}
+          />
           <DocSearchIndexSelector
             project={project}
             onChange={nextProject => setProject(nextProject)}
