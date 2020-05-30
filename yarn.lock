@@ -1168,10 +1168,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@docsearch/react@1.0.0-alpha.20":
-  version "1.0.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-1.0.0-alpha.20.tgz#7adf5294c662a1677cd210fe1d94dc39e85e7cb1"
-  integrity sha512-RSW9NrvbCycOOQeP9wJ5K49cEx/Zr74PJGl2UKsT9cOaCwwMvY73IUNNyA/MHL0HRykHotykOweERgDq+m1Qhw==
+"@docsearch/react@^1.0.0-alpha.14":
+  version "1.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@docsearch/react/-/react-1.0.0-alpha.14.tgz#13817445b50ec7ff387b23be4786d5b496d1e83f"
+  integrity sha512-I+JrJKZlRZIiIVefIY9AkC9OQegHfUCkdHmqGqsMu6suF+VtQNoTMCN0joAvMx4wid54RafWa/UnlEwEPMf5/w==
   dependencies:
     "@francoischalifour/autocomplete-core" "^1.0.0-alpha.20"
     "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.20"
@@ -1505,15 +1505,34 @@
     url "^0.11.0"
     webpack-sources "^1.4.3"
 
-"@francoischalifour/autocomplete-core@^1.0.0-alpha.20":
-  version "1.0.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.20.tgz#a0b85cdec26bfbe57bc10ce879c3accc03f807bc"
-  integrity sha512-Tdq8VoZEIXvpWMkiw257Vt01Vn0M2AlOlISp3hsjJ7amAPow3qDilDs5omlfq1CEavHgnqwRI7UjVNaPgSZLlg==
+"@francoischalifour/autocomplete-core@^1.0.0-alpha.13":
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.15.tgz#ee44093dbca5ee2e84539ace39ff2762ec8c165c"
+  integrity sha512-Jm8JbJS8MjXZlMT2C2DPalidFh/ATVmPbXcJE1e/nRAKjjyKij50VwyuzuKwhbO+Kc4frlPWqbdf1tovjzzFnw==
 
-"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.20":
-  version "1.0.0-alpha.20"
-  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.20.tgz#235c32e761cff12442dcb348e6c9df564ac1843e"
-  integrity sha512-RHRateU4vfssaf2cEmLYOVPc3seNyY8lvedyW6sPxzB/zpxtqfiU6gjkIn0zkONon/+DLHlkk0uA8PE6eg+gLA==
+"@francoischalifour/autocomplete-core@^1.0.0-alpha.14":
+  version "1.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-core/-/autocomplete-core-1.0.0-alpha.14.tgz#6a0182108b1deb047b3b0745681acd4678df01b5"
+  integrity sha512-+hLSucW065tH/1E55JyEBKxUGJpRvJ57jyuefhC97OPMLyVyieUyA8QgxDYNK5Ho9VKS6xdYnsxAvdNdo9yFTQ==
+
+"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.13":
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.15.tgz#e069f0e6a4f47d6fa83d36e07abb3c8de49d5fb1"
+  integrity sha512-ZqkhGcWVgp/4K8OYnZBJRXuc2wAHWEGB2fsllPW9Spbf1ro9k/3dNnofpuiwFy4XScELtUbcCR+zS4Z3pLjT+Q==
+
+"@francoischalifour/autocomplete-preset-algolia@^1.0.0-alpha.14":
+  version "1.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/autocomplete-preset-algolia/-/autocomplete-preset-algolia-1.0.0-alpha.14.tgz#4029156a9a1dd73500f6d1bb9d6a93a699b9e793"
+  integrity sha512-6c121hTinsUAMub7rqdgEUbq1znBOxBQk8P24HBHqD9xF0/iesDlj9MnHWk1QLybVXwVh71M96T9oO3vePZHvA==
+
+"@francoischalifour/docsearch-react@1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@francoischalifour/docsearch-react/-/docsearch-react-1.0.0-alpha.13.tgz#9d3fd3c6b0afc09b979b89f0f6b949f0af207e93"
+  integrity sha512-JU11cOYMvlEuDoVfeiyKmh+vLnFqnwR4sUUBLU2xFXtCIkoRgNDyFgdkkVXMbjn00foNohgoE4Vnht+pGEabqw==
+  dependencies:
+    "@francoischalifour/autocomplete-core" "^1.0.0-alpha.13"
+    "@francoischalifour/autocomplete-preset-algolia" "^1.0.0-alpha.13"
+    algoliasearch "^4.0.0"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -2442,7 +2461,7 @@ algoliasearch@^3.24.5:
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
 
-algoliasearch@^4.0.0, algoliasearch@^4.1.0:
+algoliasearch@^4.0.0, algoliasearch@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.2.0.tgz#dd81a1a0c57eb9f74af6db70b0c11f256692d1e6"
   integrity sha512-CgbyDBGMSzNISBFezPt68xAseknork+wNe/Oour1Hluk4OwbtobysRawFf93ZbLSQw/KbeGlVmVAvujeVIVdnQ==
@@ -8161,17 +8180,12 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@1.4 4.0":
-  version "1.35.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.35.0.tgz#0569d657466491283709663ad379a99b90d9ab47"
-  integrity sha512-JWT/IcCTsB0Io3AhWUMjRqucrHSPsSf2xKLaRldJVULioggvkJvggZ3VXNNSRkCddE6D+BUI4HEIZIA2OjwIvg==
-
 mime-db@1.43.0:
   version "1.43.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.43.0.tgz#0a12e0502650e473d735535050e7c8f4eb4fae58"
   integrity sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==
 
-"mime-db@>= 1.43.0 < 2", mime-db@^1.28.0, mime-db@^1.44.0:
+mime-db@1.44.0, "mime-db@>= 1.43.0 < 2", mime-db@^1.28.0:
   version "1.44.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.44.0.tgz#fa11c5eb0aca1334b4233cb4d52f10c5a6272f92"
   integrity sha512-/NOTfLrsPBVeH7YtFPgsVWveuL+4SjjYxaQ1xtM1KMFj7HdxlBlxeyNLzhyJVx7r4rZGJAZ/6lkKCitSc/Nmpg==
