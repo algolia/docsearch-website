@@ -93,7 +93,6 @@ function SearchBar() {
                   ...item,
                   url: item.url
                     .replace(url.origin, '')
-                    .replace('#__docusaurus', ''),
                 };
               });
             }}
