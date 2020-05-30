@@ -38,7 +38,10 @@ const defaultProject = {
 
 function VersionSelector(props) {
   return (
-    <span className="algolia-autocomplete-button">
+    <span
+      className={`algolia-autocomplete-button${props.className &&
+        ' ' + props.className}`}
+    >
       <span className="algolia-autocomplete-button-label">UI</span>
 
       <select
@@ -109,7 +112,8 @@ function DocSearchIndexSelector(props) {
 
   return (
     <button
-      className="algolia-autocomplete-button"
+      className={`algolia-autocomplete-button${props.className &&
+        ' ' + props.className}`}
       onClick={() => setIsOpen(true)}
     >
       <span className="algolia-autocomplete-button-label">Index</span>
@@ -242,13 +246,15 @@ function Demo() {
         className="m-auto mb-4 "
         style={{ position: 'relative', maxWidth: '800px' }}
       >
-        <div className="algolia-autocomplete-demo-settings">
-          Demo Settings:
+        <div className="algolia-autocomplete-demo-settings uil-d-flex uil-fxd-column">
+          <span className="uil-mt-24">Demo Settings:</span>
           <VersionSelector
+            className="uil-mt-16"
             selected={version}
             onChange={nextVersion => setVersion(nextVersion)}
           />
           <DocSearchIndexSelector
+            className="uil-mt-16"
             project={project}
             onChange={nextProject => setProject(nextProject)}
           />

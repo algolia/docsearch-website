@@ -9,7 +9,9 @@
 .algolia-autocomplete-demo-settings{
   margin-bottom: 24px;
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 
