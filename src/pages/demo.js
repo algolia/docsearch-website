@@ -49,11 +49,12 @@ function VersionSelector(props) {
         onChange={event => {
           props.onChange(Number(event.target.value));
         }}
+        defaultValue={props.selected}
       >
-        <option value="2" selected={props.selected === 2}>
+        <option key={2} value={2}>
           version 2
         </option>
-        <option value="3" selected={props.selected === 3}>
+        <option key={3} value={3}>
           version 3
         </option>
       </select>
@@ -132,14 +133,6 @@ function DocSearchIndexSelector(props) {
 
 function Demo() {
   const { theme } = useDocSearchContext();
-
-  const [version, setVersion] = useState(2);
-  const [project, setProject] = useState(defaultProject);
-
-  function resetCredentials() {
-    setProject(defaultProject);
-  }
-
   const {
     indexName: indexNameQS = null,
     apiKey: apiKeyQS = null,
@@ -147,6 +140,12 @@ function Demo() {
   } = queryString.parse(useLocation().search);
 
   const [isV3, setIsV3] = useState(v3);
+  const [version, setVersion] = useState(isV3 ? 3 : 2);
+  const [project, setProject] = useState(defaultProject);
+
+  function resetCredentials() {
+    setProject(defaultProject);
+  }
 
   useEffect(() => {
     setIsV3(isV3);
