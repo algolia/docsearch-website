@@ -109,8 +109,11 @@ function Navbar() {
             <Link className="navbar__brand" to={baseUrl}>
               {logo != null && (
                 <DocSearchLogo
-                  width="100%"
-                  style={{ maxWidth: '190px', minWidth: '150px' }}
+                  style={{
+                    maxWidth: '190px',
+                    width: '100%',
+                    minWidth: '150px',
+                  }}
                 />
               )}
               {title != null && (
@@ -165,8 +168,11 @@ function Navbar() {
             <Link className="navbar__brand" onClick={hideSidebar} to={baseUrl}>
               {logo != null && (
                 <DocSearchLogo
-                  width="100%"
-                  style={{ maxWidth: '190px', minWidth: '150px' }}
+                  style={{
+                    maxWidth: '190px',
+                    width: '100%',
+                    minWidth: '150px',
+                  }}
                 />
               )}
               {title != null && <strong>{title}</strong>}
