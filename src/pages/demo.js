@@ -255,7 +255,7 @@ function Demo() {
           />
         </div>
 
-        {version === 2 ? (
+        {version === 2 && !isV3 ? (
           <ErrorBoundary>
             <DocSearchV2 {...project} />
           </ErrorBoundary>
