@@ -19,7 +19,6 @@ import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { Autocomplete } from '../components/Autocomplete';
 
 import { createPortal } from 'react-dom';
-import Link from '@docusaurus/Link';
 
 import queryString from 'query-string';
 import { useLocation } from 'react-router';
@@ -129,10 +128,6 @@ function DocSearchIndexSelector(props) {
       </svg>
     </button>
   );
-}
-
-function Hit({ hit, children }) {
-  return <Link to={hit.url}>{children}</Link>;
 }
 
 function Demo() {
@@ -278,26 +273,7 @@ function Demo() {
             </Button>
             {isOpen &&
               createPortal(
-                <DocSearchModal
-                  {...project}
-                  navigator={{
-                    navigate({ suggestionUrl }) {
-                      history.push(suggestionUrl);
-                    },
-                  }}
-                  onClose={onClose}
-                  transformItems={items => {
-                    return items.map(item => {
-                      const url = new URL(item.url);
-
-                      return {
-                        ...item,
-                        url: item.url.replace(url.origin, ''),
-                      };
-                    });
-                  }}
-                  hitComponent={Hit}
-                />,
+                <DocSearchModal {...project} onClose={onClose} />,
                 document.body
               )}
           </div>
