@@ -151,6 +151,14 @@ who inspired us a lot, Endi. We want [to pay a tribute to this exceptional human
 being that will be always part of the DocSearch project][13]. Rest in peace
 mate!
 
+## What is the timeline on the v3?
+
+We are pre-releasing the v3 on docusaurus 2. It will help us to iterate faster
+on it and make sure we are ready to release a vanilla version. We will provide a
+migration guide to help you move on this new version. If you want to have more
+information on this version, you can [watch the search party we made about this
+topic][12].
+
 [1]: mailto:docsearch@algolia.com
 [2]: https://www.algolia.com/
 [3]: https://www.algolia.com/pricing
@@ -168,3 +176,4 @@ mate!
 [14]: https://github.com/algolia/docsearch-configs/pulls
 [15]:
   https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/understand-reports/
+[16]: https://youtu.be/OXRjnG7SHJM
