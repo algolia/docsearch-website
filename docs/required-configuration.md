@@ -126,7 +126,7 @@ index exposed via the DocSearch `custom_settings` parameter.
 
 Any questions? [Send us an email][6].
 
-[1]: how-do-we-build-an-index.md
+[1]: how-do-we-build-an-index.mdx
 [2]: config-file.md
 [3]: https://www.algolia.com/doc/guides/searching/filtering/#facet-filters
 [4]: https://www.sitemaps.org/
