@@ -157,7 +157,7 @@ We are pre-releasing the v3 on docusaurus 2. It will help us to iterate faster
 on it and make sure we are ready to release a vanilla version. We will provide a
 migration guide to help you move on this new version. If you want to have more
 information on this version, you can [watch the search party we made about this
-topic][12].
+topic][16].
 
 [1]: mailto:docsearch@algolia.com
 [2]: https://www.algolia.com/
