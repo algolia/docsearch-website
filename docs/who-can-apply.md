@@ -16,8 +16,8 @@ To have your request validated, we'll ask that you check all the following
 points.
 
 - You must be the **owner** of the website, or at least have the permissions to
-  update its content. You'll have to [include a JavaScript snippet](dropdown) to
-  enable DocSearch.
+  update its content. You'll have to [include a JavaScript snippet][1] to enable
+  DocSearch.
 
 - Your website must be **publicly available**. We do not host search indices for
   websites that are available behind an authentication or a private network.
@@ -30,11 +30,11 @@ points.
   have written some documentation before applying. We would be happy to help you
   as soon as you have a steady design.
 
-If in doubt, don't hesitate to [apply][1] and we'll figure it out together.
+If in doubt, don't hesitate to [apply][2] and we'll figure it out together.
 
 Even if we cannot accept your request, this does not mean that you cannot enjoy
 great search on your website. DocSearch is entirely open source and [you can run
-it yourself][2], or use any of [our other API clients][3] to take advantage of
+it yourself][3], or use any of [our other API clients][4] to take advantage of
 Algolia's features.
 
 ## Priority
@@ -54,7 +54,8 @@ criteria:
   highly recommend that you put in place server-side rendering for the useful
   textual content.
 
-[1]: apply.mdx
-[2]: run-your-own.md
-[3]: https://www.algolia.com/doc/api-client/getting-started/install/javascript/
-[4]: integrations.md
+[1]: dropdown.md
+[2]: apply.mdx
+[3]: run-your-own.md
+[4]: https://www.algolia.com/doc/api-client/getting-started/install/javascript/
+[5]: integrations.md
