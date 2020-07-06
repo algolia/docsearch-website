@@ -64,7 +64,7 @@ You could even change the relevancy strategy by [overwriting the default
 your config.
 
 [1]: https://www.sitemaps.org/
-[2]: how-do-we-build-an-index
+[2]: how-do-we-build-an-index.mdx
 [3]:
   https://www.algolia.com/doc/guides/ranking/ranking-formula/#tie-breaking-approach
 [4]: https://www.algolia.com/doc/guides/ranking/custom-ranking/
