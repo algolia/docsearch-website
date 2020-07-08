@@ -90,8 +90,8 @@ module.exports = {
               to: 'https://github.com/algolia/docsearch-configs',
             },
             {
-              label: 'Playground',
-              to: 'playground',
+              label: 'Privacy',
+              to: 'https://www.algolia.com/policies/privacy/',
             },
           ],
         },
