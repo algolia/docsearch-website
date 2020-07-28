@@ -29,7 +29,7 @@ module.exports = {
         hideOnScroll: true,
         title: 'by Algolia',
       },
-      links: [
+      items: [
         {
           label: 'Documentation',
           to: 'docs/what-is-docsearch',
