@@ -9,10 +9,11 @@ import {
 } from '@algolia/ui-library';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
+
 
 function ApplyForm() {
-  const { theme } = useDocSearchContext();
+  const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
   const [hasSent, setHasSent] = useState(false);
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
@@ -44,7 +45,7 @@ function ApplyForm() {
   if (hasSent) {
     return (
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={isDarkTheme ? 'dark' : 'light'}
         className="uil-m-auto"
         style={{ maxWidth: 600 }}
       >
@@ -73,7 +74,7 @@ function ApplyForm() {
 
   return (
     <Card
-      background={theme === 'dark' ? 'dark' : 'light'}
+      background={isDarkTheme ? 'dark' : 'light'}
       className="uil-m-auto"
       style={{ maxWidth: 600 }}
     >

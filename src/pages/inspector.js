@@ -7,14 +7,14 @@ import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
 import { DocSearchLogo } from '../components/DocSearchLogo';
 
 import algoliasearch from 'algoliasearch';
 
 function Inspector() {
   const { siteConfig } = useDocusaurusContext();
-  const { theme, logoUrl } = useDocSearchContext();
+  const theme = useThemeContext.isDarkTheme?"dark":"light";
 
   const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
 

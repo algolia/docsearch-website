@@ -14,27 +14,37 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'Algolia',
   projectName: 'DocSearch',
-  themes: ['@docusaurus/theme-search-algolia'],
+  themes: ['@docusaurus/theme-live-codeblock'],
   plugins: ['my-loaders'], // loader required for .svg
   themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    announcementBar: {
+      id: 'supportus',
+      content:
+        '⭐️ If you like DocSearch, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/algolia/docsearch">GitHub</a>! ⭐️',
+    },
     algolia: {
       apiKey: '25626fae796133dc1e734c6bcaaeac3c',
       indexName: 'docsearch',
-      searchParameters: {
-        hitsPerPage: 5,
-      },
     },
     navbar: {
+      hideOnScroll: true,
+      title: "by Algolia",
       logo: {
         alt: 'DocSearch',
         src: 'img/docsearch-logo.svg',
-        src_theme: {
-          light: 'img/docsearch-logo.svg',
-          dark: 'img/docsearch-logo-white.svg',
-          href: 'https://docsearch.algolia.com/playground',
-        },
+        srcDark: 'img/docsearch-logo-white.svg'
       },
-      links: [
+      items: [
+        {
+          type: 'docsVersionDropdown',
+          position: 'left',
+          nextVersionLabel: '3.0.0-alpha',
+        },
         {
           label: 'Documentation',
           to: 'docs/what-is-docsearch',

@@ -13,9 +13,10 @@
   },
   "dependencies": {
     "@algolia/ui-library": "^1.0.0-beta.109",
-    "@docsearch/react": "1.0.0-alpha.20",
-    "@docusaurus/core": "2.0.0-alpha.48",
-    "@docusaurus/preset-classic": "2.0.0-alpha.48",
+    "@docsearch/react": "1.0.0-alpha.24",
+    "@docusaurus/core": "2.0.0-alpha.59",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.59",
+    "@docusaurus/preset-classic": "2.0.0-alpha.59",
     "algoliasearch": "^4.1.0",
     "classnames": "^2.2.6",
     "docsearch.js": "^2.6.3",

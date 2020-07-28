@@ -14,12 +14,11 @@ import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { DocSearchModal } from '@docsearch/react';
-
 import ErrorBoundary from '../components/ErrorBoundary';
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 function V3Me() {
-  const { theme } = useDocSearchContext();
+  const theme = useThemeContext.isDarkTheme?"dark":"light";
 
   const getParams = queryString.parse(useLocation().search);
   const {

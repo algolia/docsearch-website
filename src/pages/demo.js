@@ -20,13 +20,14 @@ import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
 import { DocSearchLogo } from '../components/DocSearchLogo';
+
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Demo() {
   const { siteConfig } = useDocusaurusContext();
-  const { theme, logoUrl } = useDocSearchContext();
-
+  
+  const theme = useThemeContext.isDarkTheme?"dark":"light";
   const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
   const DEFAULT_API_KEY = siteConfig.themeConfig.algolia.apiKey;
 

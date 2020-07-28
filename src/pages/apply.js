@@ -4,10 +4,12 @@ import { Section, Hero } from '@algolia/ui-library';
 import ApplyForm from '../components/ApplyForm.js';
 import { DocSearchLogo } from '../components/DocSearchLogo';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
+
 
 function Apply() {
-  const { theme, logoUrl } = useDocSearchContext();
+
+  const theme = useThemeContext.isDarkTheme?"dark":"light";
 
   return (
     <>
