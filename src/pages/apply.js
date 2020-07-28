@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '@theme/Layout';
 import { Section, Hero } from '@algolia/ui-library';
 import ApplyForm from '../components/ApplyForm.js';
