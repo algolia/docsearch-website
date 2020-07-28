@@ -26,9 +26,9 @@ module.exports = {
         alt: 'DocSearch',
         src: 'img/docsearch-logo.svg',
         srcDark: 'img/docsearch-logo-white.svg',
-        hideOnScroll: true,
-        title: 'by Algolia',
       },
+      title: 'by Algolia',
+      hideOnScroll: true,
       items: [
         {
           label: 'Documentation',
@@ -41,16 +41,16 @@ module.exports = {
           position: 'right',
         },
       ],
-      colorMode: {
-        defaultMode: 'light',
-        disableSwitch: false,
-        respectPrefersColorScheme: true,
-      },
-      announcementBar: {
-        id: 'supportus',
-        content:
-          '⭐️ If you like DocSearch, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/algolia/docsearch">GitHub</a>! ⭐️',
-      },
+    },
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    announcementBar: {
+      id: 'supportus',
+      content:
+        '⭐️ If you like DocSearch, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/algolia/docsearch">GitHub</a>! ⭐️',
     },
     footer: {
       links: [
