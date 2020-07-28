@@ -16,10 +16,10 @@ import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Playground() {
-  const { theme } = useDocSearchContext();
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
 
   const {
     appId: appIdQS = 'BH4D9OD16A',

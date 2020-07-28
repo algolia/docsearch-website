@@ -16,10 +16,10 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import { DocSearchModal } from '@docsearch/react';
 
 import ErrorBoundary from '../components/ErrorBoundary';
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 function V3Me() {
-  const { theme } = useDocSearchContext();
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
 
   const getParams = queryString.parse(useLocation().search);
   const {
@@ -36,7 +36,11 @@ function V3Me() {
       const parsedBool =
         value === 'true' ? true : value === 'false' ? false : null;
       searchParameters[name] =
-        parsedInt !== NaN ? parsedInt : parsedBool ? parsedBool !== null : value;
+        parsedInt !== NaN
+          ? parsedInt
+          : parsedBool
+          ? parsedBool !== null
+          : value;
     }
   }
 
