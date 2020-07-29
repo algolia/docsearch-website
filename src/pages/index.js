@@ -8,10 +8,10 @@ import {
   TextBlock,
   Hero,
   SectionHeader,
-  SmallText,
-  NumberedList,
+  LabelText,
+  TextBlocksGrid,
   Card,
-  CardsRow,
+  CardsGrid,
 } from '@algolia/ui-library';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -77,7 +77,9 @@ function Home() {
                   src={useBaseUrl(image)}
                   alt={`Discover DocSearch on the ${name} documentation`}
                 />
-                <SmallText tag="p">{name}</SmallText>
+                <LabelText font="hind" tag="p">
+                  {name}
+                </LabelText>
               </a>
             </div>
           ))}
@@ -89,7 +91,9 @@ function Home() {
                 src={useBaseUrl('img/logos/three-dots.svg')}
                 alt="Your project logo? Apply for DocSearch"
               />
-              <SmallText tag="p">You?</SmallText>
+              <LabelText font="hind" tag="p">
+                You?
+              </LabelText>
             </a>
           </div>
         </div>
@@ -141,7 +145,7 @@ function Home() {
 
       <Section>
         <SectionHeader title="How it works" />
-        <NumberedList columns={3}>
+        <TextBlocksGrid numbered columnsPerRow={3}>
           <TextBlock title="We scrape your documentation" label="Scraping">
             <Text>
               We built a website crawler designed to index every section of your
@@ -175,7 +179,7 @@ function Home() {
               as our paying customers.
             </Text>
           </TextBlock>
-        </NumberedList>
+        </TextBlocksGrid>
       </Section>
 
       <Section>
@@ -185,9 +189,13 @@ function Home() {
             it live.
           </Text>
         </SectionHeader>
-        <CardsRow>
+        <CardsGrid columnsPerRow={demoProjects.length}>
           {demoProjects.map(({ name, href, logo, preview }) => (
-            <Card key={name} image={preview} imageAlt={`${name} demo`}>
+            <Card
+              key={name}
+              image={preview}
+              imageProps={{ alt: `${name} demo` }}
+            >
               <LightCta withArrow href={href} rel="noreferrer" target="_blank">
                 <img
                   style={{
@@ -202,7 +210,7 @@ function Home() {
               </LightCta>
             </Card>
           ))}
-        </CardsRow>
+        </CardsGrid>
       </Section>
 
       <Section>
