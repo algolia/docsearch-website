@@ -19,10 +19,10 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
 
-import { useDocSearchContext } from '../hooks/useDocSearchContext';
+import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Landing() {
-  const { theme } = useDocSearchContext();
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
 
   const {
     appId: appIdQS = 'BH4D9OD16A',
