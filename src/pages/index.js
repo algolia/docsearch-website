@@ -123,9 +123,9 @@ function Home() {
         <div className="row">
           <div className="col col--4 col--offset-1">
             <img
+              className="d-block m-auto"
               src={useBaseUrl('img/assets/illus-analytics.svg')}
               alt="DocSearch Analytics"
-              width="400"
             />
           </div>
           <div className="col col--5 pt-48 mt-32">
