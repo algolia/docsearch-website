@@ -14,7 +14,7 @@ import algoliasearch from 'algoliasearch';
 
 function Inspector() {
   const { siteConfig } = useDocusaurusContext();
-  const theme = useThemeContext.isDarkTheme?"dark":"light";
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
 
   const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
 
@@ -47,7 +47,7 @@ function Inspector() {
         padding="small"
       />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -80,7 +80,7 @@ function Inspector() {
         )}
       </Card>
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >

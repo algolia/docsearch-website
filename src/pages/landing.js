@@ -18,11 +18,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import github from 'prism-react-renderer/themes/github';
 import vsDark from 'prism-react-renderer/themes/vsDark';
+
 import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Landing() {
-  
-  const theme = useThemeContext.isDarkTheme?"dark":"light";
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
+
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
@@ -68,7 +69,7 @@ function Landing() {
     <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -90,7 +91,7 @@ function Landing() {
       <Card
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
       >
         <LabelText big>Instructions:</LabelText>
 

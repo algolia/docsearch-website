@@ -11,9 +11,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import useThemeContext from '@theme/hooks/useThemeContext';
 
-
 function ApplyForm() {
-  const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
   const [hasSent, setHasSent] = useState(false);
   const [url, setUrl] = useState('');
   const [email, setEmail] = useState('');
@@ -44,11 +43,7 @@ function ApplyForm() {
 
   if (hasSent) {
     return (
-      <Card
-        background={isDarkTheme ? 'dark' : 'light'}
-        className="uil-m-auto"
-        style={{ maxWidth: 600 }}
-      >
+      <Card background={theme} className="uil-m-auto" style={{ maxWidth: 600 }}>
         <LabelText style={{ fontSize: '1.2em' }}>Thank you!</LabelText>
         <br />
 
@@ -73,11 +68,7 @@ function ApplyForm() {
   }
 
   return (
-    <Card
-      background={isDarkTheme ? 'dark' : 'light'}
-      className="uil-m-auto"
-      style={{ maxWidth: 600 }}
-    >
+    <Card background={theme} className="uil-m-auto" style={{ maxWidth: 600 }}>
       <form
         onSubmit={onSubmit}
         id="form-apply-docsearch"

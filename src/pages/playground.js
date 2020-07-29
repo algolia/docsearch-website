@@ -15,10 +15,12 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import algoliasearch from 'algoliasearch/lite';
 import Card from '@algolia/ui-library/public/components/Card';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+
 import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Playground() {
-  const theme = useThemeContext.isDarkTheme?"dark":"light";
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
+
   const {
     appId: appIdQS = 'BH4D9OD16A',
     indexName: indexNameQS = '',
@@ -64,7 +66,7 @@ function Playground() {
     <>
       <Hero background="orbInside" title="Playground" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -84,7 +86,7 @@ function Playground() {
         </ErrorBoundary>
       </Card>
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
       >

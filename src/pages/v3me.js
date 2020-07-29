@@ -18,7 +18,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import useThemeContext from '@theme/hooks/useThemeContext';
 
 function V3Me() {
-  const theme = useThemeContext.isDarkTheme?"dark":"light";
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
 
   const getParams = queryString.parse(useLocation().search);
   const {
@@ -35,7 +35,11 @@ function V3Me() {
       const parsedBool =
         value === 'true' ? true : value === 'false' ? false : null;
       searchParameters[name] =
-        parsedInt !== NaN ? parsedInt : parsedBool ? parsedBool !== null : value;
+        parsedInt !== NaN
+          ? parsedInt
+          : parsedBool
+          ? parsedBool !== null
+          : value;
     }
   }
 
@@ -78,7 +82,7 @@ function V3Me() {
     <>
       <Hero background="orbInside" title="V3Me" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -102,7 +106,7 @@ function V3Me() {
         </ErrorBoundary>
       </Card>
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
       >

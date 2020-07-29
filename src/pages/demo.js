@@ -26,8 +26,8 @@ import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Demo() {
   const { siteConfig } = useDocusaurusContext();
-  
-  const theme = useThemeContext.isDarkTheme?"dark":"light";
+  const theme = useThemeContext.isDarkTheme ? 'dark' : 'light';
+
   const DEFAULT_INDEX_NAME = siteConfig.themeConfig.algolia.indexName;
   const DEFAULT_API_KEY = siteConfig.themeConfig.algolia.apiKey;
 
@@ -96,7 +96,7 @@ function Demo() {
     <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -123,7 +123,7 @@ function Demo() {
           marginTop: '2rem',
           marginBottom: '2rem',
         }}
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
       >
         <div
           style={{
