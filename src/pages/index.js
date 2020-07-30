@@ -45,12 +45,12 @@ function Home() {
 
       <Section>
         <SectionHeader title="State-of-the-art search for technical documentation">
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             We're kind of scratching our own itch here. As developers, we spend
             a lot of time reading documentation, and it isn’t always easy to
             find the information we need.
           </Text>
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             No one's to blame, building a good search is a complex challenge. We
             just happen to have a lot of experience doing that, and we want to
             share it with the developer community.
@@ -101,13 +101,13 @@ function Home() {
 
       <Section>
         <SectionHeader title="Learn-as-you-type experience">
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             Documentation speaks to your users. Ideally, this conversation will
             be pleasant and efficient. Everyone visiting your documentation page
             has a different need: Some are exploring your product, some are
             trying to get started, and some are stuck and need help.
           </Text>
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             DocSearch is designed to provide relevant search results at every
             level. Its structured layout give the users more context to
             understand the product.
@@ -219,11 +219,8 @@ function Home() {
             We’ll get back to you with everything you need to integrate your new
             search into your website.
           </Text>
-          <Text>
-            Oh, and did we mention it's FREE?
-            <br />
-            No commitment. No subscription. Everything is on us!
-          </Text>
+          <Text>Oh, and did we mention it's FREE?</Text>
+          <Text>No commitment. No subscription. Everything is on us!</Text>
         </SectionHeader>
 
         <ApplyForm />
