@@ -44,6 +44,7 @@ function Demo() {
   );
 
   function resetCredentials() {
+    setProjectName(DEFAULT_INDEX_NAME);
     setIndexName(DEFAULT_INDEX_NAME);
     setApiKey(DEFAULT_API_KEY);
   }
