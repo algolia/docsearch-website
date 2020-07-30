@@ -145,6 +145,6 @@ html[data-theme='dark'] [class*='light-Card'] {
   transform-origin: center;
 }
 
-[class*='announcementBar_node'] {
+[class*='announcementBar_'] {
   z-index: 1;
 }
