@@ -144,3 +144,7 @@ html[data-theme='dark'] [class*='light-Card'] {
   animation: heartbeat 1s infinite;
   transform-origin: center;
 }
+
+[class*='announcementBar_node'] {
+  z-index: 1;
+}

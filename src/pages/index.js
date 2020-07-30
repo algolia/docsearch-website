@@ -8,10 +8,10 @@ import {
   TextBlock,
   Hero,
   SectionHeader,
-  SmallText,
-  NumberedList,
+  LabelText,
+  TextBlocksGrid,
   Card,
-  CardsRow,
+  CardsGrid,
 } from '@algolia/ui-library';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -45,12 +45,12 @@ function Home() {
 
       <Section>
         <SectionHeader title="State-of-the-art search for technical documentation">
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             We're kind of scratching our own itch here. As developers, we spend
             a lot of time reading documentation, and it isn’t always easy to
             find the information we need.
           </Text>
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             No one's to blame, building a good search is a complex challenge. We
             just happen to have a lot of experience doing that, and we want to
             share it with the developer community.
@@ -77,7 +77,9 @@ function Home() {
                   src={useBaseUrl(image)}
                   alt={`Discover DocSearch on the ${name} documentation`}
                 />
-                <SmallText tag="p">{name}</SmallText>
+                <LabelText font="hind" tag="p">
+                  {name}
+                </LabelText>
               </a>
             </div>
           ))}
@@ -89,7 +91,9 @@ function Home() {
                 src={useBaseUrl('img/logos/three-dots.svg')}
                 alt="Your project logo? Apply for DocSearch"
               />
-              <SmallText tag="p">You?</SmallText>
+              <LabelText font="hind" tag="p">
+                You?
+              </LabelText>
             </a>
           </div>
         </div>
@@ -97,13 +101,13 @@ function Home() {
 
       <Section>
         <SectionHeader title="Learn-as-you-type experience">
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             Documentation speaks to your users. Ideally, this conversation will
             be pleasant and efficient. Everyone visiting your documentation page
             has a different need: Some are exploring your product, some are
             trying to get started, and some are stuck and need help.
           </Text>
-          <Text style={{ maxWidth: '800px' }}>
+          <Text className="m-auto" style={{ maxWidth: '800px' }}>
             DocSearch is designed to provide relevant search results at every
             level. Its structured layout give the users more context to
             understand the product.
@@ -119,9 +123,9 @@ function Home() {
         <div className="row">
           <div className="col col--4 col--offset-1">
             <img
+              className="d-block m-auto"
               src={useBaseUrl('img/assets/illus-analytics.svg')}
               alt="DocSearch Analytics"
-              width="400"
             />
           </div>
           <div className="col col--5 pt-48 mt-32">
@@ -141,7 +145,7 @@ function Home() {
 
       <Section>
         <SectionHeader title="How it works" />
-        <NumberedList columns={3}>
+        <TextBlocksGrid numbered columnsPerRow={3}>
           <TextBlock title="We scrape your documentation" label="Scraping">
             <Text>
               We built a website crawler designed to index every section of your
@@ -175,7 +179,7 @@ function Home() {
               as our paying customers.
             </Text>
           </TextBlock>
-        </NumberedList>
+        </TextBlocksGrid>
       </Section>
 
       <Section>
@@ -185,9 +189,13 @@ function Home() {
             it live.
           </Text>
         </SectionHeader>
-        <CardsRow>
+        <CardsGrid columnsPerRow={demoProjects.length}>
           {demoProjects.map(({ name, href, logo, preview }) => (
-            <Card key={name} image={preview} imageAlt={`${name} demo`}>
+            <Card
+              key={name}
+              image={preview}
+              imageProps={{ alt: `${name} demo` }}
+            >
               <LightCta withArrow href={href} rel="noreferrer" target="_blank">
                 <img
                   style={{
@@ -202,7 +210,7 @@ function Home() {
               </LightCta>
             </Card>
           ))}
-        </CardsRow>
+        </CardsGrid>
       </Section>
 
       <Section>
@@ -211,11 +219,8 @@ function Home() {
             We’ll get back to you with everything you need to integrate your new
             search into your website.
           </Text>
-          <Text>
-            Oh, and did we mention it's FREE?
-            <br />
-            No commitment. No subscription. Everything is on us!
-          </Text>
+          <Text>Oh, and did we mention it's FREE?</Text>
+          <Text>No commitment. No subscription. Everything is on us!</Text>
         </SectionHeader>
 
         <ApplyForm />
