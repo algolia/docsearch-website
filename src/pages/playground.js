@@ -103,7 +103,7 @@ function Playground() {
           >{`https://docsearch.algolia.com/playground/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
         </Text>
         <Text className="mt-4">
-          <Pill>appId</Pill> is optionnal.
+          <Pill>appId</Pill> is optional.
         </Text>
         <Text>
           Need to change something?
