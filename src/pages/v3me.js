@@ -122,7 +122,7 @@ function V3Me() {
           >{`https://docsearch.algolia.com/v3me/?indexName=<indexName>&apiKey=<apiKey>&appId=<appId>`}</a>
         </Text>
         <Text className="mt-4">
-          <Pill>appId</Pill> is optionnal.
+          <Pill>appId</Pill> is optional.
         </Text>
         <Text>
           Need to change something?
