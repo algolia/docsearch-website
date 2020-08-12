@@ -26,8 +26,8 @@ touch with us][11]. We'd be happy to help.
   https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-docsearch
 [5]: https://pkgdown.r-lib.org/
 [6]: https://pkgdown.r-lib.org/articles/search.html
-[7]: https://larecipe.binarytorch.com.my/docs/1.3/overview
-[8]: https://larecipe.binarytorch.com.my/docs/1.3/configurations#search
+[7]: https://larecipe.binarytorch.com.my/docs/2.2/overview
+[8]: https://larecipe.binarytorch.com.my/docs/2.2/configurations#search
 [9]: https://orchid.run
 [10]: https://orchid.run/plugins/orchidsearch#algolia-docsearch
 [11]: mailto:docsearch@algolia.com
