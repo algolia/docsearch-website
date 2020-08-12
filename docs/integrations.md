@@ -12,24 +12,22 @@ see how to enable DocSearch on your website:
 
 - [Docusaurus][1] - [How to enable search][2]
 - [VuePress][3] - [Algolia Search][4]
-- [GitBook][5]
-- [pkgdown][6] - [DocSearch indexing][7]
-- [LaRecipe][8] - [Algolia Search][9]
-- [Orchid][10] - [Algolia Search][11]
+- [pkgdown][5] - [DocSearch indexing][6]
+- [LaRecipe][7] - [Algolia Search][8]
+- [Orchid][9] - [Algolia Search][10]
 
 If you're maintaining a similar tool and want us to add you to the list, get [in
-touch with us][12]. We'd be happy to help.
+touch with us][11]. We'd be happy to help.
 
 [1]: https://docusaurus.io/
 [2]: https://docusaurus.io/docs/en/search#docsNav
 [3]: https://vuepress.vuejs.org/
 [4]:
   https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-docsearch
-[5]: https://docs.gitbook.com/
-[6]: https://pkgdown.r-lib.org/
-[7]: https://pkgdown.r-lib.org/articles/search.html
-[8]: https://larecipe.binarytorch.com.my/docs/1.3/overview
-[9]: https://larecipe.binarytorch.com.my/docs/1.3/configurations#search
-[10]: https://orchid.run
-[11]: https://orchid.run/plugins/orchidsearch#algolia-docsearch
-[12]: mailto:docsearch@algolia.com
+[5]: https://pkgdown.r-lib.org/
+[6]: https://pkgdown.r-lib.org/articles/search.html
+[7]: https://larecipe.binarytorch.com.my/docs/1.3/overview
+[8]: https://larecipe.binarytorch.com.my/docs/1.3/configurations#search
+[9]: https://orchid.run
+[10]: https://orchid.run/plugins/orchidsearch#algolia-docsearch
+[11]: mailto:docsearch@algolia.com
