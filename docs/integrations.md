@@ -16,7 +16,7 @@ see how to enable DocSearch on your website:
 - [LaRecipe][7] - [Algolia Search][8]
 - [Orchid][9] - [Algolia Search][10]
 
-If you're maintaining a similar tool and want us to add you to the list, get [in
+If you're maintaining a similar tool and want us to add you to the list, [get in
 touch with us][11]. We'd be happy to help.
 
 [1]: https://docusaurus.io/
