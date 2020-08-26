@@ -436,9 +436,8 @@ settings.
 
 ### `custom_settings.synonyms` _Optional_
 
-`custom_settings` can include a synonyms key that is an array of synonyms. This
-array includes up to 20 elements. Each element is an array of one-word synonyms
-which can be used interchangeably.
+`custom_settings` can include a `synonyms` key that is an array of synonyms.
+Each element is an array of one-word synonym. These words are interchangeable.
 
 For example:
 
