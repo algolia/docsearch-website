@@ -13,7 +13,7 @@ module.exports = {
       'who-can-apply',
       'apply',
     ],
-    'Adding DocSearch to your UI': ['migration-guide', 'behavior'],
+    'Adding DocSearch to your UI': ['migration-guide', 'behavior', 'styling'],
     'Requirements, tips, FAQ': [
       'required-configuration',
       'tips',
