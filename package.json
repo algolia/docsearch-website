@@ -12,7 +12,7 @@
     "lint": "yarn run textlint docs"
   },
   "dependencies": {
-    "@algolia/ui-library": "^1.0.0-beta.109",
+    "@algolia/ui-library": "2.35.0",
     "@docsearch/react": "1.0.0-alpha.24",
     "@docusaurus/core": "2.0.0-alpha.61",
     "@docusaurus/preset-classic": "2.0.0-alpha.61",
