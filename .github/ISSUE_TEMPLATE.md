@@ -4,9 +4,13 @@
     - do at least one GitHub search in current issues, maybe your question is already here
 -->
 
-## 📚 Documentation
+## Description
 
 (A clear and concise description of what the issue is.)
+
+### Expected beahvior
+
+(A clear and concise description of what you expected to happen.)
 
 ### Do you have a suggestion?
 
