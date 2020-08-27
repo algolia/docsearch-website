@@ -60,7 +60,7 @@ need to follow this extra step. If you don't, you can dismiss this step.
 
 ### Installing Chrome driver
 
-Some websites rendering requires JavaScript. Our crawler rely on a headless
+Some websites rendering requires JavaScript. Our crawler relies on a headless
 chrome emulation. You will need to set up a ChromeDriver.
 
 - [Install the driver][12] suited to your OS and the version of your Chrome. We
