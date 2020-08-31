@@ -135,7 +135,7 @@ the same result by running a live server in the `./playground` subdirectory.\`_
 
 ## Integration
 
-Once you're satisfied with your config, you can integrate the modal search in
+Once you're satisfied with your config, you can integrate the search in
 your website by [following the instructions here][14].
 
 The difference is that you'll also have to add the `appId` key to your
