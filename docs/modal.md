@@ -1,5 +1,5 @@
 ---
-title: Modal Search-UI
+title: Modal Search UI
 ---
 
 Once your Algolia DocSearch index is ready, set up, and filled with the right
