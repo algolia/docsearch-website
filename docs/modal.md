@@ -3,7 +3,7 @@ title: Modal Search UI
 ---
 
 Once your Algolia DocSearch index is ready, set up, and filled with the right
-data, you will need to integrate our dedicated Search-UI. To add this modal
+data, you will need to integrate our dedicated search UI. To add this modal
 search, you need to include our DocSearch library into your website as per the
 following example. You will receive your `apiKey` and `indexName` credentials as
 soon as we've deployed your configuration.
