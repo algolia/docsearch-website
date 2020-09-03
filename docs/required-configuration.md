@@ -111,9 +111,27 @@ index exposed via the DocSearch `custom_settings` parameter.
 }
 ```
 
+The `docsearch:version` meta tag can be a set [of comma-separated tokens][4],
+each of which is a version relevant to the page. These tokens must be compliant
+with [the SemVer specification][5] or only contain alphanumeric characters (e.g.
+`latest`, `next`, etc.). As facet filters, these version tokens are
+case-insensitive.
+
+For example, all records extracted from a page with the following meta tag:
+
+```html
+<meta name="docsearch:version" content="2.0.0-alpha.62,latest" />
+```
+
+The `version` attribute of these records will be :
+
+```json
+version:["2.0.0-alpha.62" , "latest"]
+```
+
 ## Nice to have
 
-- Your website should have [an updated sitemap][4]. This is key to let our
+- Your website should have [an updated sitemap][6]. This is key to let our
   crawler know what should be updated. Do not worry, we will still crawl your
   website and discover embedded hyperlinks to find your great content.
 
@@ -122,13 +140,16 @@ index exposed via the DocSearch `custom_settings` parameter.
 
 - Make sure your documentation content is also available without JavaScript
   rendering on the client-side. If you absolutely need JavaScript turned on, you
-  need to [set `js_render: true` in your configuration][5].
+  need to [set `js_render: true` in your configuration][7].
 
-Any questions? [Send us an email][6].
+Any questions? [Send us an email][8].
 
 [1]: how-do-we-build-an-index.mdx
 [2]: config-file.md
 [3]: https://www.algolia.com/doc/guides/searching/filtering/#facet-filters
-[4]: https://www.sitemaps.org/
-[5]: config-file.md
-[6]: mailto:DocSearch@algolia.com
+[4]:
+  https://html.spec.whatwg.org/dev/common-microsyntaxes.html#comma-separated-tokens
+[5]: https://semver.org/
+[6]: https://www.sitemaps.org/
+[7]: config-file.md
+[8]: mailto:DocSearch@algolia.com
