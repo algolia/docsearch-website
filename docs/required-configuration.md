@@ -120,7 +120,7 @@ shows how to update the JS snippet to retrieve records from these pages.
 docsearch({
   […],
   algoliaOptions: {
-    'facetFilters': ["lang:en", "version:1.0.0"]
+    'facetFilters': ["language:en", "version:1.0.0"]
   },
   […],
 });
