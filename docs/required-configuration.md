@@ -98,12 +98,14 @@ tags:
 <meta name="docsearch:version" content="1.0.0" />
 ```
 
-The `content` value of the `meta` tag will be added to every record extracted
-from the page. Given that the name is `docsearch:$NAME`, `$NAME` will be set as
-an attribute in every records. Its value will be its related `content` value.
-You can then transform these attributes as [`facetFilters`][3] to filter over
-them from the UI. We will need to set `attributesForFaceting` of your Algolia
-index exposed via the DocSearch `custom_settings` parameter.
+The crawl adds the `content` value of these `meta` tags to all records extracted
+from the page. The meta tags `name` must follow the `docsearch:$NAME` pattern.
+`$NAME` is the name of the attribute set to all records.
+
+You can then [transform these attributes as `facetFilters`][3] to filter over
+them from the UI. You will need to set the setting `attributesForFaceting` of
+the Algolia index. You need to submit a PR on your associated configuration via
+[the DocSearch `custom_settings` setting][4].
 
 ```json
 "custom_settings": {
@@ -111,9 +113,22 @@ index exposed via the DocSearch `custom_settings` parameter.
 }
 ```
 
-The `docsearch:version` meta tag can be a set [of comma-separated tokens][4],
+It enables you to filter on the value of these meta tags. The following example
+shows how to update the JS snippet to retrieve records from these pages.
+
+```js
+docsearch({
+  […],
+  algoliaOptions: {
+    'facetFilters': ["lang:en", "version:1.0.0"]
+  },
+  […],
+});
+```
+
+The `docsearch:version` meta tag can be a set [of comma-separated tokens][5],
 each of which is a version relevant to the page. These tokens must be compliant
-with [the SemVer specification][5] or only contain alphanumeric characters (e.g.
+with [the SemVer specification][6] or only contain alphanumeric characters (e.g.
 `latest`, `next`, etc.). As facet filters, these version tokens are
 case-insensitive.
 
@@ -131,7 +146,7 @@ version:["2.0.0-alpha.62" , "latest"]
 
 ## Nice to have
 
-- Your website should have [an updated sitemap][6]. This is key to let our
+- Your website should have [an updated sitemap][7]. This is key to let our
   crawler know what should be updated. Do not worry, we will still crawl your
   website and discover embedded hyperlinks to find your great content.
 
@@ -140,16 +155,18 @@ version:["2.0.0-alpha.62" , "latest"]
 
 - Make sure your documentation content is also available without JavaScript
   rendering on the client-side. If you absolutely need JavaScript turned on, you
-  need to [set `js_render: true` in your configuration][7].
+  need to [set `js_render: true` in your configuration][8].
 
-Any questions? [Send us an email][8].
+Any questions? [Send us an email][9].
 
 [1]: how-do-we-build-an-index.mdx
-[2]: config-file.md
-[3]: https://www.algolia.com/doc/guides/searching/filtering/#facet-filters
-[4]:
+[2]: config-file.md#selectors
+[3]:
+  https://www.algolia.com/doc/guides/managing-results/refine-results/faceting/
+[4]: config-file.md#custom_settings-optional
+[5]:
   https://html.spec.whatwg.org/dev/common-microsyntaxes.html#comma-separated-tokens
-[5]: https://semver.org/
-[6]: https://www.sitemaps.org/
-[7]: config-file.md
-[8]: mailto:DocSearch@algolia.com
+[6]: https://semver.org/
+[7]: https://www.sitemaps.org/
+[8]: config-file.md#js_render-optional
+[9]: mailto:DocSearch@algolia.com
