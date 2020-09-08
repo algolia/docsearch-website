@@ -458,7 +458,7 @@ For example:
   },
 ```
 
-_Note that you can use [advanced synonym thanks to Algolia][5]. Our scraper only
+_Note that you can use [advanced synonym with Algolia][5]. Our scraper only
 supports regular one-word synonyms._
 
 ### `scrape_start_urls` _Optional_
