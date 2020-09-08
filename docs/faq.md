@@ -159,7 +159,7 @@ migration guide to help you move on this new version. If you want to have more
 information on this version, you can [watch the search party we made about this
 topic][16].
 
-## Can I share the apiKey in my repo?
+## Can I share the `apiKey` in my repo?
 
 The `apiKey` the DocSearch team provides is [a search-only key][16] and can be
 safely shared publicly. You can track it in your version control system (e.g.
