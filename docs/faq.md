@@ -159,6 +159,13 @@ migration guide to help you move on this new version. If you want to have more
 information on this version, you can [watch the search party we made about this
 topic][16].
 
+## Can I share the `apiKey` in my repo?
+
+The `apiKey` the DocSearch team provides is [a search-only key][16] and can be
+safely shared publicly. You can track it in your version control system (e.g.
+git). If you are running the scraper on your own, please make sure to create a
+search-only key and [do not share your Admin key][18].
+
 [1]: mailto:docsearch@algolia.com
 [2]: https://www.algolia.com/
 [3]: https://www.algolia.com/pricing
@@ -177,3 +184,5 @@ topic][16].
 [15]:
   https://www.algolia.com/doc/guides/getting-insights-and-analytics/search-analytics/understand-reports/
 [16]: https://youtu.be/OXRjnG7SHJM
+[17]: https://www.algolia.com/doc/guides/security/api-keys/#search-only-api-key
+[18]: https://www.algolia.com/doc/guides/security/api-keys/#admin-api-key
