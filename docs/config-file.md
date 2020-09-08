@@ -27,7 +27,8 @@ A DocSearch looks like this:
 ## `index_name`
 
 This is the name of the Algolia index where your records will be pushed. The
-`apiKey` we will share with you is restricted to work with this index.
+`apiKey` we will share with you is restricted to work with this index and [is a
+search-only key][2].
 
 When using the free DocSearch crawler, the `indexName` will always be the name
 of the configuration file. If you're running DocSearch yourself, you can use any
@@ -155,7 +156,7 @@ URL pattern. The following example makes this variable feature clearer:
 The beneficial side effect of using this syntax is that every record extracted
 from pages matching `http://www.example.com/docs/en/latest` will have attributes
 `lang: en` and `version: latest`. It enables you to filter on [these
-`facetFilters`][2].
+`facetFilters`][3].
 
 The following example shows how the UI filters results matching a specific
 language and version.
@@ -431,7 +432,7 @@ meaning.
 }
 ```
 
-Check the [Algolia documentation][3] for more information about the Algolia
+Check the [Algolia documentation][4] for more information about the Algolia
 settings.
 
 ### `custom_settings.synonyms` _Optional_
@@ -457,7 +458,7 @@ For example:
   },
 ```
 
-_Note that you can use [advanced synonym thanks to Algolia][4]. Our scraper only
+_Note that you can use [advanced synonym thanks to Algolia][5]. Our scraper only
 supports regular one-word synonyms._
 
 ### `scrape_start_urls` _Optional_
@@ -509,7 +510,7 @@ The default value is `0`. By increasing it, you can choose not to index some
 records if they don't have enough `lvlX` matching. For example, with a
 `min_indexed_level: 2`, the scraper indexes temporary records having at least
 `lvl0`, `lvl1` and `lvl2` set. You can [find out more details about this
-strategy in this section][5].
+strategy in this section][6].
 
 This is useful when your documentation has pages that share the same `lvl0` and
 `lvl1` for example. In that case, you don't want to index all the shared
@@ -671,8 +672,9 @@ To override it, from the configuration:
 ```
 
 [1]: https://github.com/algolia/docsearch-configs/tree/master/configs
-[2]: https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
-[3]: https://www.algolia.com/doc/api-reference/settings-api-parameters/
-[4]:
+[2]: https://www.algolia.com/doc/guides/security/api-keys/#search-only-api-key
+[3]: https://www.algolia.com/doc/api-reference/api-parameters/facetFilters/
+[4]: https://www.algolia.com/doc/api-reference/settings-api-parameters/
+[5]:
   https://www.algolia.com/doc/guides/managing-results/optimize-search-results/adding-synonyms/#the-different-types-of-synonyms
-[5]: https://www.algolia.com/doc/api-reference/settings-api-parameters/
+[6]: https://www.algolia.com/doc/api-reference/settings-api-parameters/
