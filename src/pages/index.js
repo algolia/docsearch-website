@@ -18,7 +18,6 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import showcaseProjects from './showcase-projects.json';
-import demoProjects from './demo-projects.json';
 import ApplyForm from '../components/ApplyForm.js';
 import { DocSearchLogo } from '../components/DocSearchLogo';
 
@@ -40,8 +39,8 @@ function Home() {
                 width="140"
                 class="text-indigo-600"
               />
-              <div class="mt-6 w-500">
-                <DocSearchLogo />
+              <div class="mt-6">
+                <DocSearchLogo width="430px" />
               </div>
               <p class="mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 The best search experience for docs, integrated in minutes, for
@@ -66,10 +65,10 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div class="">
+            <div class="pl-6">
               <img
-                src={useBaseUrl('img/assets/7.png')}
-                width="800"
+                src={useBaseUrl('img/assets/tailwind.png')}
+                width="600"
                 class="text-indigo-600"
               />
             </div>
@@ -997,10 +996,9 @@ function Home() {
           </div>
         </div>
       </div>
-
-      <div class="p-16 text-center">... WIP ...</div>
-      <ApplyForm />
-      <div class="p-16 text-center">... WIP ...</div>
+      <div className="my-12">
+        <ApplyForm/>
+      </div>
     </>
   );
 }
