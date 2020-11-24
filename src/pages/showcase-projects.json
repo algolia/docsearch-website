@@ -189,11 +189,6 @@
         "href": "http://home-assistant.io/"
     },
     {
-        "name": "Project Calico",
-        "image": "img/logos/calico.png",
-        "href": "https://docs.projectcalico.org/"
-    },
-    {
         "name": "GNS3",
         "image": "img/logos/gns3.png",
         "href": "https://docs.gns3.com/"

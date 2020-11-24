@@ -27,7 +27,7 @@ module.exports = {
         src: 'img/docsearch-logo.svg',
         srcDark: 'img/docsearch-logo-white.svg',
       },
-      title: 'by Algolia',
+      title: ' ',
       hideOnScroll: true,
       items: [
         {

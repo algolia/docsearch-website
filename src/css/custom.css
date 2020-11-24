@@ -148,3 +148,15 @@ html[data-theme='dark'] [class*='light-Card'] {
 [class*='announcementBar_'] {
   z-index: 1;
 }
+
+.diagonal-box {
+	transform: skewY(-6deg);
+}
+
+.diagonal-content {
+	transform: skewY(6deg);
+}
+
+.ratio {
+  padding-bottom: 40%;
+}
