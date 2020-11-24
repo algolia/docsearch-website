@@ -809,7 +809,7 @@ function Home() {
               </p>
               <img
                 class="w-8/12 mx-auto my-6"
-                src={useBaseUrl('img/assets/10.png')}
+                src={useBaseUrl('img/assets/docsearch-shadow-dark.png')}
               />
             </div>
             <div class="flex flex-col w-full md:w-3/6 lg:w-2/6 mt-5 md:pl-5 min-h-500">
@@ -823,7 +823,7 @@ function Home() {
                 </p>
                 <img
                   class="right-0 left-0 absolute bottom-0 z-0"
-                  src={useBaseUrl('img/assets/11.png')}
+                  src={useBaseUrl('img/assets/no-results.png')}
                 />
               </div>
               <div class="h-full flex-shrink w-full mt-5 bg-white relative overflow-hidden  p-4">
@@ -835,7 +835,7 @@ function Home() {
                 </p>
                 <img
                   class="w-full absolute bottom-0 right-0 z-0"
-                  src={useBaseUrl('img/assets/12.png')}
+                  src={useBaseUrl('img/assets/offline.png')}
                 />
               </div>
             </div>
@@ -992,7 +992,7 @@ function Home() {
             </ul>
             <img
               class="mt-16 w-4/6 mx-auto"
-              src={useBaseUrl('img/assets/13.png')}
+              src={useBaseUrl('img/assets/developers.png')}
             />
           </div>
         </div>
