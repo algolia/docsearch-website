@@ -66,7 +66,7 @@ function Playground() {
     <>
       <Hero background="orbInside" title="Playground" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -86,7 +86,7 @@ function Playground() {
         </ErrorBoundary>
       </Card>
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
       >

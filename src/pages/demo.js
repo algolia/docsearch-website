@@ -21,6 +21,7 @@ import vsDark from 'prism-react-renderer/themes/vsDark';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import { DocSearchLogo } from '../components/DocSearchLogo';
+
 import useThemeContext from '@theme/hooks/useThemeContext';
 
 function Demo() {
@@ -96,7 +97,7 @@ function Demo() {
     <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -123,7 +124,7 @@ function Demo() {
           marginTop: '2rem',
           marginBottom: '2rem',
         }}
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
       >
         <div
           style={{

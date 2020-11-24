@@ -164,7 +164,7 @@ language and version.
 ```js
 docsearch({
   […],
-  searchParameters: {
+  algoliaOptions: {
     'facetFilters': ["lang:en", "version:latest"]
   },
   […],
@@ -194,7 +194,7 @@ From the JS snippet:
 ```js
 docsearch({
   […],
-  searchParameters: {
+  algoliaOptions: {
     'facetFilters': ["tags:concepts"]
   },
 });
