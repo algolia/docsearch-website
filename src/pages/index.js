@@ -436,7 +436,7 @@ function Home() {
               <img
                 class="relative mx-auto"
                 width="490"
-                src={useBaseUrl('img/assets/4.png')}
+                src={useBaseUrl('img/assets/docsearch-shadow.png')}
                 alt=""
               />
             </div>
@@ -518,7 +518,7 @@ function Home() {
                 <img
                   class="relative mx-auto"
                   width="490"
-                  src={useBaseUrl('img/assets/5.svg')}
+                  src={useBaseUrl('img/assets/anatomy.svg')}
                   alt=""
                 />
               </div>
@@ -843,7 +843,7 @@ function Home() {
         </div>
       </div>
 
-      <div class="pt-12 bg-gray-900">
+      <div class="pt-12 bg-gray-900"> 
         <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="lg:text-center">
             <p class="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase"></p>
