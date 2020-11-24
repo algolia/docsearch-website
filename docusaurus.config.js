@@ -32,7 +32,6 @@ module.exports = {
       items: [
         {
           type: 'docsVersionDropdown',
-          nextVersionLabel: '3.0.0-alpha',
           position: 'left',
         },
         {

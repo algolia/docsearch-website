@@ -299,13 +299,13 @@ function Home() {
               <div class="lg:grid lg:grid-cols-3 lg:gap-8">
                 <div>
                   <div class="flex items-center justify-center">
-                    <img class="h-200" src={useBaseUrl('img/assets/1.svg')} />
+                    <img class="h-200" src={useBaseUrl('img/assets/scraping.svg')}  width="190px"/>
                   </div>
-                  <div class="mt-5">
+                  <div class="mt-10 lg:mt-0 p-4">
                     <h5 class="text-lg leading-6 font-medium text-gray-900">
                       1. Scraping
                     </h5>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p class="mt-2 text-base leading-6 text-gray-600">
                       We built a website crawler designed to index every section
                       of your documentation. Just send us the URL of your
                       documentation, and we’ll run the scraper every 24h so
@@ -313,30 +313,30 @@ function Home() {
                     </p>
                   </div>
                 </div>
-                <div class="mt-10 lg:mt-0">
+                <div class="mt-10 lg:mt-0 p-4">
                   <div class="h-200 flex items-center justify-center">
-                    <img src={useBaseUrl('img/assets/2.svg')} />
+                    <img src={useBaseUrl('img/assets/configuration.svg')} width="140px"/>
                   </div>
-                  <div class="mt-5">
+                  <div>
                     <h5 class="text-lg leading-6 font-medium text-gray-900">
                       2. Configuration
                     </h5>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p class="mt-2 text-base leading-6 text-gray-600">
                       You don’t need to configure any settings or even have an
                       Algolia account. We take care of this automatically to
                       ensure the best documentation search experience.
                     </p>
                   </div>
                 </div>
-                <div class="mt-10 lg:mt-0">
+                <div class="mt-10 lg:mt-0 p-4">
                   <div class="h-200 flex items-center justify-center">
-                    <img src={useBaseUrl('img/assets/3.svg')} />
+                    <img src={useBaseUrl('img/assets/implementation.svg')}  width="220px" />
                   </div>
-                  <div class="mt-5">
+                  <div>
                     <h5 class="text-lg leading-6 font-medium text-gray-900">
                       3. Implementation
                     </h5>
-                    <p class="mt-2 text-base leading-6 text-gray-500">
+                    <p class="mt-2 text-base leading-6 text-gray-600">
                       We'll send you a script that integrates Algolia's
                       autocomplete to power your search. You will receive the
                       same speed, relevance, and best-in-class UX as our paying
