@@ -3,13 +3,13 @@
     "name": "Bootstrap",
     "logo": "img/logos/bootstrap.jpg",
     "preview": "img/demos/example-bootstrap.gif",
-    "href": "https://getbootstrap.com/docs/4.3/getting-started/introduction/"
+    "href": "https://getbootstrap.com/docs/"
   },
   {
     "name": "Vue.js",
     "logo": "img/logos/vue.svg",
     "preview": "img/demos/example-vuejs.gif",
-    "href": "https://vuejs.org/v2/guide/"
+    "href": "https://v3.vuejs.org/guide/"
   },
   {
     "name": "React",

@@ -1,7 +1,7 @@
 [{
         "name": "Bootstrap",
         "image": "img/logos/bootstrap.jpg",
-        "href": "https://getbootstrap.com/docs/4.1/getting-started/introduction/"
+        "href": "https://getbootstrap.com/docs/"
     },
     {
         "name": "Babel",
@@ -16,7 +16,7 @@
     {
         "name": "TypeScript",
         "image": "img/logos/typescriptlang.svg",
-        "href": "https://www.typescriptlang.org/index.html"
+        "href": "https://www.typescriptlang.org/"
     },
     {
         "name": "React",
@@ -174,7 +174,7 @@
         "href": "https://docs.couchbase.com/"
     },
     {
-        "name": "HELM",
+        "name": "Helm",
         "image": "img/logos/helm.svg",
         "href": "https://docs.helm.sh/docs/"
     },
@@ -186,7 +186,7 @@
     {
         "name": "Home Assistant",
         "image": "img/logos/home-assistant.svg",
-        "href": "http://home-assistant.io/"
+        "href": "https://www.home-assistant.io/"
     },
     {
         "name": "Project Calico",
