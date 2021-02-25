@@ -54,7 +54,7 @@ criteria:
   highly recommend that you put in place server-side rendering for the useful
   textual content.
 
-[1]: modal.md
+[1]: dropdown.md
 [2]: apply.mdx
 [3]: run-your-own.md
 [4]: https://www.algolia.com/doc/api-client/getting-started/install/javascript/

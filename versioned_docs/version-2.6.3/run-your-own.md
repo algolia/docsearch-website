@@ -60,7 +60,7 @@ need to follow this extra step. If you don't, you can dismiss this step.
 
 ### Installing Chrome driver
 
-Some websites rendering requires JavaScript. Our crawler relies on a headless
+Some websites rendering requires JavaScript. Our crawler rely on a headless
 chrome emulation. You will need to set up a ChromeDriver.
 
 - [Install the driver][12] suited to your OS and the version of your Chrome. We
@@ -135,8 +135,8 @@ the same result by running a live server in the `./playground` subdirectory.\`_
 
 ## Integration
 
-Once you're satisfied with your config, you can integrate the search in
-your website by [following the instructions here][14].
+Once you're satisfied with your config, you can integrate the dropdown menu in
+your website by following the [instructions here][14].
 
 The difference is that you'll also have to add the `appId` key to your
 `docsearch()` instance. Also don't forget to use a **search** API key here (in
@@ -171,4 +171,4 @@ hosted version, so you might not need all the listed commands._
 [11]: config-file.md
 [12]: http://chromedriver.chromium.org/getting-started
 [13]: https://github.com/algolia/docsearch-configs/tree/master/configs
-[14]: modal.md
+[14]: dropdown.md

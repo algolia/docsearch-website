@@ -12,11 +12,11 @@ and `indexName` credentials as soon as we've created your config.
 <!-- Before the closing </head> -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/docsearch.js@{{docSearchJSVersion}}/dist/cdn/docsearch.min.css"
+  href="https://cdn.jsdelivr.net/npm/docsearch.js@@2/dist/cdn/docsearch.min.css"
 />
 
 <!-- Before the closing </body> -->
-<script src="https://cdn.jsdelivr.net/npm/docsearch.js@{{docSearchJSVersion}}/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@@2/dist/cdn/docsearch.min.js"></script>
 <script>
   docsearch({
     // Your apiKey and indexName will be given to you once

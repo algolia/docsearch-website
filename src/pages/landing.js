@@ -69,7 +69,7 @@ function Landing() {
     <>
       <Hero background="orbInside" title="Integrate it!" padding="small" />
       <Card
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px' }}
       >
@@ -91,7 +91,7 @@ function Landing() {
       <Card
         className="m-auto mt-4"
         style={{ position: 'relative', maxWidth: '800px', marginTop: '2em' }}
-        background={theme === 'dark' ? 'dark' : 'light'}
+        background={theme}
       >
         <LabelText big>Instructions:</LabelText>
 

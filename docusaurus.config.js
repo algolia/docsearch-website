@@ -31,6 +31,11 @@ module.exports = {
       hideOnScroll: true,
       items: [
         {
+          type: 'docsVersionDropdown',
+          nextVersionLabel: '3.0.0-alpha',
+          position: 'left',
+        },
+        {
           label: 'Documentation',
           to: 'docs/what-is-docsearch',
           position: 'right',
