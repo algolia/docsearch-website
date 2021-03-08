@@ -81,7 +81,7 @@ help us to create a great learn-as-you-type experience from your documentation.
   anchor to use.
 
 - Every textual element (selector `text`) must be wrapped in a `<p>` or `<li>`
-  tag. This content must be atomic and splitted into small entities. Be careful
+  tag. This content must be atomic and split into small entities. Be careful
   to never nest one matching element into another one as it will create
   duplicates.
 
