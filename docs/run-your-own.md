@@ -31,31 +31,30 @@ API_KEY=YOUR_API_KEY
 
 ## Run the crawl from the Docker image
 
-You can run a crawl from the packaged Docker image to crawl your website. You
-will need to [install jq, a lightweight command-line JSON processor][4]
+You can run a crawl from the packaged Docker image to crawl your website.
 
 Then you need to start the crawl according to your configuration. You should
-check the [dedicated configuration documentation][5].
+check the [dedicated configuration documentation][4].
 
 ```sh
-docker run -it --env-file=.env -e "CONFIG=$(cat /path/to/your/config.json | jq -r tostring)" algolia/docsearch-scraper
+docker run --interactive --tty --env-file=.env --env "CONFIG=$(python -m json.tool --compact < /path/to/your/config.json)" algolia/docsearch-scraper
 ```
 
-Once the scraping finishes, you can [jump to the Integration step][6].
+Once the scraping finishes, you can [jump to the Integration step][5].
 
 ## Running the crawler from the code base
 
 ### Installation
 
-The scraper is a python tool [based on scrapy][7]. We do recommend to use
-[pipenv][8] to install the python environment.
+The scraper is a python tool [based on scrapy][6]. We do recommend to use
+[pipenv][7] to install the python environment.
 
-- [Clone the scraper repository][9].
-- [Install pipenv][10]
+- [Clone the scraper repository][8].
+- [Install pipenv][9]
 - `pipenv install`
 - `pipenv shell`
 
-If you plan to use the browser emulation [(`js_render` set to true)][11], you
+If you plan to use the browser emulation [(`js_render` set to true)][10], you
 need to follow this extra step. If you don't, you can dismiss this step.
 
 ### Installing Chrome driver
@@ -63,7 +62,7 @@ need to follow this extra step. If you don't, you can dismiss this step.
 Some websites rendering requires JavaScript. Our crawler relies on a headless
 chrome emulation. You will need to set up a ChromeDriver.
 
-- [Install the driver][12] suited to your OS and the version of your Chrome. We
+- [Install the driver][11] suited to your OS and the version of your Chrome. We
   do recommend to use the latest version.
 - Set the environment variable `CHROMEDRIVER_PATH` in your `.env` file. This
   path must target the downloaded extracted driver.
@@ -121,7 +120,7 @@ index_name is example [enter to confirm]: <Enter>
 ```
 
 Create a file from this text into a filename `example.json`, we'll use it later
-on to start the crawl. You can browse the [list of live configurations][13].
+on to start the crawl. You can browse the [list of live configurations][12].
 
 ## Testing your results
 
@@ -136,7 +135,7 @@ the same result by running a live server in the `./playground` subdirectory.\`_
 ## Integration
 
 Once you're satisfied with your config, you can integrate the dropdown menu in
-your website by following the [instructions here][14].
+your website by following the [instructions here][13].
 
 The difference is that you'll also have to add the `appId` key to your
 `docsearch()` instance. Also don't forget to use a **search** API key here (in
@@ -161,14 +160,13 @@ hosted version, so you might not need all the listed commands._
 [1]: who-can-apply.md
 [2]: https://www.algolia.com/pricing
 [3]: https://www.algolia.com/doc/guides/security/api-keys/#acl
-[4]: https://github.com/stedolan/jq/wiki/Installation
-[5]: config-file.md
-[6]: #integration
-[7]: https://scrapy.org/
-[8]: https://github.com/pypa/pipenv
-[9]: https://github.com/algolia/docsearch-scraper
-[10]: https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv
-[11]: config-file.md
-[12]: http://chromedriver.chromium.org/getting-started
-[13]: https://github.com/algolia/docsearch-configs/tree/master/configs
-[14]: dropdown.md
+[4]: config-file.md
+[5]: #integration
+[6]: https://scrapy.org/
+[7]: https://github.com/pypa/pipenv
+[8]: https://github.com/algolia/docsearch-scraper
+[9]: https://pipenv.readthedocs.io/en/latest/install/#installing-pipenv
+[10]: config-file.md
+[11]: http://chromedriver.chromium.org/getting-started
+[12]: https://github.com/algolia/docsearch-configs/tree/master/configs
+[13]: dropdown.md
