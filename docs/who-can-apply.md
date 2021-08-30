@@ -22,8 +22,8 @@ points.
 - Your website must be **publicly available**. We do not host search indices for
   websites that are available behind an authentication or a private network.
 
-- Your website must be a **documentation website**. We do not index blogs or
-  commercial content.
+- Your website must be a **technical documentation of an open source project or
+  a technical blog**. We do not index commercial content.
 
 - Your website must **have some final content**. We won't index empty websites
   nor those filled with lorem ipsum placeholder content. Please, wait until you
@@ -42,9 +42,6 @@ Algolia's features.
 We're receiving dozens of requests every day, and while we strive to answer them
 all as fast as we can, we sometimes give priority to some based on the following
 criteria:
-
-- 😀 If your project is open source, we'll handle it before any other
-  closed-source product. We love open source and want to help as much as we can.
 
 - 🙂 If you're using one of our [official integrations][4], creating your config
   will be much faster for us.
